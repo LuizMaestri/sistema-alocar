@@ -22,6 +22,6 @@ class MongoUtils {
     static MongoCollection getCollection(Class clazz){
         DB database = client.getDB(DB_NAME);
         Jongo jongo = new Jongo(database);
-        return jongo.getCollection(clazz.getName());
+        return jongo.getCollection(clazz.getSimpleName());
     }
 }
