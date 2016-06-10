@@ -27,4 +27,13 @@ public class Discipline {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Discipline) {
+            Discipline discipline = (Discipline) obj;
+            return discipline.get_id().equals(_id) && discipline.getName().equals(name);
+        }
+        return false;
+    }
 }
