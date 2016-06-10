@@ -15,8 +15,8 @@ public class CourseService extends Service<Course, Long> {
     @Override
     public void fetch() {
         list = CourseDao.getDao().listAll();
-        for (int i=0; i < list.size(); i++)
-            indexes.put(list.get(i).get_id(), i);
+        for (int index=0; index < list.size(); index++)
+            indexes.put(list.get(index).get_id(), index);
     }
 
     @Override
