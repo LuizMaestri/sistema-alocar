@@ -15,7 +15,7 @@ public class Room {
     private int floor;
     private int number;
     private int capacity;
-    private EnumMap<DayOfWeek, long[]> occupation;
+    private EnumMap<DayOfWeek, Long[]> occupation;
 
     public Room() {
     }
@@ -60,11 +60,20 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public EnumMap<DayOfWeek, long[]> getOccupation() {
+    public EnumMap<DayOfWeek, Long[]> getOccupation() {
         return occupation;
     }
 
-    public void setOccupation(EnumMap<DayOfWeek, long[]> occupation) {
+    public void setOccupation(EnumMap<DayOfWeek, Long[]> occupation) {
         this.occupation = occupation;
+    }
+
+    public boolean allocate(DayOfWeek day, int schedule, Long classes){
+        Long[] classesIds = occupation.get(day);
+        if (schedule > classesIds.length) return false;
+        if (classesIds[schedule] != null) return false;
+        classesIds[schedule] = classes;
+        occupation.put(day, classesIds);
+        return true;
     }
 }
