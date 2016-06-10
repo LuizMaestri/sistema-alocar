@@ -5,7 +5,7 @@ import com.mongodb.MongoClient;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 
-import static utils.Constants.DB_NAME;
+import static utils.Constants.*;
 
 /**
  * @author luiz
@@ -16,7 +16,7 @@ class MongoUtils {
 
     private static MongoClient client;
     static {
-        client = new MongoClient();
+        client = new MongoClient(MONGO_HOST, MONGO_PORT);
     }
 
     static MongoCollection getCollection(Class clazz){
