@@ -1,8 +1,11 @@
 package professor;
 
+import classes.Classes;
 import utils.DayOfWeek;
 
 import java.util.EnumMap;
+import static utils.Constants.CREDITS_MIN;
+import static utils.Constants.MAXIMUM_WORKLOAD;
 
 /**
  * @author luiz
@@ -93,5 +96,17 @@ public class Professor {
 
     public void setFreeTime(EnumMap<DayOfWeek, long[]> freeTime) {
         this.freeTime = freeTime;
+    }
+
+    public boolean hasMax(){
+        return (adm + research + estension + credits) == MAXIMUM_WORKLOAD;
+    }
+
+    public boolean hasMin(){
+        return credits >= CREDITS_MIN;
+    }
+
+    public boolean checkFreeTime(Classes classes){
+        return false;
     }
 }
