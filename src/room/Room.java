@@ -10,7 +10,7 @@ import java.util.EnumMap;
  * @since 09/06/16
  */
 public class Room {
-    private long _id;
+    private Long _id;
     private String building;
     private int floor;
     private int number;
@@ -20,11 +20,11 @@ public class Room {
     public Room() {
     }
 
-    public long get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(long _id) {
+    public void set_id(Long _id) {
         this._id = _id;
     }
 

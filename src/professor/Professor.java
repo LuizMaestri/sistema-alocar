@@ -13,7 +13,7 @@ import static utils.Constants.MAXIMUM_WORKLOAD;
  * @since 09/06/16
  */
 public class Professor {
-    private long _id;
+    private Long _id;
     private int adm;
     private int research;
     private int estension;
@@ -26,11 +26,11 @@ public class Professor {
     public Professor() {
     }
 
-    public long get_id() {
+    public Long get_id() {
         return _id;
     }
 
-    public void set_id(long _id) {
+    public void set_id(Long _id) {
         this._id = _id;
     }
 
