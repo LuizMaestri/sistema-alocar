@@ -12,6 +12,11 @@ public abstract class Service<T, N> {
     protected HashMap<N, Integer> indexes;
     protected List<T> list;
 
+    public Service() {
+        indexes = new HashMap<N, Integer>();
+        fetch();
+    }
+
     public List<T> getList() {
         return list;
     }

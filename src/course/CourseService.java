@@ -12,11 +12,6 @@ import java.util.List;
  */
 public class CourseService extends Service<Course, Long> {
 
-    public CourseService() {
-        this.indexes = new HashMap<Long, Integer>();
-        this.fetch();
-    }
-
     @Override
     public void fetch() {
         list = CourseDao.getDao().listAll();
