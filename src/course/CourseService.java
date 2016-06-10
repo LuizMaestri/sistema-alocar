@@ -25,12 +25,6 @@ public class CourseService extends Service<Course, Long> {
     }
 
     @Override
-    public Course get(Long id) {
-        int index = indexes.get(id);
-        return list.get(index);
-    }
-
-    @Override
     public boolean save(Course entity) {
         return false;
     }

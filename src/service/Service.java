@@ -17,7 +17,10 @@ public abstract class Service<T, N> {
     }
 
     public abstract void fetch();
-    public abstract T get(N id);
+    public T get(N id){
+        int index = indexes.get(id);
+        return list.get(index);
+    }
     public abstract boolean save(T entity);
     public abstract boolean saveAll(List<T> entities);
     public abstract void delete(N id);
