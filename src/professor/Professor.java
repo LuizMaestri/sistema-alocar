@@ -16,12 +16,12 @@ public class Professor {
     private Long _id;
     private int adm;
     private int research;
-    private int estension;
+    private int extension;
     private int credits;
     private String name;
     private String password;
     private boolean admin;
-    private EnumMap<DayOfWeek, long[]> freeTime;
+    private EnumMap<DayOfWeek, Integer[]> freeTime;
 
     public Professor() {
     }
@@ -50,12 +50,12 @@ public class Professor {
         this.research = research;
     }
 
-    public int getEstension() {
-        return estension;
+    public int getExtension() {
+        return extension;
     }
 
-    public void setEstension(int estension) {
-        this.estension = estension;
+    public void setExtension(int extension) {
+        this.extension = extension;
     }
 
     public int getCredits() {
@@ -90,16 +90,16 @@ public class Professor {
         this.admin = admin;
     }
 
-    public EnumMap<DayOfWeek, long[]> getFreeTime() {
+    public EnumMap<DayOfWeek, Integer[]> getFreeTime() {
         return freeTime;
     }
 
-    public void setFreeTime(EnumMap<DayOfWeek, long[]> freeTime) {
+    public void setFreeTime(EnumMap<DayOfWeek, Integer[]> freeTime) {
         this.freeTime = freeTime;
     }
 
     public boolean hasMax(){
-        return (adm + research + estension + credits) == MAXIMUM_WORKLOAD;
+        return (adm + research + extension + credits) == MAXIMUM_WORKLOAD;
     }
 
     public boolean hasMin(){
