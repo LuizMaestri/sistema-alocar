@@ -15,7 +15,7 @@ public class ProfessorDao extends Dao<Professor> {
 
     @Override
     protected Class<Professor> getEntityClass() {
-        return null;
+        return Professor.class;
     }
 
     public static ProfessorDao getDao() {
