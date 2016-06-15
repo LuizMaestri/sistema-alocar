@@ -12,11 +12,11 @@ public class Discipline {
     public Discipline() {
     }
 
-    public String get_id() {
+    public String getId() {
         return _id;
     }
 
-    public void set_id(String _id) {
+    public void setId(String _id) {
         this._id = _id;
     }
 
@@ -32,7 +32,7 @@ public class Discipline {
     public boolean equals(Object obj) {
         if (obj instanceof Discipline) {
             Discipline discipline = (Discipline) obj;
-            return discipline.get_id().equals(_id) && discipline.getName().equals(name);
+            return discipline.getId().equals(_id) && discipline.getName().equals(name);
         }
         return false;
     }

@@ -15,7 +15,7 @@ public class ClassesService extends Service<Classes, Long> {
     public void fetch() {
         list = ClassesDao.getDao().listAll();
         for (int index=0; index < list.size(); index++)
-            indexes.put(list.get(index).get_id(), index);
+            indexes.put(list.get(index).getId(), index);
     }
 
     @Override

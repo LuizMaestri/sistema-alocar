@@ -24,11 +24,11 @@ public class Classes {
     public Classes() {
     }
 
-    public Long get_id() {
+    public Long getId() {
         return _id;
     }
 
-    public void set_id(Long _id) {
+    public void setId(Long _id) {
         this._id = _id;
     }
 

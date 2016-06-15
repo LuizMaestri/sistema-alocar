@@ -15,7 +15,7 @@ public class ProfessorService extends Service<Professor, Long>{
     public void fetch() {
         list = ProfessorDao.getDao().listAll();
         for (int index = 0; index < list.size(); index++)
-            indexes.put(list.get(index).get_id(), index);
+            indexes.put(list.get(index).getId(), index);
     }
 
     @Override
