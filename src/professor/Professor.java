@@ -1,6 +1,7 @@
 package professor;
 
 import classes.Classes;
+import dao.Entity;
 import utils.DayOfWeek;
 
 import java.util.EnumMap;
@@ -12,8 +13,7 @@ import static utils.Constants.MAXIMUM_WORKLOAD;
  * @version 1
  * @since 09/06/16
  */
-public class Professor {
-    private Long _id;
+public class Professor extends Entity<Long> {
     private int adm;
     private int research;
     private int extension;
@@ -24,14 +24,6 @@ public class Professor {
     private EnumMap<DayOfWeek, Integer[]> freeTime;
 
     public Professor() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public int getAdm() {
@@ -108,5 +100,9 @@ public class Professor {
 
     public boolean checkFreeTime(Classes classes){
         return false;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }

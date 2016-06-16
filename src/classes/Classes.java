@@ -1,6 +1,7 @@
 package classes;
 
 import course.Course;
+import dao.Entity;
 import discipline.Discipline;
 import professor.Professor;
 import utils.DayOfWeek;
@@ -12,8 +13,7 @@ import java.util.EnumMap;
  * @version 1
  * @since 09/06/16
  */
-public class Classes {
-    private Long _id;
+public class Classes extends Entity<Long>{
     private Course course;
     private int credits;
     private Discipline discipline;
@@ -22,14 +22,6 @@ public class Classes {
     private int students;
 
     public Classes() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public Course getCourse() {
@@ -78,5 +70,9 @@ public class Classes {
 
     public void setStudents(int students) {
         this.students = students;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }

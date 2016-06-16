@@ -1,6 +1,7 @@
 package labs;
 
 import classes.Classes;
+import dao.Entity;
 import room.Room;
 
 import java.util.Date;
@@ -10,23 +11,14 @@ import java.util.Date;
  * @version 1
  * @since 15/06/16
  */
-public class LabsRequest {
+public class LabsRequest extends Entity<Long> {
 
-    private Long _id;
     private Classes classes;
     private String date;
     private Room labs;
     private boolean fixed;
 
     public LabsRequest() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public Classes getClasses() {
@@ -59,5 +51,9 @@ public class LabsRequest {
 
     public void setFixed(boolean fixed) {
         this.fixed = fixed;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }

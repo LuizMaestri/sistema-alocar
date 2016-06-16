@@ -1,5 +1,6 @@
 package room;
 
+import dao.Entity;
 import utils.DayOfWeek;
 
 import java.util.EnumMap;
@@ -9,8 +10,7 @@ import java.util.EnumMap;
  * @version 1
  * @since 09/06/16
  */
-public class Room {
-    private Long _id;
+public class Room extends Entity<Long>{
     private String building;
     private int floor;
     private int number;
@@ -18,14 +18,6 @@ public class Room {
     private EnumMap<DayOfWeek, Long[]> occupation;
 
     public Room() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public String getBuilding() {
@@ -75,5 +67,9 @@ public class Room {
         classesIds[schedule] = classes;
         occupation.put(day, classesIds);
         return true;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }
