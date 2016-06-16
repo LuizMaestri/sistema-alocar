@@ -2,7 +2,6 @@ package dao;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
-import exception.IdException;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
@@ -30,23 +29,13 @@ public class MongoUtils {
         return jongo.getCollection(clazz.getSimpleName());
     }
 
-    static MongoCollection getIdCollection(Class clazz){
+    public static MongoCollection getIdCollection(Class clazz){
         DB database = client.getDB(DB_NAME);
         Jongo jongo = new Jongo(database);
         return jongo.getCollection("id_" + clazz.getSimpleName());
     }
 
-    public static Entity id(Entity entity) throws IdException {
-        Object id = entity.getId();
-        if (id != null && !validateId(entity))
-            throw new IdException("Invalid ID");
-        if ((id == null) && !entity.getIdClass().equals(String.class)){
-            entity = generateLongId(entity);
-        }
-        return entity;
-    }
-
-    private static Entity<Long> generateLongId(Entity entity) {
+    static Long generateLongId(Entity entity) {
         MongoCollection collection = getIdCollection(entity.getClass());
         MongoCursor<Id> ids = collection.find().as(Id.class);
         Iterator<Id> iterator = ids.iterator();
@@ -60,20 +49,6 @@ public class MongoUtils {
                 previous = next;
             }
         }
-        entity.setId(previous + 1L);
-        return entity;
+        return previous + 1L;
     }
-
-    private static boolean validateId(Entity entity) {
-        MongoCollection collection = getIdCollection(entity.getClass());
-        MongoCursor ids = collection.find().as(entity.getIdClass());
-        Iterator iterator = ids.iterator();
-        boolean exist = false;
-        while (iterator.hasNext()){
-            exist = iterator.next().equals(entity.getId());
-            if (exist) break;
-        }
-        return exist;
-    }
-
 }

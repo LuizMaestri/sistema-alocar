@@ -1,7 +1,6 @@
 package dao;
 
 import com.mongodb.WriteResult;
-import exception.IdException;
 import org.jongo.MongoCursor;
 
 import java.util.ArrayList;
@@ -22,8 +21,9 @@ public abstract class Dao<T extends Entity> {
         clazz = getEntityClass();
     }
 
-    public boolean put(Entity entity) throws IdException {
-        entity = MongoUtils.id(entity);
+    public boolean put(Entity entity) {
+        if (entity.getIdClass().equals(Long.class))
+            entity.setId(MongoUtils.generateLongId(entity));
         WriteResult result = MongoUtils.getCollection(clazz).save(entity);
         boolean put = result.getUpsertedId() != null;
         if (put){
@@ -34,7 +34,7 @@ public abstract class Dao<T extends Entity> {
         return put;
     }
 
-    public boolean putAll(List<T> entities) throws IdException {
+    public boolean putAll(List<T> entities) {
         for (T entity: entities) if (!put(entity)) return false;
         return true;
     }
@@ -52,5 +52,6 @@ public abstract class Dao<T extends Entity> {
 
     public void delete(Object id){
         WriteResult result = MongoUtils.getCollection(clazz).remove("{'_id':#}", id);
+        MongoUtils.getIdCollection(clazz).remove("{'_id':#}", id);
     }
 }
