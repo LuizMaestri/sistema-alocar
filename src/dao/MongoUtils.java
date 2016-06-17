@@ -24,15 +24,17 @@ public class MongoUtils {
     }
 
     static MongoCollection getCollection(Class clazz){
-        DB database = client.getDB(DB_NAME);
-        Jongo jongo = new Jongo(database);
         return jongo.getCollection(clazz.getSimpleName());
     }
 
     public static MongoCollection getIdCollection(Class clazz){
+        return getCollection("id_" + clazz.getSimpleName());
+    }
+    
+    private static MongoCollection getCollection(String collectionName){
         DB database = client.getDB(DB_NAME);
         Jongo jongo = new Jongo(database);
-        return jongo.getCollection("id_" + clazz.getSimpleName());
+        return jongo.getCollection(collectionName);
     }
 
     static Long generateLongId(Entity entity) {
