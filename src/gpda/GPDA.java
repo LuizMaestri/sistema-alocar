@@ -1,5 +1,6 @@
 package gpda;
 
+import dao.Entity;
 import discipline.Discipline;
 import professor.Professor;
 
@@ -11,21 +12,12 @@ import java.util.List;
  * @version 1
  * @since 10/06/16
  */
-public class GPDA {
-    private Long _id;
+public class GPDA extends Entity<Long> {
     private Professor coordenator;
     private List<Discipline> disciplines;
     private ArrayList<Professor> professors;
 
     public GPDA() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public Professor getCoordenator() {
@@ -56,5 +48,9 @@ public class GPDA {
         for (Discipline disc : disciplines)
             if (disc.equals(discipline)) return true;
         return false;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }

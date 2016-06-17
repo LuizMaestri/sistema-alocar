@@ -1,24 +1,17 @@
 package course;
 
+import dao.Entity;
+
 /**
  * @author luiz
  * @version 1
  * @since 08/06/16
  */
-public class Course {
-    private Long _id;
+public class Course extends Entity<Long>{
     private String name;
     private Turn turn;
 
     public Course() {
-    }
-
-    public Long getId() {
-        return _id;
-    }
-
-    public void setId(Long _id) {
-        this._id = _id;
     }
 
     public String getName() {
@@ -35,5 +28,9 @@ public class Course {
 
     public void setTurn(Turn turn) {
         this.turn = turn;
+    }
+
+    public Class<Long> getIdClass() {
+        return Long.class;
     }
 }

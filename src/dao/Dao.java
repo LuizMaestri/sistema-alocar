@@ -11,7 +11,7 @@ import java.util.List;
  * @version 1
  * @since 08/06/16
  */
-public abstract class Dao<T> {
+public abstract class Dao<T extends Entity> {
 
     private Class<T> clazz;
 
@@ -21,12 +21,20 @@ public abstract class Dao<T> {
         clazz = getEntityClass();
     }
 
-    public boolean put(T entity){
+    public boolean put(Entity entity) {
+        if (entity.getIdClass().equals(Long.class))
+            entity.setId(MongoUtils.generateLongId(entity));
         WriteResult result = MongoUtils.getCollection(clazz).save(entity);
-        return result.getUpsertedId() != null;
+        boolean put = result.getUpsertedId() != null;
+        if (put){
+            Id id = new Id();
+            id.setId(entity.getId());
+            MongoUtils.getIdCollection(clazz).save(id);
+        }
+        return put;
     }
 
-    public boolean putAll(List<T> entities){
+    public boolean putAll(List<T> entities) {
         for (T entity: entities) if (!put(entity)) return false;
         return true;
     }
@@ -44,5 +52,6 @@ public abstract class Dao<T> {
 
     public void delete(Object id){
         WriteResult result = MongoUtils.getCollection(clazz).remove("{'_id':#}", id);
+        MongoUtils.getIdCollection(clazz).remove("{'_id':#}", id);
     }
 }

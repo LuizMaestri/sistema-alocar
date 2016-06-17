@@ -1,6 +1,11 @@
 package discipline;
 
 import dao.Dao;
+import dao.Id;
+import dao.MongoUtils;
+import exception.IdException;
+import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 
 /**
  * @author luiz
@@ -20,5 +25,17 @@ public class DisciplineDao extends Dao<Discipline>{
 
     public static DisciplineDao getDao() {
         return dao;
+    }
+
+    public boolean putDicipline(Discipline discipline, boolean insert) throws IdException {
+        if (insert){
+            MongoCollection idCollection = MongoUtils.getIdCollection(Discipline.class);
+            MongoCursor<Id> ids = idCollection.find().as(Id.class);
+            while (ids.hasNext()){
+                if (ids.next().toString().equals(discipline.getId()))
+                    throw new IdException("invalid Id");
+            }
+        }
+        return put(discipline);
     }
 }

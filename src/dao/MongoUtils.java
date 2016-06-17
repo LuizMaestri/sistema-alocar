@@ -4,6 +4,10 @@ import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
+
+import java.util.Iterator;
+import java.util.Random;
 
 import static utils.Constants.*;
 
@@ -12,7 +16,7 @@ import static utils.Constants.*;
  * @version 1
  * @since 08/06/16
  */
-class MongoUtils {
+public class MongoUtils {
 
     private static MongoClient client;
     static {
@@ -23,5 +27,28 @@ class MongoUtils {
         DB database = client.getDB(DB_NAME);
         Jongo jongo = new Jongo(database);
         return jongo.getCollection(clazz.getSimpleName());
+    }
+
+    public static MongoCollection getIdCollection(Class clazz){
+        DB database = client.getDB(DB_NAME);
+        Jongo jongo = new Jongo(database);
+        return jongo.getCollection("id_" + clazz.getSimpleName());
+    }
+
+    static Long generateLongId(Entity entity) {
+        MongoCollection collection = getIdCollection(entity.getClass());
+        MongoCursor<Id> ids = collection.find().as(Id.class);
+        Iterator<Id> iterator = ids.iterator();
+        Long previous = new Random().nextLong();
+        if (iterator.hasNext()){
+            previous = iterator.next().asLong();
+            while (iterator.hasNext()){
+                Long next = iterator.next().asLong();
+                if (previous + 1L != next)
+                    break;
+                previous = next;
+            }
+        }
+        return previous + 1L;
     }
 }
