@@ -24,7 +24,7 @@ public class MongoUtils {
     }
 
     static MongoCollection getCollection(Class clazz){
-        return jongo.getCollection(clazz.getSimpleName());
+        return getCollection(clazz.getSimpleName());
     }
 
     public static MongoCollection getIdCollection(Class clazz){
