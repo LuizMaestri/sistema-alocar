@@ -46,8 +46,7 @@ public class MongoUtils {
             previous = iterator.next().asLong();
             while (iterator.hasNext()){
                 Long next = iterator.next().asLong();
-                if (previous + 1L != next)
-                    break;
+                if (previous + 1L != next) break;
                 previous = next;
             }
         }
