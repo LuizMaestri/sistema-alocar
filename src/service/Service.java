@@ -23,8 +23,8 @@ public abstract class Service<T, N> {
 
     public abstract void fetch();
     public T get(N id){
-        int index = indexes.get(id);
-        return list.get(index);
+        Integer index = indexes.get(id);
+        return index != null? list.get(index) : null;
     }
     public abstract boolean save(T entity);
     public abstract boolean saveAll(List<T> entities);
