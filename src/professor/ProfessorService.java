@@ -32,4 +32,19 @@ public class ProfessorService extends Service<Professor, Long>{
     public void delete(Long id) {
 
     }
+
+    public Professor auth(Professor toAuth) {
+
+        Long id = toAuth.getId();
+        String password = toAuth.getPassword();
+        Professor validate = ProfessorDao.getDao().get(id);
+
+        if (validate != null){
+            if (validate.getPassword().equals(password)){
+                return validate;
+            }
+        }
+
+        return null;
+    }
 }
