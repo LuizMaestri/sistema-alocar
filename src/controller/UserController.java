@@ -12,7 +12,8 @@ public class UserController implements IController {
     ProfessorService userService;
     IController current;
 
-
+    public UserController() {
+    }
 
     public boolean login(Long user, String pass){
         Professor toAuth = new Professor();
