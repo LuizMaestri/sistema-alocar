@@ -5,10 +5,12 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.UserController;
 import view.manager.UIManager;
 
 public class Login extends JPanel {
@@ -16,6 +18,7 @@ public class Login extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPasswordField password;
 	private JTextField textLogin;
+	
 
 	public Login() {
 		setLayout(null);
@@ -46,7 +49,15 @@ public class Login extends JPanel {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(464, 332, 89, 27);		
 		btnLogin.addActionListener(a -> {
-			UIManager.setPanel(new MenuTeste());
+			char[] chars = password.getPassword();  
+            String password2 = String.valueOf(chars);  
+            
+			if(UIManager.getController().login(Long.parseLong(textLogin.getText()), password2)){
+				UIManager.setPanel(new MenuTeste());				
+			} else {
+				
+				JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto! " + password2, "Erro", JOptionPane.ERROR_MESSAGE);
+			}
 		});
 		add(btnLogin);
 	}

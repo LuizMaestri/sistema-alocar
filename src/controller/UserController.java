@@ -13,6 +13,7 @@ public class UserController implements IController {
     IController current;
 
     public UserController() {
+    	loadData();
     }
 
     public boolean login(Long user, String pass){

@@ -11,9 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.UserController;
+
 public class UIManager {
 
 	private static Window prog;
+	private static UserController controller = new UserController();
 
 	private static void open(String title) {
 		String iconPath = "resources" + File.separator + "icone.png";
@@ -42,5 +45,10 @@ public class UIManager {
 
 	public static void run() {
 		open("Sistema Alocador");
+	}
+
+	public static UserController getController() {
+		return controller;
+
 	}
 }
