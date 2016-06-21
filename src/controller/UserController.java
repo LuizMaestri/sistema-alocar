@@ -1,8 +1,8 @@
 package controller;
 
-import exception.InvalidLogin;
-import exception.InvalidParams;
-import exception.NotExist;
+import exception.InvalidLoginException;
+import exception.InvalidParamsException;
+import exception.NotExistException;
 import professor.Professor;
 import professor.ProfessorService;
 
@@ -21,9 +21,9 @@ public class UserController implements IController {
     	loadData();
     }
 
-    public void login(Long user, String pass) throws InvalidLogin, NotExist, InvalidParams {
+    public void login(Long user, String pass) throws InvalidLoginException, NotExistException, InvalidParamsException {
         if (user == null || pass == null)
-            throw new InvalidParams("");
+            throw new InvalidParamsException("");
         loggedUser.setId(user);
         loggedUser.setPassword(pass);
         loggedUser = userService.auth(loggedUser);

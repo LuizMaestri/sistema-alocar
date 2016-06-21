@@ -10,10 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import controller.UserController;
-import exception.InvalidLogin;
-import exception.InvalidParams;
-import exception.NotExist;
+import exception.InvalidLoginException;
+import exception.InvalidParamsException;
+import exception.NotExistException;
 import view.manager.UIManager;
 
 public class Login extends JPanel {
@@ -60,7 +59,7 @@ public class Login extends JPanel {
                 UIManager.setPanel(new MenuTeste());
             } catch (NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Usuario Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-            } catch (InvalidLogin | InvalidParams | NotExist e) {
+            } catch (InvalidLoginException | InvalidParamsException | NotExistException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         });

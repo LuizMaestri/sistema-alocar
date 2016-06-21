@@ -1,7 +1,7 @@
 package professor;
 
-import exception.InvalidLogin;
-import exception.NotExist;
+import exception.InvalidLoginException;
+import exception.NotExistException;
 import service.Service;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class ProfessorService extends Service<Professor, Long>{
 
     }
 
-    public Professor auth(Professor toAuth) throws InvalidLogin, NotExist {
+    public Professor auth(Professor toAuth) throws InvalidLoginException, NotExistException {
         Long id = toAuth.getId();
         String password = toAuth.getPassword();
         Professor validate = ProfessorDao.getDao().get(id);
@@ -43,8 +43,8 @@ public class ProfessorService extends Service<Professor, Long>{
             if (validate.getPassword().equals(password)){
                 return validate;
             }
-            throw new InvalidLogin("");
+            throw new InvalidLoginException("");
         }
-        throw new NotExist("");
+        throw new NotExistException("");
     }
 }
