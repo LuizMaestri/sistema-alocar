@@ -11,6 +11,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import controller.UserController;
+import exception.InvalidLogin;
+import exception.InvalidParams;
+import exception.NotExist;
 import view.manager.UIManager;
 
 public class Login extends JPanel {
@@ -49,16 +52,18 @@ public class Login extends JPanel {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(464, 332, 89, 27);		
 		btnLogin.addActionListener(a -> {
-			char[] chars = password.getPassword();  
-            String password2 = String.valueOf(chars);  
-            
-			if(UIManager.getController().login(Long.parseLong(textLogin.getText()), password2)){
-				UIManager.setPanel(new MenuTeste());				
-			} else {
-				
-				JOptionPane.showMessageDialog(null, "Usu·rio ou senha incorreto! " + password2, "Erro", JOptionPane.ERROR_MESSAGE);
-			}
-		});
+            try {
+                char[] chars = password.getPassword();
+                String password2 = String.valueOf(chars);
+                Long id = Long.parseLong(textLogin.getText());
+                UIManager.getController().login(id, password2);
+                UIManager.setPanel(new MenuTeste());
+            } catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Usuario Inv√°lido", "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch (InvalidLogin | InvalidParams | NotExist e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        });
 		add(btnLogin);
 	}
 }

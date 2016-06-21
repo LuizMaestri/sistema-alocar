@@ -1,31 +1,36 @@
 package controller;
 
+import exception.InvalidLogin;
+import exception.InvalidParams;
+import exception.NotExist;
 import professor.Professor;
 import professor.ProfessorService;
 
 /**
- * Created by fabio on 20/06/16.
+ * @author fabio
+ * @version 1
+ * @since 20/06/16
  */
 public class UserController implements IController {
 
-    Professor loggedUser;
-    ProfessorService userService;
-    IController current;
+    private Professor loggedUser;
+    private ProfessorService userService;
+    private IController current;
 
     public UserController() {
     	loadData();
     }
 
-    public boolean login(Long user, String pass){
-        Professor toAuth = new Professor();
-        toAuth.setId(user);
-        toAuth.setPassword(pass);
-        loggedUser = userService.auth(toAuth);
-        return loggedUser != null;
+    public void login(Long user, String pass) throws InvalidLogin, NotExist, InvalidParams {
+        if (user == null || pass == null)
+            throw new InvalidParams("");
+        loggedUser.setId(user);
+        loggedUser.setPassword(pass);
+        loggedUser = userService.auth(loggedUser);
     }
 
     public void Logout(){
-
+        loggedUser = new Professor();
     }
 
     public Professor getLoggedUser() {
