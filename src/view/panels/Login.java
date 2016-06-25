@@ -20,7 +20,6 @@ public class Login extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JPasswordField password;
 	private JTextField textLogin;
-	
 
 	public Login() {
 		setLayout(null);
@@ -41,28 +40,28 @@ public class Login extends JPanel {
 		textLogin.setBounds(401, 244, 216, 27);
 		add(textLogin);
 		textLogin.setColumns(10);
-		
+
 		JLabel label = new JLabel("");
-		label.setBackground(new Color(255, 255, 255	));
+		label.setBackground(new Color(255, 255, 255));
 		label.setBounds(315, 212, 364, 173);
 		label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		add(label);
 
 		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(464, 332, 89, 27);		
+		btnLogin.setBounds(464, 332, 89, 27);
 		btnLogin.addActionListener(a -> {
-            try {
-                char[] chars = password.getPassword();
-                String password2 = String.valueOf(chars);
-                Long id = Long.parseLong(textLogin.getText());
-                UIManager.getController().login(id, password2);
-                UIManager.setPanel(new MenuTeste());
-            } catch (NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Usuario Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-            } catch (InvalidLoginException | InvalidParamsException | NotExistException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        });
+			try {
+				char[] chars = password.getPassword();
+				String password2 = String.valueOf(chars);
+				Long id = Long.parseLong(textLogin.getText());
+				UIManager.getController().login(id, password2);
+				UIManager.setPanel(new MenuTeste());
+			} catch (NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, "Usuario Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+			} catch (InvalidLoginException | InvalidParamsException | NotExistException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+			}
+		});
 		add(btnLogin);
 	}
 }

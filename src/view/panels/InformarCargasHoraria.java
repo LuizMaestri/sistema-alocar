@@ -1,17 +1,25 @@
 package view.panels;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
+import java.text.ParseException;
+
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
+
+import utils.NumericAndLengthFilter;
+
+import controller.WorkLoadController;
 
 public class InformarCargasHoraria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField pesquisa, extensao, administrativa;
+	private WorkLoadController workLoad = new WorkLoadController();
 
-	public InformarCargasHoraria() {
+	public InformarCargasHoraria() throws ParseException {
 		setLayout(null);
 
 		JLabel lblPesquisa = new JLabel("Pesquisa:");
@@ -30,18 +38,21 @@ public class InformarCargasHoraria extends JPanel {
 		add(lblAdministrativa);
 
 		pesquisa = new JTextField();
+		((AbstractDocument) pesquisa.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		pesquisa.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		pesquisa.setBounds(169, 202, 150, 27);
 		add(pesquisa);
 		pesquisa.setColumns(10);
 
 		extensao = new JTextField();
+		((AbstractDocument) extensao.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		extensao.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		extensao.setBounds(425, 202, 150, 27);
 		add(extensao);
 		extensao.setColumns(10);
 
 		administrativa = new JTextField();
+		((AbstractDocument) administrativa.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		administrativa.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		administrativa.setBounds(674, 202, 150, 27);
 		add(administrativa);
@@ -50,7 +61,7 @@ public class InformarCargasHoraria extends JPanel {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(373, 286, 89, 27);
 		btnSalvar.addActionListener(a -> {
-
+			workLoad.verificarDados(pesquisa.getText(), extensao.getText(), administrativa.getText());
 		});
 		add(btnSalvar);
 
