@@ -50,7 +50,12 @@ public class MenuTeste extends JPanel {
 		JButton btnInformarCargasHorrias = new JButton("Informar Cargas Hor\u00E1rias");
 		btnInformarCargasHorrias.setBounds(420, 354, 222, 35);
 		btnInformarCargasHorrias.addActionListener(a -> {
-			UIManager.setPanel(new InformarCargasHoraria());
+			try {
+				UIManager.setPanel(new InformarCargasHoraria());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
 		add(btnInformarCargasHorrias);
 
