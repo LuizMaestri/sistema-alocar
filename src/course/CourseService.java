@@ -1,9 +1,7 @@
 package course;
 
+import dao.Dao;
 import service.Service;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author luiz
@@ -13,24 +11,7 @@ import java.util.List;
 public class CourseService extends Service<Course, Long> {
 
     @Override
-    public void fetch() {
-        list = CourseDao.getDao().listAll();
-        for (int index=0; index < list.size(); index++)
-            indexes.put(list.get(index).getId(), index);
-    }
-
-    @Override
-    public boolean save(Course entity) {
-        return false;
-    }
-
-    @Override
-    public boolean saveAll(List<Course> entities) {
-        return false;
-    }
-
-    @Override
-    public void delete(Long id) {
-        if (id != null) CourseDao.getDao().delete(id);
+    protected Dao<Course> getDao() {
+        return CourseDao.getDao();
     }
 }

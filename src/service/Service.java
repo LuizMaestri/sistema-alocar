@@ -1,5 +1,8 @@
 package service;
 
+import dao.Dao;
+import dao.Entity;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,12 +11,12 @@ import java.util.List;
  * @version 1
  * @since 09/06/16
  */
-public abstract class Service<T, N> {
+public abstract class Service<T extends Entity<N>, N> {
     protected HashMap<N, Integer> indexes;
     protected List<T> list;
 
     public Service() {
-        indexes = new HashMap<N, Integer>();
+        indexes = new HashMap<>();
         fetch();
     }
 
@@ -21,12 +24,26 @@ public abstract class Service<T, N> {
         return list;
     }
 
-    public abstract void fetch();
+    public void fetch() {
+        list = getDao().listAll();
+        for (int index=0; index < list.size(); index++)
+            indexes.put(list.get(index).getId(), index);
+    }
+
     public T get(N id){
         Integer index = indexes.get(id);
         return index != null? list.get(index) : null;
     }
-    public abstract boolean save(T entity);
-    public abstract boolean saveAll(List<T> entities);
-    public abstract void delete(N id);
+    public boolean save(T entity){
+        return getDao().put(entity);
+    }
+    public boolean saveAll(List<T> entities){
+        return getDao().putAll(entities);
+    }
+
+    public void delete(N id){
+        getDao().delete(id);
+    }
+
+    protected abstract Dao<T> getDao();
 }

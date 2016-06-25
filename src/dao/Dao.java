@@ -51,7 +51,7 @@ public abstract class Dao<T extends Entity> {
     }
 
     public void delete(Object id){
-        WriteResult result = MongoUtils.getCollection(clazz).remove("{'_id':#}", id);
+        MongoUtils.getCollection(clazz).remove("{'_id':#}", id);
         MongoUtils.getIdCollection(clazz).remove("{'_id':#}", id);
     }
 }

@@ -1,10 +1,9 @@
 package professor;
 
+import dao.Dao;
 import exception.InvalidLoginException;
 import exception.NotExistException;
 import service.Service;
-
-import java.util.List;
 
 /**
  * @author luiz
@@ -14,25 +13,8 @@ import java.util.List;
 public class ProfessorService extends Service<Professor, Long>{
 
     @Override
-    public void fetch() {
-        list = ProfessorDao.getDao().listAll();
-        for (int index = 0; index < list.size(); index++)
-            indexes.put(list.get(index).getId(), index);
-    }
-
-    @Override
-    public boolean save(Professor entity) {
-        return false;
-    }
-
-    @Override
-    public boolean saveAll(List<Professor> entities) {
-        return false;
-    }
-
-    @Override
-    public void delete(Long id) {
-
+    protected Dao<Professor> getDao() {
+        return ProfessorDao.getDao();
     }
 
     public Professor auth(Professor toAuth) throws InvalidLoginException, NotExistException {

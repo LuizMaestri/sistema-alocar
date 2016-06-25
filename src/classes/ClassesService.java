@@ -1,8 +1,7 @@
 package classes;
 
+import dao.Dao;
 import service.Service;
-
-import java.util.List;
 
 /**
  * @author luiz
@@ -12,24 +11,7 @@ import java.util.List;
 public class ClassesService extends Service<Classes, Long> {
 
     @Override
-    public void fetch() {
-        list = ClassesDao.getDao().listAll();
-        for (int index=0; index < list.size(); index++)
-            indexes.put(list.get(index).getId(), index);
-    }
-
-    @Override
-    public boolean save(Classes entity) {
-        return false;
-    }
-
-    @Override
-    public boolean saveAll(List<Classes> entities) {
-        return false;
-    }
-
-    @Override
-    public void delete(Long id) {
-
+    protected Dao<Classes> getDao() {
+        return ClassesDao.getDao();
     }
 }
