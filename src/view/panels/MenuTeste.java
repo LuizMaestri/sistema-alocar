@@ -12,12 +12,12 @@ public class MenuTeste extends JPanel {
 	public MenuTeste() {
 		setLayout(null);
 
-		JButton btnAlocarLaboratrio = new JButton("Alocar Laborat\u00F3rio");
-		btnAlocarLaboratrio.setBounds(420, 124, 222, 35);
-		btnAlocarLaboratrio.addActionListener(a -> {
+		JButton btnAlocarLaboratorio = new JButton("Alocar Laboratório");
+		btnAlocarLaboratorio.setBounds(420, 124, 222, 35);
+		btnAlocarLaboratorio.addActionListener(a -> {
 			UIManager.setPanel(new AlocarLaboratorio());
 		});
-		add(btnAlocarLaboratrio);
+		add(btnAlocarLaboratorio);
 
 		JButton btnAlocarTurma = new JButton("Alocar Turma");
 		btnAlocarTurma.setBounds(420, 170, 222, 35);
@@ -47,9 +47,9 @@ public class MenuTeste extends JPanel {
 		});
 		add(btnCrudTurmas);
 
-		JButton btnInformarCargasHorrias = new JButton("Informar Cargas Hor\u00E1rias");
-		btnInformarCargasHorrias.setBounds(420, 354, 222, 35);
-		btnInformarCargasHorrias.addActionListener(a -> {
+		JButton btnInformarCargasHorárias = new JButton("Informar Cargas Horárias");
+		btnInformarCargasHorárias.setBounds(420, 354, 222, 35);
+		btnInformarCargasHorárias.addActionListener(a -> {
 			try {
 				UIManager.setPanel(new InformarCargasHoraria());
 			} catch (Exception e) {
@@ -57,11 +57,11 @@ public class MenuTeste extends JPanel {
 				e.printStackTrace();
 			}
 		});
-		add(btnInformarCargasHorrias);
+		add(btnInformarCargasHorárias);
 
-		JButton btnSolicitarAlocao = new JButton("Solicitar Aloca\u00E7\u00E3o");
-		btnSolicitarAlocao.setBounds(420, 446, 222, 35);
-		btnSolicitarAlocao.addActionListener(a -> {
+		JButton btnSolicitarAlocacao = new JButton("Solicitar Alocação");
+		btnSolicitarAlocacao.setBounds(420, 446, 222, 35);
+		btnSolicitarAlocacao.addActionListener(a -> {
 			try {
 				UIManager.setPanel(new SolicitarAlocacaoLaboratorio());
 			} catch (Exception e) {
@@ -69,7 +69,7 @@ public class MenuTeste extends JPanel {
 				e.printStackTrace();
 			}
 		});
-		add(btnSolicitarAlocao);
+		add(btnSolicitarAlocacao);
 
 		JButton btnInformarHorariosLivres = new JButton("Informar Horarios Livres");
 		btnInformarHorariosLivres.setBounds(420, 400, 222, 35);

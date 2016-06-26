@@ -18,7 +18,7 @@ import exception.NotExistException;
 import view.manager.UIManager;
 import static utils.Constants.CONTROLLER;
 
-public class Login extends JPanel {
+	public class Login extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JPasswordField password;
@@ -49,8 +49,7 @@ public class Login extends JPanel {
 		label.setBounds(315, 212, 364, 173);
 		label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		add(label);
-		
-		
+
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(464, 332, 89, 27);
 		btnLogin.addActionListener(a -> {

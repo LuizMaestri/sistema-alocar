@@ -26,16 +26,16 @@ public class AlocarLaboratorio extends JPanel {
 		lblListaDePedidos.setBounds(47, 28, 338, 32);
 		add(lblListaDePedidos);
 
-		JLabel lblInformaesDoPedido = new JLabel("Informa\u00E7\u00F5es do pedido");
-		lblInformaesDoPedido.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInformaesDoPedido.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblInformaesDoPedido.setBounds(450, 128, 364, 23);
-		add(lblInformaesDoPedido);
+		JLabel lblInformacoesDoPedido = new JLabel("Informações do pedido");
+		lblInformacoesDoPedido.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInformacoesDoPedido.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblInformacoesDoPedido.setBounds(450, 128, 364, 23);
+		add(lblInformacoesDoPedido);
 
-		JLabel lblNumpedido = new JLabel("");
-		lblNumpedido.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNumpedido.setBounds(460, 162, 375, 27);
-		add(lblNumpedido);
+		JLabel lblNumPedido = new JLabel("");
+		lblNumPedido.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNumPedido.setBounds(460, 162, 375, 27);
+		add(lblNumPedido);
 
 		JLabel lblLaboratorio = new JLabel("");
 		lblLaboratorio.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -60,7 +60,7 @@ public class AlocarLaboratorio extends JPanel {
 		list.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
-				lblNumpedido.setText((String) "Pedido: " + list.getSelectedValue());
+				lblNumPedido.setText((String) "Pedido: " + list.getSelectedValue());
 				lblLaboratorio.setText((String) "Laboratório: " + "");
 				lblTurma.setText((String) "Turma: " + "");
 				lblFixo.setText((String) "Fixo: " + "");

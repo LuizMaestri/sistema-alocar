@@ -52,7 +52,7 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		segunda.setBounds(341, 332, 124, 23);
 		add(segunda);
 		
-		JCheckBox terca = new JCheckBox("Ter\u00E7a-Feira");
+		JCheckBox terca = new JCheckBox("Terça-Feira");
 		terca.setBounds(341, 366, 124, 23);
 		add(terca);
 		
@@ -68,7 +68,7 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		sexta.setBounds(609, 332, 102, 23);
 		add(sexta);
 		
-		JCheckBox sabado = new JCheckBox("S\u00E1bado");
+		JCheckBox sabado = new JCheckBox("Sábado");
 		sabado.setBounds(609, 366, 97, 23);
 		add(sabado);
 		
@@ -84,10 +84,10 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		lblA.setBounds(475, 229, 40, 14);
 		add(lblA);
 		
-		JLabel lblPerodo = new JLabel("Per\u00EDodo: ");
-		lblPerodo.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblPerodo.setBounds(338, 188, 89, 14);
-		add(lblPerodo);
+		JLabel lblPeriodo = new JLabel("Período: ");
+		lblPeriodo.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblPeriodo.setBounds(338, 188, 89, 14);
+		add(lblPeriodo);
 		
 		JLabel lblExDdmm = new JLabel("ex: dd/mm/aaaa");
 		lblExDdmm.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -107,11 +107,11 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		label.setBounds(335, 205, 302, 67);
 		add(label);
 		
-		JLabel lblSolicitaoDeAlocao = new JLabel("Solicita\u00E7\u00E3o de aloca\u00E7\u00E3o de laborat\u00F3rio");
-		lblSolicitaoDeAlocao.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSolicitaoDeAlocao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSolicitaoDeAlocao.setBounds(10, 11, 980, 27);
-		add(lblSolicitaoDeAlocao);
+		JLabel lblSolicitaoDeAlocacao = new JLabel("Solicitação de alocação de laboratório");
+		lblSolicitaoDeAlocacao.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSolicitaoDeAlocacao.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSolicitaoDeAlocacao.setBounds(10, 11, 980, 27);
+		add(lblSolicitaoDeAlocacao);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setBorder(BorderFactory.createLoweredSoftBevelBorder());
@@ -124,11 +124,11 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		lblDiasDaSemana.setBounds(335, 298, 118, 23);
 		add(lblDiasDaSemana);
 		
-		JLabel lblLaboratrio = new JLabel("Laborat\u00F3rio: ");
-		lblLaboratrio.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblLaboratrio.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLaboratrio.setBounds(335, 87, 78, 14);
-		add(lblLaboratrio);
+		JLabel lblLaboratorio = new JLabel("Laboratório: ");
+		lblLaboratorio.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblLaboratorio.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLaboratorio.setBounds(335, 87, 78, 14);
+		add(lblLaboratorio);
 		
 		JLabel lblTurma = new JLabel("Turma:");
 		lblTurma.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -136,12 +136,12 @@ public class SolicitarAlocacaoLaboratorio extends JPanel {
 		lblTurma.setBounds(335, 133, 78, 14);
 		add(lblTurma);
 		
-		JButton btnSolicitarLaboratrio = new JButton("Solicitar Laborat\u00F3rio");
-		btnSolicitarLaboratrio.setBounds(372, 455, 143, 27);
-		btnSolicitarLaboratrio.addActionListener(a -> {
+		JButton btnSolicitarLaboratorio = new JButton("Solicitar Laboratório");
+		btnSolicitarLaboratorio.setBounds(372, 455, 143, 27);
+		btnSolicitarLaboratorio.addActionListener(a -> {
 
 		});
-		add(btnSolicitarLaboratrio);
+		add(btnSolicitarLaboratorio);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBounds(563, 455, 89, 27);
