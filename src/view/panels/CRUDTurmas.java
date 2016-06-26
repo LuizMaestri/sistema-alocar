@@ -25,6 +25,7 @@ public class CRUDTurmas extends JPanel {
 	private JTextField qtdTurmas;
 	private JTextField capacidade;
 	private JTextField creditos;
+	private JComboBox<Discipline> disciplina;
 	private ClassController classController;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -54,14 +55,22 @@ public class CRUDTurmas extends JPanel {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.setBounds(78, 537, 89, 27);
 		btnAlterar.addActionListener(a -> {
-
+			// TODO criar método para achar quantidade de turmas e pensar
+			// em como alterar os outras turmas da disciplina
+			int index = table.getSelectedRow();
+			Classes classes1 = classes.get(index);
+			capacidade.setText(classes1.getCapacity()+"");
+			creditos.setText(classes1.getCredits()+"");
+			disciplina.setSelectedIndex(0);
+			//qtdTurmas.setText();
 		});
 		add(btnAlterar);
 
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.setBounds(204, 537, 89, 27);
 		btnDeletar.addActionListener(a -> {
-			
+			int index = table.getSelectedRow();
+			classController.delete(classes.get(index).getId());
 		});
 		add(btnDeletar);
 
@@ -102,7 +111,7 @@ public class CRUDTurmas extends JPanel {
 		lblDisciplina.setBounds(521, 265, 138, 22);
 		add(lblDisciplina);		
 		
-		JComboBox<Discipline> disciplina = 
+		disciplina =
 				new JComboBox(
 						new DefaultComboBoxModel(
 								classController.listDisciplines().toArray()
@@ -148,6 +157,9 @@ public class CRUDTurmas extends JPanel {
 			
 		});
 		add(btnCriar);
+
+		//TODO criar um segundo botão para salvar depois de clicar em alterar (setVisible)
+		//fazer os botoões como atributos da classe não variaveis do método
 
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.setBounds(802, 375, 89, 27);

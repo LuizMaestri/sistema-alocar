@@ -48,4 +48,7 @@ public class ClassController implements IController {
     }
 
 
+    public void delete(Long id) {
+        classService.delete(id);
+    }
 }
