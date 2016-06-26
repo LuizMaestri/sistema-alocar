@@ -13,7 +13,7 @@ import java.util.List;
  * @since 09/06/16
  */
 public abstract class Service<T extends Entity<N>, N> {
-    protected HashMap<N, Integer> indexes;
+    private HashMap<N, Integer> indexes;
     protected ArrayList<T> list;
 
     public Service() {
@@ -25,10 +25,9 @@ public abstract class Service<T extends Entity<N>, N> {
         return list;
     }
 
-    public void fetch() {
+    private void fetch() {
         list = getDao().listAll();
-        for (int index=0; index < list.size(); index++)
-            indexes.put(list.get(index).getId(), index);
+        createIndexes();
     }
 
     public T get(N id){
@@ -48,7 +47,18 @@ public abstract class Service<T extends Entity<N>, N> {
     }
 
     public void delete(N id){
-        getDao().delete(id);
+        boolean delete = getDao().delete(id);
+        if (delete){
+            int deleted = indexes.get(id);
+            list.remove(deleted);
+            indexes.remove(id);
+            createIndexes();
+        }
+    }
+
+    private void createIndexes(){
+        for (int index=0; index < list.size(); index++)
+            indexes.put(list.get(index).getId(), index);
     }
 
     private void updateList(T entity) {
