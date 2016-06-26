@@ -1,11 +1,10 @@
 package controller;
 
+import static utils.Constants.CONTROLLER;
+
 import javax.swing.JOptionPane;
 
 import professor.Professor;
-import professor.ProfessorService;
-import static utils.Constants.CONTROLLER;
-
 
 public class WorkLoadController implements IController {
 
@@ -20,7 +19,7 @@ public class WorkLoadController implements IController {
 	}
 
 	public void verificarDados(String pesquisaP, String extensaoP, String administrativaP) {
-	
+
 		int pesquisa = Integer.parseInt(pesquisaP);
 		int extensao = Integer.parseInt(extensaoP);
 		int administrativa = Integer.parseInt(administrativaP);
@@ -28,7 +27,8 @@ public class WorkLoadController implements IController {
 		if ((pesquisa + extensao + administrativa) < 33 && (pesquisa + extensao + administrativa) > 7) {
 			salvarCargaHoraria(pesquisa, extensao, administrativa);
 		} else {
-			JOptionPane.showMessageDialog(null, "Carga horária informada fora do permitido!", "Erro", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Carga horária informada fora do permitido!", "Erro",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -38,7 +38,9 @@ public class WorkLoadController implements IController {
 		professor.setAdm(administrativa);
 		professor.setExtension(extensao);
 		professor.setResearch(pesquisa);
-		CONTROLLER.getUserService().save(professor);
+		boolean save = CONTROLLER.getUserService().save(professor);
+		if (save)
+			CONTROLLER.setLoggedUser(professor);
 		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, JOptionPane.OK_OPTION);
 	}
 
