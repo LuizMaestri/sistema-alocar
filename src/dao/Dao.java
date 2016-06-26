@@ -21,6 +21,7 @@ public abstract class Dao<T extends Entity> {
         clazz = getEntityClass();
     }
 
+    @SuppressWarnings("unchecked")
     public boolean put(Entity entity) {
         if (entity.getIdClass().equals(Long.class))
             entity.setId(MongoUtils.generateLongId(entity));
@@ -43,9 +44,9 @@ public abstract class Dao<T extends Entity> {
         return MongoUtils.getCollection(clazz).findOne("{'_id':#}", id).as(clazz);
     }
 
-    public List<T> listAll(){
+    public ArrayList<T> listAll(){
         MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find().as(clazz);
-        ArrayList<T> entities = new ArrayList<T>();
+        ArrayList<T> entities = new ArrayList<>();
         for (T aCursor : cursor) entities.add(aCursor);
         return entities;
     }

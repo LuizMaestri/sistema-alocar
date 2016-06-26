@@ -3,6 +3,7 @@ package service;
 import dao.Dao;
 import dao.Entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,14 +14,14 @@ import java.util.List;
  */
 public abstract class Service<T extends Entity<N>, N> {
     protected HashMap<N, Integer> indexes;
-    protected List<T> list;
+    protected ArrayList<T> list;
 
     public Service() {
         indexes = new HashMap<>();
         fetch();
     }
 
-    public List<T> getList() {
+    public ArrayList<T> getList() {
         return list;
     }
 
@@ -35,14 +36,29 @@ public abstract class Service<T extends Entity<N>, N> {
         return index != null? list.get(index) : null;
     }
     public boolean save(T entity){
-        return getDao().put(entity);
+        boolean save = getDao().put(entity);
+        if (save) updateList(entity);
+        return save;
     }
+
     public boolean saveAll(List<T> entities){
-        return getDao().putAll(entities);
+        boolean save = getDao().putAll(entities);
+        if (save) entities.forEach(this::updateList);
+        return save;
     }
 
     public void delete(N id){
         getDao().delete(id);
+    }
+
+    private void updateList(T entity) {
+        N id = entity.getId();
+        for (int index = 0; index < list.size(); index++) {
+            if (id.equals(list.get(index).getId())) {
+                list.set(index, entity);
+                indexes.put(id, index);
+            }
+        }
     }
 
     protected abstract Dao<T> getDao();
