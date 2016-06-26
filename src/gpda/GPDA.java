@@ -53,4 +53,15 @@ public class GPDA extends Entity<Long> {
     public Class<Long> getIdClass() {
         return Long.class;
     }
+
+    public void updateProfessor(Professor professor) {
+        if (coordenator.getId().equals(professor.getId()))
+            coordenator = professor;
+        for (int index = 0; index < professors.size(); index++){
+            if (professors.get(index).getId().equals(professor.getId())){
+                professors.set(index, professor);
+                break;
+            }
+        }
+    }
 }

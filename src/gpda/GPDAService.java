@@ -1,6 +1,8 @@
 package gpda;
 
 import dao.Dao;
+import discipline.Discipline;
+import professor.Professor;
 import service.Service;
 
 /**
@@ -9,8 +11,20 @@ import service.Service;
  * @since 10/06/16
  */
 public class GPDAService extends Service<GPDA, Long> {
+
     @Override
     protected Dao<GPDA> getDao() {
         return GPDADao.getDao();
+    }
+
+    public GPDA getByDiscipline(Discipline discipline){
+        for (GPDA gpda: list)
+            if (gpda.hasDiscipline(discipline))
+                return gpda;
+        return null;
+    }
+
+    public void attProfessor(Professor professor) {
+        for (GPDA gpda: list) gpda.updateProfessor(professor);
     }
 }
