@@ -49,6 +49,7 @@ public class Login extends JPanel {
 
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(464, 332, 89, 27);
+		btnLogin.setMnemonic(java.awt.event.KeyEvent.VK_ENTER);
 		btnLogin.addActionListener(a -> {
 			try {
 				char[] chars = password.getPassword();
