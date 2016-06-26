@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import professor.Professor;
 import professor.ProfessorService;
-import view.manager.UIManager;
+import static utils.Constants.CONTROLLER;
 
 public class WorkLoadController implements IController {
 
@@ -33,12 +33,11 @@ public class WorkLoadController implements IController {
 	}
 
 	private void salvarCargaHoraria(int pesquisa, int extensao, int administrativa) {
-		UserController controller = UIManager.getController();
-		Professor professor = controller.getLoggedUser();
+		Professor professor = CONTROLLER.getLoggedUser();
 		professor.setAdm(administrativa);
 		professor.setExtension(extensao);
 		professor.setResearch(pesquisa);
-		controller.getUserService().save(professor);
+		CONTROLLER.getUserService().save(professor);
 		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, JOptionPane.OK_OPTION);
 	}
 

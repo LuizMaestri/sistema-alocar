@@ -14,6 +14,7 @@ import exception.InvalidLoginException;
 import exception.InvalidParamsException;
 import exception.NotExistException;
 import view.manager.UIManager;
+import static utils.Constants.CONTROLLER;
 
 public class Login extends JPanel {
 
@@ -55,7 +56,7 @@ public class Login extends JPanel {
 				char[] chars = password.getPassword();
 				String password2 = String.valueOf(chars);
 				Long id = Long.parseLong(textLogin.getText());
-				UIManager.getController().login(id, password2);
+				CONTROLLER.login(id, password2);
 				UIManager.setPanel(new MenuTeste());
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Usuario Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
