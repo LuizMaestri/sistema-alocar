@@ -1,6 +1,5 @@
 package view.panels;
 
-import dao.Entity;
 import utils.DayOfWeek;
 
 import java.awt.Font;
