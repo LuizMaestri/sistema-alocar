@@ -17,7 +17,7 @@ public class InformarHorariosLivres extends JPanel {
 	public InformarHorariosLivres() throws ParseException {
 		setLayout(null);
 
-		JLabel lblMsg = new JLabel("Marque seus hor\u00E1rios dispon\u00EDveis nos campos correspondentes");
+		JLabel lblMsg = new JLabel("Marque seus horários dispon\u00EDveis nos campos correspondentes");
 		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblMsg.setBounds(10, 11, 980, 38);
