@@ -1,6 +1,8 @@
 package view.panels;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -47,10 +49,10 @@ public class Login extends JPanel {
 		label.setBounds(315, 212, 364, 173);
 		label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
 		add(label);
-
+		
+		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.setBounds(464, 332, 89, 27);
-		btnLogin.setMnemonic(java.awt.event.KeyEvent.VK_ENTER);
 		btnLogin.addActionListener(a -> {
 			try {
 				char[] chars = password.getPassword();
@@ -59,11 +61,12 @@ public class Login extends JPanel {
 				CONTROLLER.login(id, password2);
 				UIManager.setPanel(new MenuTeste());
 			} catch (NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Usuario Inv√°lido", "Erro", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Usu·rio Inv·lido", "Erro", JOptionPane.ERROR_MESSAGE);
 			} catch (InvalidLoginException | InvalidParamsException | NotExistException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 		add(btnLogin);
+		
 	}
 }

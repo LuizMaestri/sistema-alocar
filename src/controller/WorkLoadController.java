@@ -6,6 +6,7 @@ import professor.Professor;
 import professor.ProfessorService;
 import static utils.Constants.CONTROLLER;
 
+
 public class WorkLoadController implements IController {
 
 	public WorkLoadController() {
