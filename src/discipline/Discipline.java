@@ -33,4 +33,9 @@ public class Discipline extends Entity<String>{
     public Class<String> getIdClass() {
         return String.class;
     }
+
+    @Override
+    public String toString() {
+    	return _id + ": " + name;
+    }
 }

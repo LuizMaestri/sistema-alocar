@@ -19,7 +19,6 @@ public class Classes extends Entity<Long>{
     private Discipline discipline;
     private EnumMap<DayOfWeek, Integer> horary;
     private Professor professor;
-    private int students;
     private int capacity;
     private char classNumber;
 
@@ -64,14 +63,6 @@ public class Classes extends Entity<Long>{
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
-    }
-
-    public int getStudents() {
-        return students;
-    }
-
-    public void setStudents(int students) {
-        this.students = students;
     }
 
     public int getCapacity() {
