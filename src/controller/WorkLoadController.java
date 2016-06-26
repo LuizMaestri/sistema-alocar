@@ -19,16 +19,15 @@ public class WorkLoadController implements IController {
 	}
 
 	public void verificarDados(String pesquisaP, String extensaoP, String administrativaP) {
-		int max = 32;
-		
+	
 		int pesquisa = Integer.parseInt(pesquisaP);
 		int extensao = Integer.parseInt(extensaoP);
 		int administrativa = Integer.parseInt(administrativaP);
 
-		if ((pesquisa + extensao + administrativa) <= max) {
+		if ((pesquisa + extensao + administrativa) < 33 && (pesquisa + extensao + administrativa) > 7) {
 			salvarCargaHoraria(pesquisa, extensao, administrativa);
 		} else {
-			JOptionPane.showMessageDialog(null, "Garga informada superior ao permitido!", "Erro", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Carga horária informada fora do permitido!", "Erro", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -40,6 +39,7 @@ public class WorkLoadController implements IController {
 		professor.setExtension(extensao);
 		professor.setResearch(pesquisa);
 		controller.getUserService().save(professor);
+		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, JOptionPane.OK_OPTION);
 	}
 
 }

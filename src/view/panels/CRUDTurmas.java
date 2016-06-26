@@ -14,15 +14,16 @@ import javax.swing.JButton;
 public class CRUDTurmas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField turma;
 	private JTextField textField;
 	private JTable table;
+	private JTextField qtdTurmas;
+	private JTextField capacidade;
 
 	public CRUDTurmas() {
 		setLayout(null);
 
-		String[] colunas = { "Turma", "Disciplina", "Créditos" };
-		Object[][] dados = { { "3456", "APS", "4" } };
+		String[] colunas = { "Disciplina", "Turma", "Créditos"};
+		Object[][] dados = { { "APS", "3456", "4"} };
 
 		table = new JTable(dados, colunas);
 		table.getTableHeader().setReorderingAllowed(false);
@@ -37,25 +38,20 @@ public class CRUDTurmas extends JPanel {
 		comboBox.setBounds(669, 260, 235, 27);
 		add(comboBox);
 
-		turma = new JTextField();
-		turma.setBounds(669, 222, 235, 27);
-		add(turma);
-		turma.setColumns(10);
-
 		textField = new JTextField();
-		textField.setBounds(669, 298, 235, 27);
+		textField.setBounds(669, 336, 235, 27);
 		add(textField);
 		textField.setColumns(10);
 
 		JButton btnCriar = new JButton("Criar");
-		btnCriar.setBounds(669, 368, 89, 27);
+		btnCriar.setBounds(693, 375, 89, 27);
 		btnCriar.addActionListener(a -> {
 
 		});
 		add(btnCriar);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(815, 368, 89, 27);
+		btnCancelar.setBounds(802, 375, 89, 27);
 		btnCancelar.addActionListener(a -> {
 
 		});
@@ -82,22 +78,16 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnSair);
 
-		JLabel lblTurma = new JLabel("Turma:");
-		lblTurma.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTurma.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblTurma.setBounds(588, 224, 71, 20);
-		add(lblTurma);
-
 		JLabel lblDisciplina = new JLabel("Disciplina:");
 		lblDisciplina.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDisciplina.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDisciplina.setBounds(588, 265, 71, 14);
+		lblDisciplina.setBounds(521, 265, 138, 22);
 		add(lblDisciplina);
 
 		JLabel lblCrditos = new JLabel("Cr\u00E9ditos:");
 		lblCrditos.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCrditos.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCrditos.setBounds(588, 305, 71, 20);
+		lblCrditos.setBounds(511, 336, 148, 25);
 		add(lblCrditos);
 
 		JLabel lblCadastrarTurma = new JLabel("Cadastrar turma");
@@ -110,6 +100,29 @@ public class CRUDTurmas extends JPanel {
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(500, 5, 2, 590);
 		add(separator);
+		
+		JLabel lblQuantidadeDeTurmas = new JLabel("Quantidade de turmas:");
+		lblQuantidadeDeTurmas.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblQuantidadeDeTurmas.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblQuantidadeDeTurmas.setBounds(511, 230, 148, 14);
+		add(lblQuantidadeDeTurmas);
+		
+		qtdTurmas = new JTextField();
+		qtdTurmas.setBounds(669, 222, 235, 27);
+		add(qtdTurmas);
+		qtdTurmas.setColumns(10);
+		
+		JLabel lblCapacidade = new JLabel("Capacidade:");
+		lblCapacidade.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCapacidade.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCapacidade.setBounds(531, 300, 128, 21);
+		add(lblCapacidade);
+		
+		capacidade = new JTextField();
+		capacidade.setText("");
+		capacidade.setBounds(669, 298, 235, 27);
+		add(capacidade);
+		capacidade.setColumns(10);
 
 	}
 }
