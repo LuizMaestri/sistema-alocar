@@ -3,11 +3,13 @@ package exception;
 import classes.Classes;
 
 /**
- * Created by loja on 25/06/2016.
+ * @author luiz
+ * @version 1
+ * @since 25/06/16
  */
 public class AllocationProfessorException extends Exception {
 
-    Classes classes;
+    private Classes classes;
 
     public AllocationProfessorException(String message, Classes classes) {
         super(message);

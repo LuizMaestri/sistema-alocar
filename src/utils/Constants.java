@@ -1,5 +1,7 @@
 package utils;
 
+import controller.UserController;
+
 /**
  * @author luiz
  * @version 1
@@ -12,4 +14,5 @@ public class Constants {
     public static final int MONGO_PORT = 27017;
     public static final int CREDITS_MIN = 8;
     public static final int MAXIMUM_WORKLOAD = 40;
+    public static final UserController CONTROLLER = new UserController();
 }
