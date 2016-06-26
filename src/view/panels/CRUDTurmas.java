@@ -132,7 +132,7 @@ public class CRUDTurmas extends JPanel {
 		add(capacidade);
 		capacidade.setColumns(10);
 
-		JLabel lblCreditos = new JLabel("Cr\u00E9ditos:");
+		JLabel lblCreditos = new JLabel("Créditos:");
 		lblCreditos.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCreditos.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblCreditos.setBounds(511, 336, 148, 25);

@@ -27,10 +27,10 @@ public class InformarCargasHoraria extends JPanel {
 		lblPesquisa.setBounds(169, 177, 150, 14);
 		add(lblPesquisa);
 
-		JLabel lblExtenso = new JLabel("Extens\u00E3o:");
-		lblExtenso.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblExtenso.setBounds(425, 177, 150, 14);
-		add(lblExtenso);
+		JLabel lblExtensao = new JLabel("Extensão:");
+		lblExtensao.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblExtensao.setBounds(425, 177, 150, 14);
+		add(lblExtensao);
 
 		JLabel lblAdministrativa = new JLabel("Administrativa:");
 		lblAdministrativa.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -58,19 +58,19 @@ public class InformarCargasHoraria extends JPanel {
 		add(administrativa);
 		administrativa.setColumns(10);
 
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(373, 286, 89, 27);
-		btnSalvar.addActionListener(a -> {
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.setBounds(373, 286, 89, 27);
+		btnEnviar.addActionListener(a -> {
 			workLoad.verificarDados(pesquisa.getText(), extensao.getText(), administrativa.getText());
 		});
-		add(btnSalvar);
+		add(btnEnviar);
 
-		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(510, 286, 89, 27);
-		btnSair.addActionListener(a -> {
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(510, 286, 89, 27);
+		btnCancelar.addActionListener(a -> {
 
 		});
-		add(btnSair);
+		add(btnCancelar);
 	}
 
 }
