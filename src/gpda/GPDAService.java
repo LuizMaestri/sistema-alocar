@@ -1,8 +1,7 @@
 package gpda;
 
+import dao.Dao;
 import service.Service;
-
-import java.util.List;
 
 /**
  * @author luiz
@@ -11,24 +10,7 @@ import java.util.List;
  */
 public class GPDAService extends Service<GPDA, Long> {
     @Override
-    public void fetch() {
-        list = GPDADao.getDao().listAll();
-        for (int index = 0; index < list.size(); index++)
-            indexes.put(list.get(index).getId(), index);
-    }
-
-    @Override
-    public boolean save(GPDA entity) {
-        return false;
-    }
-
-    @Override
-    public boolean saveAll(List<GPDA> entities) {
-        return false;
-    }
-
-    @Override
-    public void delete(Long id) {
-
+    protected Dao<GPDA> getDao() {
+        return GPDADao.getDao();
     }
 }
