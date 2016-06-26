@@ -13,6 +13,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
 
 import classes.Classes;
 import controller.ClassController;
@@ -27,26 +29,19 @@ public class CRUDTurmas extends JPanel {
 	private JTextField creditos;
 	private JComboBox<Discipline> disciplina;
 	private ClassController classController;
+	private List<Classes> classes;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CRUDTurmas() {
 		classController = new ClassController();
+		DefaultTableModel tableModel = new DefaultTableModel();
+		for (String coluna: new String[]{"Disciplina", "Turma", "Créditos"})
+			tableModel.addColumn(coluna);
+		table = new JTable(tableModel);
 		setLayout(null);
 
-		String[] colunas = { "Disciplina", "Turma", "Créditos"};
-		List<Classes> classes = classController.listClasses();
-		Object[][] dados = new Object[classes.size()][];
-		for (int index = 0; index < classes.size(); index++) {
-			Classes classes2 = classes.get(index);
-			Object[] linha = new Object[3];
-			linha[0] = classes2.getDiscipline().getName();
-			linha[1] = classes2.getDiscipline().getId() + classes2.getClassNumber();
-			linha[2] = classes2.getCredits();
-			dados[index] = linha;
-		}
 
-		table = new JTable(dados, colunas);
-		table.getTableHeader().setReorderingAllowed(false);
+		preencherTabela();
 
 		JScrollPane scroll = new JScrollPane(table);
 		scroll.setBounds(47, 60, 410, 427);
@@ -71,6 +66,7 @@ public class CRUDTurmas extends JPanel {
 		btnDeletar.addActionListener(a -> {
 			int index = table.getSelectedRow();
 			classController.delete(classes.get(index).getId());
+			preencherTabela();
 		});
 		add(btnDeletar);
 
@@ -154,7 +150,8 @@ public class CRUDTurmas extends JPanel {
 					(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
 					Integer.parseInt(qtdTurmas.getText())
 					);
-			
+
+			preencherTabela();
 		});
 		add(btnCriar);
 
@@ -171,5 +168,19 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnLimpar);		
 		
+	}
+
+	private void preencherTabela(){
+		classes = classController.listClasses();
+		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+		for (int index = tableModel.getRowCount()-1; index >= 0; index--)
+			tableModel.removeRow(index);
+		for (Classes classes2 : classes) {
+			Object[] linha = new Object[3];
+			linha[0] = classes2.getDiscipline().getName();
+			linha[1] = classes2.getDiscipline().getId() + classes2.getClassNumber();
+			linha[2] = classes2.getCredits();
+			tableModel.addRow(linha);
+		}
 	}
 }
