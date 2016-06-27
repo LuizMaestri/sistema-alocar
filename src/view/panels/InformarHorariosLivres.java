@@ -87,7 +87,7 @@ public class InformarHorariosLivres extends JPanel {
 
         DayOfWeek[] days = DayOfWeek.values();
         for (int index = 0; index < days.length; index++)
-            startComboBox(new  JCheckBox[!days[index].equals(DayOfWeek.SATURDAY)? 14: 5], days[index], 194 + 132*index);
+            startComboBox(new  JCheckBox[!days[index].isSaturday()? 14: 5], days[index], 194 + 132*index);
 
         JButton btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(393, 509, 90, 27);
