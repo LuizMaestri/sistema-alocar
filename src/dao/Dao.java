@@ -23,7 +23,7 @@ public abstract class Dao<T extends Entity> {
 
     @SuppressWarnings("unchecked")
     public boolean put(Entity entity) {
-        if (entity.getIdClass().equals(Long.class))
+        if (entity.getId() == null && entity.getIdClass().equals(Long.class))
             entity.setId(MongoUtils.generateLongId(entity));
         WriteResult result = MongoUtils.getCollection(clazz).save(entity);
         boolean put = result.getUpsertedId() != null;
