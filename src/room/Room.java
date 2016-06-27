@@ -3,6 +3,7 @@ package room;
 import dao.Entity;
 import utils.DayOfWeek;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 
 /**
@@ -18,6 +19,9 @@ public class Room extends Entity<Long>{
     private EnumMap<DayOfWeek, Long[]> occupation;
 
     public Room() {
+        occupation = new EnumMap<>(DayOfWeek.class);
+        for (DayOfWeek day: DayOfWeek.values())
+            occupation.put(day, new Long[!day.isSaturday()? 14: 5]);
     }
 
     public String getBuilding() {
@@ -60,12 +64,11 @@ public class Room extends Entity<Long>{
         this.occupation = occupation;
     }
 
-    public boolean allocate(DayOfWeek day, int schedule, Long classes){
+    public boolean allocate(DayOfWeek day, ArrayList<Integer> schedule, Long classes){
         Long[] classesIds = occupation.get(day);
-        if (schedule > classesIds.length) return false;
-        if (classesIds[schedule] != null) return false;
-        classesIds[schedule] = classes;
-        occupation.put(day, classesIds);
+        for (Integer hour: schedule)
+            if (classesIds[hour] != null) classesIds[hour] = classes;
+            else return false;
         return true;
     }
 
