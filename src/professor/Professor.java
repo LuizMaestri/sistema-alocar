@@ -5,7 +5,10 @@ import dao.Entity;
 import utils.DayOfWeek;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumMap;
+import java.util.Map.Entry;
+
 import static utils.Constants.CREDITS_MIN;
 import static utils.Constants.MAXIMUM_WORKLOAD;
 
@@ -22,7 +25,7 @@ public class Professor extends Entity<Long> {
     private String name;
     private String password;
     private boolean admin;
-    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime;
+    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime = new EnumMap<>(DayOfWeek.class);
 
     public Professor() {
     }
@@ -91,6 +94,11 @@ public class Professor extends Entity<Long> {
         this.freeTime = freeTime;
     }
 
+    @Override
+    public Class<Long> getIdClass() {
+        return Long.class;
+    }
+
     public boolean hasMax(){
         return (adm + research + extension + credits) == MAXIMUM_WORKLOAD;
     }
@@ -100,10 +108,12 @@ public class Professor extends Entity<Long> {
     }
 
     public boolean checkFreeTime(Classes classes){
-        return false;
-    }
-
-    public Class<Long> getIdClass() {
-        return Long.class;
+        EnumMap<DayOfWeek, ArrayList<Integer>> horary = classes.getHorary();
+        for (Entry day: horary.entrySet()){
+            ArrayList<Integer> integers = freeTime.get(day.getKey());
+            if (!integers.containsAll((Collection<?>) day.getValue()))
+                return false;
+        }
+        return true;
     }
 }
