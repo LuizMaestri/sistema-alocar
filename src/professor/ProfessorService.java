@@ -20,7 +20,7 @@ public class ProfessorService extends Service<Professor, Long>{
     public Professor auth(Professor toAuth) throws InvalidLoginException, NotExistException {
         Long id = toAuth.getId();
         String password = toAuth.getPassword();
-        Professor validate = ProfessorDao.getDao().get(id);
+        Professor validate = get(id);
         if (validate != null){
             if (validate.getPassword().equals(password)){
                 return validate;
