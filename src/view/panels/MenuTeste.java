@@ -12,7 +12,7 @@ public class MenuTeste extends JPanel {
 	public MenuTeste() {
 		setLayout(null);
 
-		JButton btnAlocarLaboratorio = new JButton("Alocar Laboratório");
+		JButton btnAlocarLaboratorio = new JButton("Alocar LaboratÃ³rio");
 		btnAlocarLaboratorio.setBounds(420, 124, 222, 35);
 		btnAlocarLaboratorio.addActionListener(a -> {
 			UIManager.setPanel(new AlocarLaboratorio());
@@ -47,9 +47,9 @@ public class MenuTeste extends JPanel {
 		});
 		add(btnCrudTurmas);
 
-		JButton btnInformarCargasHorárias = new JButton("Informar Cargas Horárias");
-		btnInformarCargasHorárias.setBounds(420, 354, 222, 35);
-		btnInformarCargasHorárias.addActionListener(a -> {
+		JButton btnInformarCargasHorarias = new JButton("Informar Cargas HorÃ¡rias");
+		btnInformarCargasHorarias.setBounds(420, 354, 222, 35);
+		btnInformarCargasHorarias.addActionListener(a -> {
 			try {
 				UIManager.setPanel(new InformarCargasHoraria());
 			} catch (Exception e) {
@@ -57,9 +57,9 @@ public class MenuTeste extends JPanel {
 				e.printStackTrace();
 			}
 		});
-		add(btnInformarCargasHorárias);
+		add(btnInformarCargasHorarias);
 
-		JButton btnSolicitarAlocacao = new JButton("Solicitar Alocação");
+		JButton btnSolicitarAlocacao = new JButton("Solicitar Alocaaao");
 		btnSolicitarAlocacao.setBounds(420, 446, 222, 35);
 		btnSolicitarAlocacao.addActionListener(a -> {
 			try {
