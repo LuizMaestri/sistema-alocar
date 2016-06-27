@@ -61,7 +61,7 @@ public abstract class Service<T extends Entity<N>, N> {
             indexes.put(list.get(index).getId(), index);
     }
 
-    private void updateList(T entity) {
+    public void updateList(T entity) {
         N id = entity.getId();
         boolean put = false;
         for (int index = 0; index < list.size(); index++) {
