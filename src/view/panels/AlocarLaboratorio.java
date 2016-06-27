@@ -68,15 +68,16 @@ public class AlocarLaboratorio extends JPanel {
 			}
 		});
 		
-				JLabel label = new JLabel("");
-				label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
-				label.setBackground(Color.WHITE);
-				label.setBounds(450, 150, 399, 157);
-				add(label);
 		JScrollPane scroll = new JScrollPane(list);
 		scroll.setBounds(47, 59, 338, 530);
 		add(scroll);
-
+		
+		JLabel label = new JLabel("");
+		label.setBorder(BorderFactory.createLoweredSoftBevelBorder());
+		label.setBackground(Color.WHITE);
+		label.setBounds(450, 150, 399, 157);
+		add(label);
+		
 		JButton btnAprovar = new JButton("Aprovar");
 		btnAprovar.setBounds(450, 452, 89, 27);
 		btnAprovar.addActionListener(a -> {

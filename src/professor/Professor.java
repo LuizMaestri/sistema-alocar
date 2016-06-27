@@ -4,6 +4,7 @@ import classes.Classes;
 import dao.Entity;
 import utils.DayOfWeek;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 import static utils.Constants.CREDITS_MIN;
 import static utils.Constants.MAXIMUM_WORKLOAD;
@@ -21,7 +22,7 @@ public class Professor extends Entity<Long> {
     private String name;
     private String password;
     private boolean admin;
-    private EnumMap<DayOfWeek, Integer[]> freeTime;
+    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime;
 
     public Professor() {
     }
@@ -82,11 +83,11 @@ public class Professor extends Entity<Long> {
         this.admin = admin;
     }
 
-    public EnumMap<DayOfWeek, Integer[]> getFreeTime() {
+    public EnumMap<DayOfWeek, ArrayList<Integer>> getFreeTime() {
         return freeTime;
     }
 
-    public void setFreeTime(EnumMap<DayOfWeek, Integer[]> freeTime) {
+    public void setFreeTime(EnumMap<DayOfWeek, ArrayList<Integer>> freeTime) {
         this.freeTime = freeTime;
     }
 

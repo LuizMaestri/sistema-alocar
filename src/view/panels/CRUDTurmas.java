@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import classes.Classes;
 import controller.ClassController;
 import discipline.Discipline;
+import javax.swing.ListSelectionModel;
 
 public class CRUDTurmas extends JPanel {
 

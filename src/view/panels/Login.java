@@ -1,8 +1,8 @@
 package view.panels;
 
+import static utils.Constants.CONTROLLER;
+
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,7 +16,6 @@ import exception.InvalidLoginException;
 import exception.InvalidParamsException;
 import exception.NotExistException;
 import view.manager.UIManager;
-import static utils.Constants.CONTROLLER;
 
 	public class Login extends JPanel {
 
@@ -66,6 +65,5 @@ import static utils.Constants.CONTROLLER;
 			}
 		});
 		add(btnLogin);
-		
 	}
 }

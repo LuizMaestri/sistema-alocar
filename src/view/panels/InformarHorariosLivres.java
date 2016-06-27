@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import controller.HourController;
+
 public class InformarHorariosLivres extends JPanel {
 
     private static final long serialVersionUID = 1L;
@@ -97,7 +99,8 @@ public class InformarHorariosLivres extends JPanel {
         JButton btnEnviar = new JButton("Enviar");
         btnEnviar.setBounds(542, 509, 90, 27);
         btnEnviar.addActionListener(a -> {
-
+        	HourController hourController = new HourController();
+        	hourController.updateFreeTime(freeTime);
         });
         add(btnEnviar);
 

@@ -1,54 +1,70 @@
 package view.panels;
 
+import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 
 public class AssociarProfDisc extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+	private JList list, listAdd;
 
 	public AssociarProfDisc() {
 		setLayout(null);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(107, 29, 250, 27);
-		add(comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(107, 67, 250, 27);
-		add(comboBox_1);
-		
-		JButton btnAssociar = new JButton("Associar");
-		btnAssociar.setBounds(106, 138, 89, 27);
-		btnAssociar.addActionListener(a -> {
+
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(390, 546, 89, 27);
+		btnSalvar.addActionListener(a -> {
 
 		});
-		add(btnAssociar);
-		
+		add(btnSalvar);
+
 		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(268, 138, 89, 27);
+		btnSair.setBounds(516, 546, 89, 27);
 		btnSair.addActionListener(a -> {
 
 		});
 		add(btnSair);
+
+		JButton btnRemove = new JButton("<<");
+		btnRemove.setBounds(471, 305, 54, 23);
+		add(btnRemove);
+
+		JButton btnAdd = new JButton(">>");
+		btnAdd.setBounds(471, 269, 54, 23);
+		add(btnAdd);
 		
-		JLabel lblProfessor = new JLabel("Professor:");
-		lblProfessor.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblProfessor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblProfessor.setBounds(10, 31, 87, 14);
-		add(lblProfessor);
+		list = new JList();
+		JScrollPane scroll = new JScrollPane(list);
+		scroll.setBounds(141, 119, 300, 361);
+		add(scroll);
 		
-		JLabel lblDisciplina = new JLabel("Disciplina:");
-		lblDisciplina.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDisciplina.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDisciplina.setBounds(20, 72, 77, 14);
-		add(lblDisciplina);
+		listAdd = new JList();
+		JScrollPane scrollAdd = new JScrollPane(listAdd);
+		scrollAdd.setBounds(553, 119, 300, 361);
+		add(scrollAdd);
 		
+		JLabel lblProfessores = new JLabel("Professores");
+		lblProfessores.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblProfessores.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProfessores.setBounds(141, 80, 300, 28);
+		add(lblProfessores);
 		
+		JLabel lblAssociados = new JLabel("Associados");
+		lblAssociados.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAssociados.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAssociados.setBounds(553, 80, 300, 28);
+		add(lblAssociados);
+		
+		JLabel lblTitulo = new JLabel("Selecione os professores capacitados a ministrar as disciplinas");
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(141, 11, 712, 43);
+		add(lblTitulo);
+
 	}
 }
