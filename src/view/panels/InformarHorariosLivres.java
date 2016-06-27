@@ -4,7 +4,6 @@ import utils.DayOfWeek;
 
 import java.awt.Font;
 import java.awt.event.ItemEvent;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
@@ -20,9 +19,9 @@ import controller.HourController;
 public class InformarHorariosLivres extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime = new EnumMap<DayOfWeek, ArrayList<Integer>>(DayOfWeek.class);
+    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime = new EnumMap<>(DayOfWeek.class);
 
-    public InformarHorariosLivres() throws ParseException {
+    public InformarHorariosLivres() {
         setLayout(null);
 
         JLabel lblMsg = new JLabel("Marque seus horários disponíveis nos campos correspondentes");
