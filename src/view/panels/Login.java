@@ -11,10 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
 
 import exception.InvalidLoginException;
 import exception.InvalidParamsException;
 import exception.NotExistException;
+import utils.NumericAndLengthFilter;
 import view.manager.UIManager;
 
 	public class Login extends JPanel {
@@ -39,6 +41,7 @@ import view.manager.UIManager;
 		add(password);
 
 		textLogin = new JTextField();
+		((AbstractDocument) textLogin.getDocument()).setDocumentFilter(new NumericAndLengthFilter(10));
 		textLogin.setBounds(401, 244, 216, 27);
 		add(textLogin);
 		textLogin.setColumns(10);

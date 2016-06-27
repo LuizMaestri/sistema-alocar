@@ -3,23 +3,16 @@ package view.panels;
 import java.awt.Font;
 import java.util.List;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
 
 import classes.Classes;
 import controller.ClassController;
 import discipline.Discipline;
-import javax.swing.ListSelectionModel;
+import exception.InvalidParamsException;
+import utils.NumericAndLengthFilter;
 
 public class CRUDTurmas extends JPanel {
 
@@ -98,6 +91,7 @@ public class CRUDTurmas extends JPanel {
 		add(lblQuantidadeDeTurmas);
 		
 		qtdTurmas = new JTextField();
+        ((AbstractDocument) qtdTurmas.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		qtdTurmas.setBounds(669, 222, 235, 27);
 		add(qtdTurmas);
 		qtdTurmas.setColumns(10);
@@ -124,6 +118,7 @@ public class CRUDTurmas extends JPanel {
 		add(lblCapacidade);
 		
 		capacidade = new JTextField();
+        ((AbstractDocument) capacidade.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		capacidade.setText("");
 		capacidade.setBounds(669, 298, 235, 27);
 		add(capacidade);
@@ -136,6 +131,7 @@ public class CRUDTurmas extends JPanel {
 		add(lblCreditos);		
 		
 		creditos = new JTextField();
+        ((AbstractDocument) creditos.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		creditos.setBounds(669, 336, 235, 27);
 		add(creditos);
 		creditos.setColumns(10);		
@@ -147,12 +143,18 @@ public class CRUDTurmas extends JPanel {
 			//TODO IF (se existir id no banco de dados, jogar mensagem de erro "já existe"
 
 			//ELSE o fazer já pronto + mensagem de sucesso(fazer).
-			classController.save(Integer.parseInt(capacidade.getText()),
-					(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
-					Integer.parseInt(qtdTurmas.getText())
-					);
+            try {
+                classController.save(Integer.parseInt(capacidade.getText()),
+                        (Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
+                        Integer.parseInt(qtdTurmas.getText())
+                        );
+            } catch (InvalidParamsException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+            }
 
-			preencherTabela();
+            preencherTabela();
 		});
 		add(btnCriar);
 
