@@ -4,9 +4,12 @@ import course.Course;
 import dao.Entity;
 import discipline.Discipline;
 import professor.Professor;
+import room.Room;
 import utils.DayOfWeek;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Map.Entry;
 
 /**
  * @author luiz
@@ -17,12 +20,15 @@ public class Classes extends Entity<Long>{
     private Course course;
     private int credits;
     private Discipline discipline;
-    private EnumMap<DayOfWeek, Integer> horary;
+    private EnumMap<DayOfWeek, ArrayList<Integer>> horary;
     private Professor professor;
     private int capacity;
     private char classNumber;
 
     public Classes() {
+        horary = new EnumMap<>(DayOfWeek.class);
+        for (DayOfWeek day: DayOfWeek.values())
+            horary.put(day, new ArrayList<>());
     }
 
     public Course getCourse() {
@@ -49,11 +55,11 @@ public class Classes extends Entity<Long>{
         this.discipline = discipline;
     }
 
-    public EnumMap<DayOfWeek, Integer> getHorary() {
+    public EnumMap<DayOfWeek, ArrayList<Integer>> getHorary() {
         return horary;
     }
 
-    public void setHorary(EnumMap<DayOfWeek, Integer> horary) {
+    public void setHorary(EnumMap<DayOfWeek, ArrayList<Integer>> horary) {
         this.horary = horary;
     }
 
@@ -83,5 +89,24 @@ public class Classes extends Entity<Long>{
 
     public Class<Long> getIdClass() {
         return Long.class;
+    }
+
+    public ArrayList<Room> choiceRoom(ArrayList<Room> rooms) {
+        boolean allocate = false;
+        ArrayList<Room> choicedRooms = new ArrayList<>();
+        for (Entry<DayOfWeek, ArrayList<Integer>> hour: horary.entrySet()){
+            for (Room room: rooms){
+                allocate = room.allocate(hour.getKey(), hour.getValue(), _id);
+                if (allocate) {
+                    choicedRooms.add(room);
+                    break;
+                }
+            }
+            if (!allocate){
+                choicedRooms = new ArrayList<>();
+                break;
+            }
+        }
+        return choicedRooms;
     }
 }
