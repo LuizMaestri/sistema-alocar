@@ -11,5 +11,9 @@ public enum DayOfWeek {
     WEDNESDAY,
     THURSDAY,
     FRIDAY,
-    SATURDAY,
+    SATURDAY;
+
+    public boolean isSaturday(){
+        return this.equals(SATURDAY);
+    }
 }
