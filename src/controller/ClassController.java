@@ -31,7 +31,7 @@ public class ClassController implements IController {
         return classService.getList();
     }
 
-    public List<Discipline> listDisciplines() {
+    public ArrayList<Discipline> listDisciplines() {
          return disciplineService.getList();
     }
 
@@ -48,6 +48,14 @@ public class ClassController implements IController {
             classes.add(newClass);
         }
         classService.saveAll(classes);
+    }
+
+    public void update(Classes classes, int capacity, int credits) throws InvalidParamsException {
+        if (capacity == 0 || credits == 0)
+            throw new InvalidParamsException("");
+        classes.setCredits(credits);
+        classes.setCapacity(capacity);
+        classService.save(classes);
     }
 
 
