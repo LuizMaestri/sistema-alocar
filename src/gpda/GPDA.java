@@ -13,19 +13,19 @@ import java.util.List;
  * @since 10/06/16
  */
 public class GPDA extends Entity<Long> {
-    private Professor coordenator;
+    private Professor coordinator;
     private List<Discipline> disciplines;
     private ArrayList<Professor> professors;
 
     public GPDA() {
     }
 
-    public Professor getCoordenator() {
-        return coordenator;
+    public Professor getCoordinator() {
+        return coordinator;
     }
 
-    public void setCoordenator(Professor coordenator) {
-        this.coordenator = coordenator;
+    public void setCoordinator(Professor coordinator) {
+        this.coordinator = coordinator;
     }
 
     public List<Discipline> getDisciplines() {
@@ -55,8 +55,8 @@ public class GPDA extends Entity<Long> {
     }
 
     public void updateProfessor(Professor professor) {
-        if (coordenator.getId().equals(professor.getId()))
-            coordenator = professor;
+        if (coordinator.getId().equals(professor.getId()))
+            coordinator = professor;
         for (int index = 0; index < professors.size(); index++){
             if (professors.get(index).getId().equals(professor.getId())){
                 professors.set(index, professor);
