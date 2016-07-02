@@ -7,7 +7,7 @@ import dao.Dao;
  * @version 1
  * @since 09/06/16
  */
-public class ProfessorDao extends Dao<Professor> {
+class ProfessorDao extends Dao<Professor> {
     private static ProfessorDao dao;
     static {
         dao = new ProfessorDao();

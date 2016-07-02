@@ -12,7 +12,7 @@ import org.jongo.MongoCursor;
  * @version 1
  * @since 09/06/16
  */
-public class DisciplineDao extends Dao<Discipline>{
+class DisciplineDao extends Dao<Discipline>{
     private static DisciplineDao dao;
     static {
         dao = new DisciplineDao();

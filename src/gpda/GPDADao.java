@@ -7,7 +7,7 @@ import dao.Dao;
  * @version 1
  * @since 10/06/16
  */
-public class GPDADao extends Dao<GPDA>{
+class GPDADao extends Dao<GPDA>{
     private static GPDADao dao;
     static {
         dao = new GPDADao();

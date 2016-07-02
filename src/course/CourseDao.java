@@ -7,7 +7,7 @@ import dao.Dao;
  * @version 1
  * @since 08/06/16
  */
-public class CourseDao extends Dao<Course> {
+class CourseDao extends Dao<Course> {
 
     public static CourseDao dao;
     static {

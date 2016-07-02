@@ -7,7 +7,7 @@ import dao.Dao;
  * @version 1
  * @since 15/06/16
  */
-public class LabsRequestDao extends Dao<LabsRequest> {
+class LabsRequestDao extends Dao<LabsRequest> {
     private static LabsRequestDao dao;
     static{
         dao = new LabsRequestDao();
