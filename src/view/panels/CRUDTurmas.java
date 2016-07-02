@@ -148,10 +148,6 @@ public class CRUDTurmas extends JPanel {
 
 		btnCriar.setBounds(693, 375, 89, 27);
 		btnCriar.addActionListener(a -> {
-
-			//TODO IF (se existir id no banco de dados, jogar mensagem de erro "já existe"
-
-			//ELSE o fazer já pronto + mensagem de sucesso(fazer).
 			if (criar){
 				try {
 					classController.save(Integer.parseInt(capacidade.getText()),
@@ -191,35 +187,15 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnCriar);
 
-//		JButton btnSalvar = new JButton("Salvar");
-//		btnSalvar.setBounds(693, 375, 89, 27);
-//		btnSalvar.setVisible();
-//		btnSalvar.addActionListener(a -> {
-//
-//			try {
-//				classController.save(Integer.parseInt(capacidade.getText()),
-//						(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
-//						Integer.parseInt(qtdTurmas.getText())
-//				);
-//			} catch (InvalidParamsException e) {
-//				JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
-//			} catch (NumberFormatException e){
-//				JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
-//			}
-//			preencherTabela();
-//		});
-//		add(btnSalvar);
-
-		//TODO criar um segundo botão para salvar depois de clicar em criar (setVisible)
-		//fazer os botoões como atributos da classe não variaveis do método
-
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.setBounds(802, 375, 89, 27);
 		btnLimpar.addActionListener(a -> {
 			capacidade.setText("");
 			creditos.setText("");
 			disciplina.setSelectedIndex(0);
+			disciplina.setEnabled(true);
 			qtdTurmas.setText("");
+			qtdTurmas.setEnabled(true);
 		});
 		add(btnLimpar);		
 		
