@@ -206,12 +206,12 @@ public class CRUDTurmas extends JPanel {
 		DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
 		for (int index = tableModel.getRowCount()-1; index >= 0; index--)
 			tableModel.removeRow(index);
-		for (Classes classes2 : classes) {
+		classes.forEach( classes2 ->  {
 			Object[] linha = new Object[3];
 			linha[0] = classes2.getDiscipline().getName();
 			linha[1] = classes2.getDiscipline().getId() + classes2.getClassNumber();
 			linha[2] = classes2.getCredits();
 			tableModel.addRow(linha);
-		}
+		});
 	}
 }
