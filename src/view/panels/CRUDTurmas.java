@@ -1,25 +1,18 @@
 package view.panels;
 
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.AbstractDocument;
 
 import classes.Classes;
 import controller.ClassController;
 import discipline.Discipline;
-import javax.swing.ListSelectionModel;
+import exception.InvalidParamsException;
+import utils.NumericAndLengthFilter;
 
 public class CRUDTurmas extends JPanel {
 
@@ -31,10 +24,27 @@ public class CRUDTurmas extends JPanel {
 	private JComboBox<Discipline> disciplina;
 	private ClassController classController;
 	private List<Classes> classes;
+	private boolean criar = true;
+    private Classes classes1;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CRUDTurmas() {
+
+        JButton btnCriar = new JButton("Criar");
+        qtdTurmas = new JTextField();
 		classController = new ClassController();
+
+        ArrayList<Discipline> options = classController.listDisciplines();
+        options.add(0, null);
+        disciplina =
+                new JComboBox(
+                        new DefaultComboBoxModel(
+                                options.toArray()
+                        )
+                );
+        disciplina.setBounds(669, 260, 235, 27);
+        add(disciplina);
+
 		DefaultTableModel tableModel = new DefaultTableModel();
 		for (String coluna: new String[]{"Disciplina", "Turma", "Créditos"})
 			tableModel.addColumn(coluna);
@@ -51,14 +61,18 @@ public class CRUDTurmas extends JPanel {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.setBounds(78, 537, 89, 27);
 		btnAlterar.addActionListener(a -> {
-			// TODO criar método para achar quantidade de turmas e pensar
-			// em como alterar os outras turmas da disciplina
+			criar = false;
 			int index = table.getSelectedRow();
-			Classes classes1 = classes.get(index);
-			capacidade.setText(classes1.getCapacity()+"");
-			creditos.setText(classes1.getCredits()+"");
-			disciplina.setSelectedIndex(0);
-			//qtdTurmas.setText();
+            if (index != 0) {
+                classes1 = classes.get(index);
+                capacidade.setText(classes1.getCapacity()+"");
+                creditos.setText(classes1.getCredits()+"");
+                disciplina.setSelectedItem(classes1.getDiscipline());
+                btnCriar.setText("Salvar");
+                btnCriar.repaint();
+                qtdTurmas.setEnabled(false);
+                disciplina.setEnabled(false);
+            }
 		});
 		add(btnAlterar);
 
@@ -78,7 +92,6 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnSair);
 
-
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(500, 5, 2, 590);
@@ -96,8 +109,8 @@ public class CRUDTurmas extends JPanel {
 		lblQuantidadeDeTurmas.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblQuantidadeDeTurmas.setBounds(511, 230, 148, 14);
 		add(lblQuantidadeDeTurmas);
-		
-		qtdTurmas = new JTextField();
+
+        ((AbstractDocument) qtdTurmas.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		qtdTurmas.setBounds(669, 222, 235, 27);
 		add(qtdTurmas);
 		qtdTurmas.setColumns(10);
@@ -106,16 +119,7 @@ public class CRUDTurmas extends JPanel {
 		lblDisciplina.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDisciplina.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblDisciplina.setBounds(521, 265, 138, 22);
-		add(lblDisciplina);		
-		
-		disciplina =
-				new JComboBox(
-						new DefaultComboBoxModel(
-								classController.listDisciplines().toArray()
-								)
-						);
-		disciplina.setBounds(669, 260, 235, 27);
-		add(disciplina);
+		add(lblDisciplina);
 		
 		JLabel lblCapacidade = new JLabel("Capacidade:");
 		lblCapacidade.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -124,6 +128,7 @@ public class CRUDTurmas extends JPanel {
 		add(lblCapacidade);
 		
 		capacidade = new JTextField();
+        ((AbstractDocument) capacidade.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		capacidade.setText("");
 		capacidade.setBounds(669, 298, 235, 27);
 		add(capacidade);
@@ -136,27 +141,76 @@ public class CRUDTurmas extends JPanel {
 		add(lblCreditos);		
 		
 		creditos = new JTextField();
+        ((AbstractDocument) creditos.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		creditos.setBounds(669, 336, 235, 27);
 		add(creditos);
 		creditos.setColumns(10);		
-		
-		JButton btnCriar = new JButton("Criar");
+
 		btnCriar.setBounds(693, 375, 89, 27);
 		btnCriar.addActionListener(a -> {
 
 			//TODO IF (se existir id no banco de dados, jogar mensagem de erro "já existe"
 
 			//ELSE o fazer já pronto + mensagem de sucesso(fazer).
-			classController.save(Integer.parseInt(capacidade.getText()),
-					(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
-					Integer.parseInt(qtdTurmas.getText())
+			if (criar){
+				try {
+					classController.save(Integer.parseInt(capacidade.getText()),
+							(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
+							Integer.parseInt(qtdTurmas.getText())
 					);
+					JOptionPane.showMessageDialog(null, "Criado com sucesso", "Criação", JOptionPane.INFORMATION_MESSAGE);
+				} catch (InvalidParamsException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+				} catch (NumberFormatException e){
+					JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			else {
+                try {
 
-			preencherTabela();
+                    classController.update(classes1,Integer.parseInt(capacidade.getText()), Integer.parseInt(creditos.getText()));
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso", "Alteração", JOptionPane.INFORMATION_MESSAGE);
+                } catch (InvalidParamsException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+                }
+                classes1 = null;
+				criar = true;
+                btnCriar.setText("Criar");
+                btnCriar.repaint();
+                qtdTurmas.setEnabled(true);
+                disciplina.setEnabled(true);
+                capacidade.setText("");
+                creditos.setText("");
+                disciplina.setSelectedIndex(0);
+                qtdTurmas.setText("");
+			}
+
+            preencherTabela();
 		});
 		add(btnCriar);
 
-		//TODO criar um segundo botão para salvar depois de clicar em alterar (setVisible)
+//		JButton btnSalvar = new JButton("Salvar");
+//		btnSalvar.setBounds(693, 375, 89, 27);
+//		btnSalvar.setVisible();
+//		btnSalvar.addActionListener(a -> {
+//
+//			try {
+//				classController.save(Integer.parseInt(capacidade.getText()),
+//						(Discipline)disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
+//						Integer.parseInt(qtdTurmas.getText())
+//				);
+//			} catch (InvalidParamsException e) {
+//				JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+//			} catch (NumberFormatException e){
+//				JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+//			}
+//			preencherTabela();
+//		});
+//		add(btnSalvar);
+
+		//TODO criar um segundo botão para salvar depois de clicar em criar (setVisible)
 		//fazer os botoões como atributos da classe não variaveis do método
 
 		JButton btnLimpar = new JButton("Limpar");

@@ -4,6 +4,7 @@ import classes.Classes;
 import classes.ClassesService;
 import discipline.Discipline;
 import discipline.DisciplineService;
+import exception.InvalidParamsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,14 @@ public class ClassController implements IController {
         return classService.getList();
     }
 
-    public List<Discipline> listDisciplines() {
+    public ArrayList<Discipline> listDisciplines() {
          return disciplineService.getList();
     }
 
-    public void save(int capacity, Discipline discipline, int credits, int numClass) {
+    public void save(int capacity, Discipline discipline, int credits, int numClass) throws InvalidParamsException {
         ArrayList<Classes> classes = new ArrayList<>();
+        if (capacity == 0 || credits == 0 || numClass == 0)
+            throw new InvalidParamsException("");
         for (int i = 0; i < numClass; i++) {
             Classes newClass = new Classes();
             newClass.setDiscipline(discipline);
@@ -45,6 +48,14 @@ public class ClassController implements IController {
             classes.add(newClass);
         }
         classService.saveAll(classes);
+    }
+
+    public void update(Classes classes, int capacity, int credits) throws InvalidParamsException {
+        if (capacity == 0 || credits == 0)
+            throw new InvalidParamsException("");
+        classes.setCredits(credits);
+        classes.setCapacity(capacity);
+        classService.save(classes);
     }
 
 
