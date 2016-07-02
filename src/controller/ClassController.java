@@ -37,7 +37,7 @@ public class ClassController implements IController {
 
     public void save(int capacity, Discipline discipline, int credits, int numClass) throws InvalidParamsException {
         ArrayList<Classes> classes = new ArrayList<>();
-        if (capacity == 0 || credits == 0 || numClass == 0)
+        if (capacity == 0 || credits == 0 || numClass == 0 || discipline == null)
             throw new InvalidParamsException("");
         for (int i = 0; i < numClass; i++) {
             Classes newClass = new Classes();
