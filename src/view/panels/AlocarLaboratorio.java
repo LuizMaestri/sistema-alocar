@@ -1,21 +1,19 @@
 package view.panels;
 
+import controller.RequestCheckController;
+import labs.LabsRequest;
+
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import java.util.List;
+import javax.swing.*;
 
 public class AlocarLaboratorio extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JList list;
+	private JList<LabsRequest> list;
+	private List<LabsRequest> requests;
+	private RequestCheckController requestController;
 
 	public AlocarLaboratorio() {
 		setLayout(null);
@@ -56,16 +54,15 @@ public class AlocarLaboratorio extends JPanel {
 		lblDiaSemana.setBounds(460, 270, 375, 27);
 		add(lblDiaSemana);
 
-		list = new JList();
-		list.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				lblNumPedido.setText((String) "Pedido: " + list.getSelectedValue());
-				lblLaboratorio.setText((String) "Laboratório: " + "");
-				lblTurma.setText((String) "Turma: " + "");
-				lblFixo.setText((String) "Fixo: " + "");
-				lblDiaSemana.setText((String) "Dias da semana: " + "");
-			}
+		list = new JList<LabsRequest>(new DefaultListModel<LabsRequest>());
+		preencherLista();
+		list.addListSelectionListener(arg0 -> {
+			LabsRequest request = list.getSelectedValue();
+			lblNumPedido.setText("Pedido: " + "");
+			lblLaboratorio.setText("Laboratório: " + "");
+			lblTurma.setText("Turma: " + "");
+			lblFixo.setText("Fixo: " + "");
+			lblDiaSemana.setText("Dias da semana: " + "");
 		});
 		
 		JScrollPane scroll = new JScrollPane(list);
@@ -81,14 +78,14 @@ public class AlocarLaboratorio extends JPanel {
 		JButton btnAprovar = new JButton("Aprovar");
 		btnAprovar.setBounds(450, 452, 89, 27);
 		btnAprovar.addActionListener(a -> {
-
+			preencherLista();
 		});
 		add(btnAprovar);
 
 		JButton btnRecusar = new JButton("Recusar");
 		btnRecusar.setBounds(608, 452, 89, 27);
 		btnRecusar.addActionListener(a -> {
-
+			preencherLista();
 		});
 		add(btnRecusar);
 
@@ -98,5 +95,12 @@ public class AlocarLaboratorio extends JPanel {
 
 		});
 		add(btnVoltar);
+	}
+
+	private void preencherLista() {
+		requests = requestController.listRequests();
+		DefaultListModel<LabsRequest> model = (DefaultListModel<LabsRequest>) list.getModel();
+		model.removeAllElements();
+		requests.forEach(model::addElement);
 	}
 }
