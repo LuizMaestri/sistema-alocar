@@ -3,6 +3,7 @@ package classes;
 import course.Course;
 import dao.Entity;
 import discipline.Discipline;
+import exception.AllocationRoomException;
 import professor.Professor;
 import room.Room;
 import utils.DayOfWeek;
@@ -10,6 +11,8 @@ import utils.DayOfWeek;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map.Entry;
+
+import static utils.ErrorMessage.ALLOCATE_ROOM;
 
 /**
  * @author luiz
@@ -91,7 +94,7 @@ public class Classes extends Entity<Long>{
         return Long.class;
     }
 
-    public ArrayList<Room> choiceRoom(ArrayList<Room> rooms) {
+    public ArrayList<Room> choiceRoom(ArrayList<Room> rooms) throws AllocationRoomException {
         boolean allocate = false;
         ArrayList<Room> choicedRooms = new ArrayList<>();
         for (Entry<DayOfWeek, ArrayList<Integer>> hour: horary.entrySet()){
@@ -102,10 +105,7 @@ public class Classes extends Entity<Long>{
                     break;
                 }
             }
-            if (!allocate){
-                choicedRooms = new ArrayList<>();
-                break;
-            }
+            if (!allocate) throw new AllocationRoomException(ALLOCATE_ROOM, this);
         }
         return choicedRooms;
     }

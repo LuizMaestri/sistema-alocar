@@ -3,8 +3,7 @@ package room;
 import dao.Dao;
 import service.Service;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author luiz
@@ -15,6 +14,14 @@ public class RoomService extends Service<Room, Long> {
 
     @Override
     protected Dao<Room> getDao() {
-        return null;
+        return RoomDao.getDao();
+    }
+
+    public ArrayList<Room> rooms() {
+        return ((RoomDao) getDao()).getRooms();
+    }
+
+    public  ArrayList<Room> labs(){
+        return ((RoomDao) getDao()).getLabs();
     }
 }

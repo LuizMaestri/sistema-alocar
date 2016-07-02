@@ -6,5 +6,6 @@ package utils;
  * @since 21/06/16
  */
 public class ErrorMessage {
-    public static final String ALLOCATE_PROFESSOR = "A turma %c da disciplina %s ficou sem professor";
+    public static final String ALLOCATE_PROFESSOR = "A turma %c da disciplina %s ficou sem professor.";
+    public static final String ALLOCATE_ROOM = "Não existe sala para %d alunos livres nos horários das turma %c da disciplina %s.";
 }

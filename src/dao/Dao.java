@@ -44,8 +44,19 @@ public abstract class Dao<T extends Entity> {
         return MongoUtils.getCollection(clazz).findOne("{'_id':#}", id).as(clazz);
     }
 
+    public T get(String propertyName, Object property){
+        return MongoUtils.getCollection(clazz).findOne(String.format("{'%s':#}", propertyName), property).as(clazz);
+    }
+
     public ArrayList<T> listAll(){
         MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find().as(clazz);
+        ArrayList<T> entities = new ArrayList<>();
+        for (T aCursor : cursor) entities.add(aCursor);
+        return entities;
+    }
+
+    public ArrayList<T> list(String propertyName, Object property){
+        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(String.format("{'%s':#}", propertyName), property).as(clazz);
         ArrayList<T> entities = new ArrayList<>();
         for (T aCursor : cursor) entities.add(aCursor);
         return entities;

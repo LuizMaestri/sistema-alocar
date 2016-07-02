@@ -2,12 +2,14 @@ package room;
 
 import dao.Dao;
 
+import java.util.ArrayList;
+
 /**
  * @author luiz
  * @version 1
  * @since 09/06/16
  */
-public class RoomDao extends Dao<Room> {
+class RoomDao extends Dao<Room> {
 
     private static RoomDao dao;
     static {
@@ -20,5 +22,13 @@ public class RoomDao extends Dao<Room> {
 
     public static RoomDao getDao() {
         return dao;
+    }
+
+    ArrayList<Room> getRooms(){
+        return list("lab", false);
+    }
+
+    ArrayList<Room> getLabs(){
+        return list("lab", true);
     }
 }

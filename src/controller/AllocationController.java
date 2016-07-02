@@ -3,8 +3,8 @@ package controller;
 import classes.Classes;
 import classes.ClassesService;
 import discipline.Discipline;
-import discipline.DisciplineService;
 import exception.AllocationProfessorException;
+import exception.AllocationRoomException;
 import gpda.GPDA;
 import gpda.GPDAService;
 import professor.Professor;
@@ -14,6 +14,7 @@ import room.RoomService;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -30,10 +31,10 @@ public class AllocationController implements IController {
     private GPDAService gpdaService;
     private RoomService roomService;
     private ProfessorService professorService;
-    private ArrayList<Professor> professors;
-    private ArrayList<Room> rooms;
+    private HashMap<Long, Professor> professors;
+    private HashMap<Long, Room> rooms;
     private ArrayList<Classes> classes;
-    private ArrayList<GPDA> gpdas;
+    private HashMap<Long, GPDA> gpdas;
 
     private enum Category{
         SMALL(null, 20),
@@ -70,19 +71,19 @@ public class AllocationController implements IController {
         gpdaService = new GPDAService();
         roomService = new RoomService();
         professorService = new ProfessorService();
-        professors = new ArrayList<>();
-        rooms = new ArrayList<>();
+        professors = new HashMap<>();
+        rooms = new HashMap<>();
         classes = new ArrayList<>();
-        gpdas = new ArrayList<>();
+        gpdas = new HashMap<>();
     }
 
-    public void allocateClasses() throws AllocationProfessorException {
+    public void allocateClasses() throws AllocationProfessorException, AllocationRoomException {
         choiceProfessor();
         choiceRoom();
         classesService.saveAll(classes);
-        professorService.saveAll(professors);
-        roomService.saveAll(rooms);
-        gpdaService.saveAll(gpdas);
+        professorService.saveAll(new ArrayList<>(professors.values()));
+        roomService.saveAll(new ArrayList<>(rooms.values()));
+        gpdaService.saveAll(new ArrayList<>(gpdas.values()));
     }
 
     private void choiceProfessor() throws AllocationProfessorException {
@@ -102,11 +103,11 @@ public class AllocationController implements IController {
                     maxIndex = selectedMaxWorkLoad(maxIndex, professorList);
                     if (maxIndex != -1)
                         choiceProfessor = professorList.get(maxIndex);
+                    else throw new AllocationProfessorException(ALLOCATE_PROFESSOR, classes);
                 }
-                if (choiceProfessor == null)
-                    throw new AllocationProfessorException(ALLOCATE_PROFESSOR, classes);
                 if (choiceProfessor.checkFreeTime(classes)) {
                     classes.setProfessor(choiceProfessor);
+                    gpdaService.attProfessor(choiceProfessor);
                     addToSaveProfessor(choiceProfessor);
                     addToSaveGPDA(gpda);
                 }
@@ -138,9 +139,9 @@ public class AllocationController implements IController {
     }
 
 
-    private void choiceRoom() {
+    private void choiceRoom() throws AllocationRoomException {
         List<Classes> classesList = classesService.getList();
-        List<Room> roomList = roomService.getList();
+        List<Room> roomList = roomService.rooms();
         EnumMap<Category, ArrayList<Classes>> classesMap = classesBySize(classesList);
         EnumMap<Category, ArrayList<Room>> roomMap = roomsBySize(roomList);
         for (Entry<Category, ArrayList<Classes>> entry: classesMap.entrySet()){
@@ -149,7 +150,7 @@ public class AllocationController implements IController {
                 rooms = classes.choiceRoom(rooms);
                 if (!rooms.isEmpty()){
                     addToSaveClasses(classes);
-                    addToSaveRoom(rooms);
+                    addToSaveRooms(rooms);
                 }
             }
         }
@@ -180,36 +181,23 @@ public class AllocationController implements IController {
     }
 
     private void addToSaveGPDA(GPDA gpda) {
-        GPDA change = null;
-        for (int index = 0; index < gpdas.size(); index++){
-            if (gpdas.get(index).getId().equals(gpda.getId())){
-                change = gpdas.set(index, gpda);
-                break;
-            }
-        }
-        if (change == null) gpdas.add(gpda);
+        gpdas.put(gpda.getId(), gpda);
         gpdaService.updateList(gpda);
     }
 
     private void addToSaveProfessor(Professor professor) {
-        gpdaService.attProfessor(professor);
-        Professor change = null;
-        for (int index = 0; index < professors.size(); index++){
-            if (professors.get(index).getId().equals(professor.getId())){
-                change = professors.set(index, professor);
-                break;
-            }
-        }
-        if (change == null) professors.add(professor);
+        professors.put(professor.getId(), professor);
     }
 
     private void addToSaveClasses(Classes classes) {
-        //TODO add classes on list for save after
+        this.classes.add(classes);
     }
 
 
-    private void addToSaveRoom(ArrayList<Room> rooms) {
-        //TODO add rooms on list for save after
+    private void addToSaveRooms(ArrayList<Room> rooms) {
+        rooms.forEach(room -> {
+            this.rooms.put(room.getId(), room);
+            roomService.updateList(room);
+        });
     }
-
 }

@@ -16,6 +16,7 @@ public class Room extends Entity<Long>{
     private int floor;
     private int number;
     private int capacity;
+    private boolean lab;
     private EnumMap<DayOfWeek, Long[]> occupation;
 
     public Room() {
@@ -54,6 +55,14 @@ public class Room extends Entity<Long>{
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public boolean isLab() {
+        return lab;
+    }
+
+    public void setLab(boolean lab) {
+        this.lab = lab;
     }
 
     public EnumMap<DayOfWeek, Long[]> getOccupation() {
