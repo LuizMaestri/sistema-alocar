@@ -31,6 +31,7 @@ public class CRUDTurmas extends JPanel {
 	public CRUDTurmas() {
 
 		JButton btnCriar = new JButton("Criar");
+        JButton btnLimpar = new JButton("Limpar");
 		qtdTurmas = new JTextField();
 		classController = new ClassController();
 
@@ -61,9 +62,11 @@ public class CRUDTurmas extends JPanel {
 				classes1 = classes.get(index);
 				capacidade.setText(classes1.getCapacity() + "");
 				creditos.setText(classes1.getCredits() + "");
-				disciplina.setSelectedItem(classes1.getDiscipline());
+				disciplina.getModel().setSelectedItem(classes1.getDiscipline());
 				btnCriar.setText("Salvar");
 				btnCriar.repaint();
+                btnLimpar.setText("Cancelar");
+                btnLimpar.repaint();
 				qtdTurmas.setEnabled(false);
 				disciplina.setEnabled(false);
 			}
@@ -173,6 +176,8 @@ public class CRUDTurmas extends JPanel {
 				criar = true;
 				btnCriar.setText("Criar");
 				btnCriar.repaint();
+                btnLimpar.setText("Limpar");
+                btnLimpar.repaint();
 				qtdTurmas.setEnabled(true);
 				disciplina.setEnabled(true);
 				capacidade.setText("");
@@ -185,16 +190,26 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnCriar);
 
-		JButton btnLimpar = new JButton("Limpar");
+
 		btnLimpar.setBounds(802, 375, 89, 27);
 		btnLimpar.addActionListener(a -> {
-			capacidade.setText("");
-			creditos.setText("");
-			disciplina.setSelectedIndex(0);
-			disciplina.setEnabled(true);
-			qtdTurmas.setText("");
-			qtdTurmas.setEnabled(true);
-		});
+            if (!criar) {
+                classes1 = null;
+                criar = true;
+                btnCriar.setText("Criar");
+                btnCriar.repaint();
+                btnLimpar.setText("Limpar");
+                btnLimpar.repaint();
+                qtdTurmas.setEnabled(true);
+                disciplina.setEnabled(true);
+            }
+            capacidade.setText("");
+            creditos.setText("");
+            disciplina.setSelectedIndex(0);
+            qtdTurmas.setText("");
+            ((AbstractDocument) capacidade.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
+            ((AbstractDocument) creditos.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
+        });
 		add(btnLimpar);
 
 	}
