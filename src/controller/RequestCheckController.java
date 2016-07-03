@@ -6,7 +6,9 @@ import labs.LabsRequestService;
 import java.util.List;
 
 /**
- * Created by loja on 02/07/2016.
+ * @author luiz
+ * @version 1
+ * @since 02/07/16
  */
 public class RequestCheckController implements IController {
 
@@ -22,6 +24,12 @@ public class RequestCheckController implements IController {
     }
 
     public List<LabsRequest> listRequests(){
-        return labService.getList();
+        return labService.listToApproved();
+    }
+
+    public void approveReprove(boolean approve, LabsRequest request){
+        request.setDeleted(!approve);
+        request.setApproved(approve);
+        labService.save(request);
     }
 }

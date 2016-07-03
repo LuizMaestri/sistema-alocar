@@ -2,6 +2,8 @@ package labs;
 
 import dao.Dao;
 
+import java.util.List;
+
 /**
  * @author luiz
  * @version 1
@@ -19,5 +21,9 @@ class LabsRequestDao extends Dao<LabsRequest> {
 
     public static LabsRequestDao getDao() {
         return dao;
+    }
+
+    public List<LabsRequest> listRequest(){
+        return list(new String[]{"approved", "deleted"}, new Object[]{false, false});
     }
 }
