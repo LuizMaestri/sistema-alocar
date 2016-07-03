@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import static utils.ErrorMessage.ALLOCATE_PROFESSOR;
+import static utils.Constants.CONTROLLER;
 
 /**
  * @author luiz
@@ -30,7 +31,6 @@ public class AllocationController implements IController {
     private ClassesService classesService;
     private GPDAService gpdaService;
     private RoomService roomService;
-    private ProfessorService professorService;
     private HashMap<Long, Professor> professors;
     private HashMap<Long, Room> rooms;
     private ArrayList<Classes> classes;
@@ -70,7 +70,7 @@ public class AllocationController implements IController {
         classesService = new ClassesService();
         gpdaService = new GPDAService();
         roomService = new RoomService();
-        professorService = new ProfessorService();
+        CONTROLLER.getUserService().fetch();
         professors = new HashMap<>();
         rooms = new HashMap<>();
         classes = new ArrayList<>();
@@ -81,7 +81,7 @@ public class AllocationController implements IController {
         choiceProfessor();
         choiceRoom();
         classesService.saveAll(classes);
-        professorService.saveAll(new ArrayList<>(professors.values()));
+        CONTROLLER.getUserService().saveAll(new ArrayList<>(professors.values()));
         roomService.saveAll(new ArrayList<>(rooms.values()));
         gpdaService.saveAll(new ArrayList<>(gpdas.values()));
     }
