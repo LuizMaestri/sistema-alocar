@@ -9,7 +9,7 @@ import java.util.List;
 import static utils.Constants.CONTROLLER;
 
 /**
- * Created by loja on 02/07/2016.
+ * Created by Luiz on 02/07/2016.
  */
 public class AssociationController implements IController{
 
