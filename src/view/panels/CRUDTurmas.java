@@ -234,10 +234,8 @@ public class CRUDTurmas extends JPanel {
                 disciplina.setEnabled(true);
                 curso.setEnabled(true);
             }
-
             curso.setSelectedIndex(0);
             disciplina.setSelectedIndex(0);
-            limparCampo(qtdTurmas);
             limparCampo(capacidade);
             limparCampo(creditos);
         });
