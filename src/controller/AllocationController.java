@@ -95,11 +95,13 @@ public class AllocationController implements IController {
                 minIndex = selectedMinWorkLoad(minIndex, professorList);
                 if (minIndex != -1)
                     choiceProfessor = professorList.get(minIndex);
+                minIndex++;
                 if (choiceProfessor == null) {
                     maxIndex = selectedMaxWorkLoad(maxIndex, professorList);
                     if (maxIndex != -1)
                         choiceProfessor = professorList.get(maxIndex);
                     else throw new AllocationProfessorException(ALLOCATE_PROFESSOR, classes);
+                    maxIndex++;
                 }
                 if (choiceProfessor.checkFreeTime(classes)) {
                     classes.setProfessor(choiceProfessor);
@@ -107,8 +109,6 @@ public class AllocationController implements IController {
                     addToSaveProfessor(choiceProfessor);
                     addToSaveGPDA(gpda);
                 }
-                minIndex++;
-                maxIndex++;
             }
         }
     }
