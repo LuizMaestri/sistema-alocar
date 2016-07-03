@@ -6,6 +6,8 @@ import exception.NotExistException;
 import professor.Professor;
 import professor.ProfessorService;
 
+import static utils.ErrorMessage.INVALID_lOGIN;
+
 /**
  * @author fabio
  * @version 1
@@ -22,7 +24,7 @@ public class UserController implements IController {
 
     public void login(Long user, String pass) throws InvalidLoginException, NotExistException, InvalidParamsException {
         if (user == null || pass == null)
-            throw new InvalidParamsException("");
+            throw new InvalidParamsException(INVALID_lOGIN);
         loggedUser.setId(user);
         loggedUser.setPassword(pass);
         loggedUser = userService.auth(loggedUser);
