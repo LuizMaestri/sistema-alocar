@@ -30,7 +30,7 @@ public class GPDAService extends Service<GPDA, Long> {
 
     public GPDA getByCoordinator(Professor loggedUser) {
         for (GPDA gpda: list)
-            if (gpda.getCoordinator().equals(loggedUser))
+            if (gpda.getCoordinator().getId().equals(loggedUser.getId()))
                 return gpda;
         return null;
     }
