@@ -62,6 +62,16 @@ public abstract class Dao<T extends Entity> {
         return entities;
     }
 
+    public ArrayList<T> list(String[] propertyNames, Object[] properties){
+        String query = "";
+        for (String propertyName : propertyNames) query += String.format("'%s':#,", propertyName);
+        query = String.format("{%s}", query);
+        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(query, properties).as(clazz);
+        ArrayList<T> entities = new ArrayList<>();
+        cursor.forEach(entities::add);
+        return entities;
+    }
+
     public boolean delete(Object id){
         WriteResult remove = MongoUtils.getCollection(clazz).remove("{'_id':#}", id);
         if (remove != null) remove = MongoUtils.getIdCollection(clazz).remove("{'_id':#}", id);
