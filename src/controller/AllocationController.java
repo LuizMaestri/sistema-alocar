@@ -8,7 +8,6 @@ import exception.AllocationRoomException;
 import gpda.GPDA;
 import gpda.GPDAService;
 import professor.Professor;
-import professor.ProfessorService;
 import room.Room;
 import room.RoomService;
 
@@ -80,10 +79,7 @@ public class AllocationController implements IController {
     public void allocateClasses() throws AllocationProfessorException, AllocationRoomException {
         choiceProfessor();
         choiceRoom();
-        classesService.saveAll(classes);
-        CONTROLLER.getUserService().saveAll(new ArrayList<>(professors.values()));
-        roomService.saveAll(new ArrayList<>(rooms.values()));
-        gpdaService.saveAll(new ArrayList<>(gpdas.values()));
+        save();
     }
 
     private void choiceProfessor() throws AllocationProfessorException {
@@ -199,5 +195,12 @@ public class AllocationController implements IController {
             this.rooms.put(room.getId(), room);
             roomService.updateList(room);
         });
+    }
+
+    private void save(){
+        classesService.saveAll(classes);
+        CONTROLLER.getUserService().saveAll(new ArrayList<>(professors.values()));
+        roomService.saveAll(new ArrayList<>(rooms.values()));
+        gpdaService.saveAll(new ArrayList<>(gpdas.values()));
     }
 }
