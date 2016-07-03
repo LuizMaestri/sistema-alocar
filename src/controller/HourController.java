@@ -12,7 +12,6 @@ import utils.DayOfWeek;
 public class HourController implements IController {
 
 	public HourController() {
-		loadData();
 	}
 
 	@Override
