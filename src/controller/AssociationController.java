@@ -21,6 +21,7 @@ public class AssociationController implements IController{
 
     @Override
     public void loadData() {
+        CONTROLLER.getUserService().fetch();
         gpdaService = new GPDAService();
     }
 

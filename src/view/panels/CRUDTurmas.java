@@ -3,16 +3,16 @@ package view.panels;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AbstractDocument;
-
 import classes.Classes;
 import controller.ClassController;
+import course.Course;
 import discipline.Discipline;
 import exception.InvalidParamsException;
 import utils.NumericAndLengthFilter;
+import view.manager.UIManager;
 
 public class CRUDTurmas extends JPanel {
 
@@ -21,24 +21,38 @@ public class CRUDTurmas extends JPanel {
 	private JTextField qtdTurmas;
 	private JTextField capacidade;
 	private JTextField creditos;
+    private JComboBox<Course> curso;
 	private JComboBox<Discipline> disciplina;
 	private ClassController classController;
 	private List<Classes> classes;
 	private boolean criar = true;
 	private Classes classes1;
 
+    private void limparCampo(JTextField nomeCampo) {
+        ((AbstractDocument) nomeCampo.getDocument()).setDocumentFilter(null);
+        nomeCampo.setText("");
+        ((AbstractDocument) nomeCampo.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
+    }
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CRUDTurmas() {
 
-		JButton btnCriar = new JButton("Criar");
+        classController = new ClassController();
+        qtdTurmas = new JTextField();
+        JButton btnCriar = new JButton("Criar");
         JButton btnLimpar = new JButton("Limpar");
-		qtdTurmas = new JTextField();
-		classController = new ClassController();
 
-		ArrayList<Discipline> options = classController.listDisciplines();
-		options.add(0, null);
-		disciplina = new JComboBox(new DefaultComboBoxModel(options.toArray()));
-		disciplina.setBounds(669, 260, 235, 27);
+
+        ArrayList<Course> optionsCourse = classController.listCourses();
+        optionsCourse.add(0, null);
+        curso = new JComboBox(new DefaultComboBoxModel(optionsCourse.toArray()));
+        curso.setBounds(669, 185, 235, 27);
+        add(curso);
+
+		ArrayList<Discipline> optionsDiscipline = classController.listDisciplines();
+		optionsDiscipline.add(0, null);
+		disciplina = new JComboBox(new DefaultComboBoxModel(optionsDiscipline.toArray()));
+		disciplina.setBounds(669, 222, 235, 27);
 		add(disciplina);
 
 		DefaultTableModel tableModel = new DefaultTableModel();
@@ -67,8 +81,10 @@ public class CRUDTurmas extends JPanel {
 				btnCriar.repaint();
                 btnLimpar.setText("Cancelar");
                 btnLimpar.repaint();
+                limparCampo(qtdTurmas);
 				qtdTurmas.setEnabled(false);
 				disciplina.setEnabled(false);
+                curso.setEnabled(false);
 			}
 		});
 		add(btnAlterar);
@@ -77,9 +93,16 @@ public class CRUDTurmas extends JPanel {
 		btnDeletar.setBounds(204, 537, 89, 27);
 		btnDeletar.addActionListener(a -> {
 			int index = table.getSelectedRow();
+            Classes selecionado = classes.get(index);
 			if (index != -1) {
-				classController.delete(classes.get(index).getId());
-				preencherTabela();
+                Object[] confirme = { "Confirmar", "Cancelar" };
+                int confirmar = JOptionPane.showOptionDialog(null, "Você irá excluir a turma: " + selecionado.getDiscipline().getName() + ", " +
+                        selecionado.getDiscipline().getId()+selecionado.getClassNumber() + " do curso " + selecionado.getCourse().getName() + ". Tem certeza?", "Confirmação",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, confirme, confirme[0]);
+                if (confirmar == 0) {
+                    classController.delete(selecionado.getId());
+                    preencherTabela();
+                }
 			}
 		});
 		add(btnDeletar);
@@ -87,7 +110,7 @@ public class CRUDTurmas extends JPanel {
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBounds(334, 537, 89, 27);
 		btnSair.addActionListener(a -> {
-
+            UIManager.setPanel(new MenuTeste());
 		});
 		add(btnSair);
 
@@ -99,25 +122,31 @@ public class CRUDTurmas extends JPanel {
 		JLabel lblCadastrarTurma = new JLabel("Cadastrar turma");
 		lblCadastrarTurma.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastrarTurma.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCadastrarTurma.setBounds(511, 141, 479, 27);
+		lblCadastrarTurma.setBounds(511, 145, 479, 27);
 		add(lblCadastrarTurma);
-
-		JLabel lblQuantidadeDeTurmas = new JLabel("Quantidade de turmas:");
-		lblQuantidadeDeTurmas.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblQuantidadeDeTurmas.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblQuantidadeDeTurmas.setBounds(511, 230, 148, 14);
-		add(lblQuantidadeDeTurmas);
-
-		((AbstractDocument) qtdTurmas.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
-		qtdTurmas.setBounds(669, 222, 235, 27);
-		add(qtdTurmas);
-		qtdTurmas.setColumns(10);
+        
+        JLabel lblCursos = new JLabel("Curso:");
+        lblCursos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblCursos.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblCursos.setBounds(521, 185, 138, 27);
+        add(lblCursos);
 
 		JLabel lblDisciplina = new JLabel("Disciplina:");
 		lblDisciplina.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDisciplina.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblDisciplina.setBounds(521, 265, 138, 22);
+		lblDisciplina.setBounds(521, 222, 138, 27);
 		add(lblDisciplina);
+
+        JLabel lblQuantidadeDeTurmas = new JLabel("Quantidade de turmas:");
+        lblQuantidadeDeTurmas.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblQuantidadeDeTurmas.setHorizontalAlignment(SwingConstants.RIGHT);
+        lblQuantidadeDeTurmas.setBounds(511, 265, 148, 14);
+        add(lblQuantidadeDeTurmas);
+
+        ((AbstractDocument) qtdTurmas.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
+        qtdTurmas.setBounds(669, 260, 235, 27);
+        add(qtdTurmas);
+        qtdTurmas.setColumns(10);
 
 		JLabel lblCapacidade = new JLabel("Capacidade:");
 		lblCapacidade.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -148,8 +177,8 @@ public class CRUDTurmas extends JPanel {
 		btnCriar.addActionListener(a -> {
 			if (criar) {
 				try {
-					classController.save(Integer.parseInt(capacidade.getText()),
-							(Discipline) disciplina.getSelectedItem(), Integer.parseInt(creditos.getText()),
+					classController.save((Course) curso.getSelectedItem(), (Discipline) disciplina.getSelectedItem(),
+                            Integer.parseInt(capacidade.getText()), Integer.parseInt(creditos.getText()),
 							Integer.parseInt(qtdTurmas.getText()));
 					JOptionPane.showMessageDialog(null, "Criado com sucesso", "Criação",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -180,12 +209,13 @@ public class CRUDTurmas extends JPanel {
                 btnLimpar.repaint();
 				qtdTurmas.setEnabled(true);
 				disciplina.setEnabled(true);
-				capacidade.setText("");
-				creditos.setText("");
-				disciplina.setSelectedIndex(0);
-				qtdTurmas.setText("");
+                curso.setEnabled(true);
 			}
-
+            curso.setSelectedIndex(0);
+            disciplina.setSelectedIndex(0);
+            limparCampo(qtdTurmas);
+            limparCampo(capacidade);
+            limparCampo(creditos);
 			preencherTabela();
 		});
 		add(btnCriar);
@@ -202,13 +232,12 @@ public class CRUDTurmas extends JPanel {
                 btnLimpar.repaint();
                 qtdTurmas.setEnabled(true);
                 disciplina.setEnabled(true);
+                curso.setEnabled(true);
             }
-            capacidade.setText("");
-            creditos.setText("");
+            curso.setSelectedIndex(0);
             disciplina.setSelectedIndex(0);
-            qtdTurmas.setText("");
-            ((AbstractDocument) capacidade.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
-            ((AbstractDocument) creditos.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
+            limparCampo(capacidade);
+            limparCampo(creditos);
         });
 		add(btnLimpar);
 

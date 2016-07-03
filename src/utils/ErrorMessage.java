@@ -7,5 +7,7 @@ package utils;
  */
 public class ErrorMessage {
     public static final String ALLOCATE_PROFESSOR = "A turma %c da disciplina %s ficou sem professor.";
-    public static final String ALLOCATE_ROOM = "Não existe sala para %d alunos livres nos horários das turma %c da disciplina %s.";
+    public static final String ALLOCATE_ROOM = "Nï¿½o existe sala para %d alunos livres nos horï¿½rios das turma %c da disciplina %s.";
+    public static final String INVALID_lOGIN = "UsuÃ¡rio e/ou senha invÃ¡lidos.";
+    public static final String INVALID_ID = "Ocorreu um erro no banco de dados, tente novamente mais tarde.";
 }

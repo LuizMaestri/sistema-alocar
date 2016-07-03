@@ -6,6 +6,8 @@ import exception.NotExistException;
 import professor.Professor;
 import professor.ProfessorService;
 
+import static utils.ErrorMessage.INVALID_lOGIN;
+
 /**
  * @author fabio
  * @version 1
@@ -15,7 +17,6 @@ public class UserController implements IController {
 
     private Professor loggedUser;
     private ProfessorService userService;
-    private IController current;
 
     public UserController() {
     	loadData();
@@ -23,7 +24,7 @@ public class UserController implements IController {
 
     public void login(Long user, String pass) throws InvalidLoginException, NotExistException, InvalidParamsException {
         if (user == null || pass == null)
-            throw new InvalidParamsException("");
+            throw new InvalidParamsException(INVALID_lOGIN);
         loggedUser.setId(user);
         loggedUser.setPassword(pass);
         loggedUser = userService.auth(loggedUser);
@@ -47,14 +48,6 @@ public class UserController implements IController {
 
     public void setUserService(ProfessorService userService) {
         this.userService = userService;
-    }
-
-    public IController getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(IController current) {
-        this.current = current;
     }
 
 

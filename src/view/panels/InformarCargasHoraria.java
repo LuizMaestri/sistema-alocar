@@ -12,6 +12,7 @@ import javax.swing.text.AbstractDocument;
 import utils.NumericAndLengthFilter;
 
 import controller.WorkLoadController;
+import view.manager.UIManager;
 
 public class InformarCargasHoraria extends JPanel {
 
@@ -65,11 +66,9 @@ public class InformarCargasHoraria extends JPanel {
 		});
 		add(btnEnviar);
 
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("Voltar");
 		btnCancelar.setBounds(510, 286, 89, 27);
-		btnCancelar.addActionListener(a -> {
-
-		});
+		btnCancelar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
 		add(btnCancelar);
 	}
 

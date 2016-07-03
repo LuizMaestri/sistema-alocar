@@ -15,6 +15,7 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
 import controller.HourController;
+import view.manager.UIManager;
 
 public class InformarHorariosLivres extends JPanel {
 
@@ -88,11 +89,9 @@ public class InformarHorariosLivres extends JPanel {
         for (int index = 0; index < days.length; index++)
             startComboBox(new  JCheckBox[!days[index].isSaturday()? 14: 5], days[index], 194 + 132*index);
 
-        JButton btnCancelar = new JButton("Cancelar");
+        JButton btnCancelar = new JButton("Voltar");
         btnCancelar.setBounds(393, 509, 90, 27);
-        btnCancelar.addActionListener(a -> {
-
-        });
+        btnCancelar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
         add(btnCancelar);
 
         JButton btnEnviar = new JButton("Enviar");
