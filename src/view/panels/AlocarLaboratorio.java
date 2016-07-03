@@ -2,6 +2,7 @@ package view.panels;
 
 import controller.RequestCheckController;
 import labs.LabsRequest;
+import view.manager.UIManager;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -103,20 +104,16 @@ public class AlocarLaboratorio extends JPanel {
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(760, 452, 89, 27);
-		btnVoltar.addActionListener(a -> {
-
-		});
+		btnVoltar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
 		add(btnVoltar);
 	}
 
 	private void preencherLista() {
         limpar();
-        ListSelectionListener[] listeners = list.getListSelectionListeners();
-        for (ListSelectionListener listener: listeners) list.removeListSelectionListener(listener);
-        List<LabsRequest> requests = requestController.listRequests();
+        for (ListSelectionListener listener: list.getListSelectionListeners()) list.removeListSelectionListener(listener);
 		DefaultListModel<LabsRequest> model = (DefaultListModel<LabsRequest>) list.getModel();
 		for (int index = model.size() - 1; index >= 0; index--) model.remove(index);
-		requests.forEach(model::addElement);
+        requestController.listRequests().forEach(model::addElement);
         addListener();
 	}
 
