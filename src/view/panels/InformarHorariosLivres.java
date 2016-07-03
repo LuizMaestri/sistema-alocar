@@ -10,11 +10,13 @@ import java.util.EnumMap;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
 import controller.HourController;
+import exception.InvalidParamsException;
 import view.manager.UIManager;
 
 public class InformarHorariosLivres extends JPanel {
@@ -97,8 +99,11 @@ public class InformarHorariosLivres extends JPanel {
         JButton btnEnviar = new JButton("Enviar");
         btnEnviar.setBounds(542, 509, 90, 27);
         btnEnviar.addActionListener(a -> {
-        	HourController hourController = new HourController();
-        	hourController.updateFreeTime(freeTime);
+        	try {
+				new HourController().updateFreeTime(freeTime);
+			} catch (InvalidParamsException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Por favor, preencha os dados", JOptionPane.ERROR_MESSAGE);
+			}
         });
         add(btnEnviar);
 

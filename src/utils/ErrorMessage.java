@@ -10,4 +10,5 @@ public class ErrorMessage {
     public static final String ALLOCATE_ROOM = "Nï¿½o existe sala para %d alunos livres nos horï¿½rios das turma %c da disciplina %s.";
     public static final String INVALID_lOGIN = "UsuÃ¡rio e/ou senha invÃ¡lidos.";
     public static final String INVALID_ID = "Ocorreu um erro no banco de dados, tente novamente mais tarde.";
+    public static final String HOUR_INSUFFICIENT = "Você deve selecionar mais horários livres, você deve ter %d para aulas.";
 }
