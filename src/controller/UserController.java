@@ -15,7 +15,6 @@ public class UserController implements IController {
 
     private Professor loggedUser;
     private ProfessorService userService;
-    private IController current;
 
     public UserController() {
     	loadData();
@@ -47,14 +46,6 @@ public class UserController implements IController {
 
     public void setUserService(ProfessorService userService) {
         this.userService = userService;
-    }
-
-    public IController getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(IController current) {
-        this.current = current;
     }
 
 
