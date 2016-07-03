@@ -45,9 +45,7 @@ public class GPDA extends Entity<Long> {
     }
 
     public boolean hasDiscipline(Discipline discipline){
-        for (Discipline disc : disciplines)
-            if (disc.equals(discipline)) return true;
-        return false;
+        return disciplines.contains(discipline);
     }
 
     public Class<Long> getIdClass() {
