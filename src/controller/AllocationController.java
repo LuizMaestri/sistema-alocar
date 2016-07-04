@@ -93,9 +93,11 @@ public class AllocationController implements IController {
             while (classes.getProfessor() == null) {
                 Professor choiceProfessor = null;
                 minIndex = selectedMinWorkLoad(minIndex, professorList);
-                if (minIndex != -1)
+                if (minIndex != -1) {
                     choiceProfessor = professorList.get(minIndex);
-                minIndex++;
+                    minIndex++;
+                }
+                else minIndex = professorList.size();
                 if (choiceProfessor == null) {
                     maxIndex = selectedMaxWorkLoad(maxIndex, professorList);
                     if (maxIndex != -1)
