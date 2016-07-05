@@ -13,6 +13,9 @@ public class Allocate extends Entity<Long>{
     private ArrayList<Room> rooms;
     private Exception error;
 
+    public Allocate() {
+    }
+
     @Override
     public Class<Long> getIdClass() {
         return Long.class;
