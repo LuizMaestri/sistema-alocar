@@ -7,6 +7,8 @@ import exception.IdException;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 
+import static utils.ErrorMessage.INVALID_ID;
+
 /**
  * @author luiz
  * @version 1
@@ -33,7 +35,7 @@ class DisciplineDao extends Dao<Discipline>{
             MongoCursor<Id> ids = idCollection.find().as(Id.class);
             while (ids.hasNext()){
                 if (ids.next().toString().equals(discipline.getId()))
-                    throw new IdException("invalid Id");
+                    throw new IdException(INVALID_ID);
             }
         }
         return put(discipline);

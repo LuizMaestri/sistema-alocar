@@ -5,6 +5,8 @@ import exception.InvalidLoginException;
 import exception.NotExistException;
 import service.Service;
 
+import static utils.ErrorMessage.INVALID_lOGIN;
+
 /**
  * @author luiz
  * @version 1
@@ -25,8 +27,8 @@ public class ProfessorService extends Service<Professor, Long>{
             if (validate.getPassword().equals(password)){
                 return validate;
             }
-            throw new InvalidLoginException("");
+            throw new InvalidLoginException(INVALID_lOGIN);
         }
-        throw new NotExistException("");
+        throw new NotExistException(INVALID_lOGIN);
     }
 }
