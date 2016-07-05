@@ -84,4 +84,9 @@ public class Room extends Entity<Long>{
     public Class<Long> getIdClass() {
         return Long.class;
     }
+
+    @Override
+    public String toString() {
+        return building + " - " + floor + " - " + number;
+    }
 }

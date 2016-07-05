@@ -9,7 +9,7 @@ import java.util.List;
 import static utils.Constants.CONTROLLER;
 
 /**
- * Created by loja on 02/07/2016.
+ * Created by Luiz on 02/07/2016.
  */
 public class AssociationController implements IController{
 
@@ -21,6 +21,7 @@ public class AssociationController implements IController{
 
     @Override
     public void loadData() {
+        CONTROLLER.getUserService().fetch();
         gpdaService = new GPDAService();
     }
 
@@ -33,4 +34,6 @@ public class AssociationController implements IController{
         professors.removeAll(getGpdaProfessors());
         return professors;
     }
+
+
 }

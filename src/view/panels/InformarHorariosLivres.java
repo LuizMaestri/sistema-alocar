@@ -10,11 +10,14 @@ import java.util.EnumMap;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
 import controller.HourController;
+import exception.InvalidParamsException;
+import view.manager.UIManager;
 
 public class InformarHorariosLivres extends JPanel {
 
@@ -24,7 +27,7 @@ public class InformarHorariosLivres extends JPanel {
     public InformarHorariosLivres() {
         setLayout(null);
 
-        JLabel lblMsg = new JLabel("Marque seus horários disponíveis nos campos correspondentes");
+        JLabel lblMsg = new JLabel("Marque seus hor\u00E1rios dispon\u00EDveis nos campos correspondentes");
         lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
         lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 16));
         lblMsg.setBounds(10, 11, 980, 38);
@@ -54,7 +57,7 @@ public class InformarHorariosLivres extends JPanel {
         lblSegunda.setBounds(194, 73, 110, 23);
         add(lblSegunda);
 
-        JLabel lblTerca = new JLabel("Terça-Feira");
+        JLabel lblTerca = new JLabel("Ter\u00E7a-Feira");
         lblTerca.setHorizontalAlignment(SwingConstants.CENTER);
         lblTerca.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblTerca.setBounds(326, 73, 110, 23);
@@ -78,7 +81,7 @@ public class InformarHorariosLivres extends JPanel {
         lblSexta.setBounds(718, 73, 108, 23);
         add(lblSexta);
 
-        JLabel lblSabado = new JLabel("Sábado");
+        JLabel lblSabado = new JLabel("S\u00E1bado");
         lblSabado.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblSabado.setHorizontalAlignment(SwingConstants.CENTER);
         lblSabado.setBounds(848, 73, 110, 23);
@@ -88,18 +91,19 @@ public class InformarHorariosLivres extends JPanel {
         for (int index = 0; index < days.length; index++)
             startComboBox(new  JCheckBox[!days[index].isSaturday()? 14: 5], days[index], 194 + 132*index);
 
-        JButton btnCancelar = new JButton("Cancelar");
+        JButton btnCancelar = new JButton("Voltar");
         btnCancelar.setBounds(393, 509, 90, 27);
-        btnCancelar.addActionListener(a -> {
-
-        });
+        btnCancelar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
         add(btnCancelar);
 
         JButton btnEnviar = new JButton("Enviar");
         btnEnviar.setBounds(542, 509, 90, 27);
         btnEnviar.addActionListener(a -> {
-        	HourController hourController = new HourController();
-        	hourController.updateFreeTime(freeTime);
+        	try {
+				new HourController().updateFreeTime(freeTime);
+			} catch (InvalidParamsException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Por favor, preencha os dados", JOptionPane.ERROR_MESSAGE);
+			}
         });
         add(btnEnviar);
 

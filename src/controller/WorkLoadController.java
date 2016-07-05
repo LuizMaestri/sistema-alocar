@@ -1,5 +1,6 @@
 package controller;
 
+import static javax.swing.JOptionPane.OK_OPTION;
 import static utils.Constants.CONTROLLER;
 
 import javax.swing.JOptionPane;
@@ -8,24 +9,19 @@ import professor.Professor;
 
 public class WorkLoadController implements IController {
 
-	public WorkLoadController() {
-		// TODO Auto-generated constructor stub
-	}
+	public WorkLoadController() {}
 
 	@Override
-	public void loadData() {
-		// TODO Auto-generated method stub
+	public void loadData() {}
 
-	}
+	public void parseData(String researchP, String extensionP, String admP) {
 
-	public void verificarDados(String pesquisaP, String extensaoP, String administrativaP) {
+		int reseach = Integer.parseInt(researchP);
+		int extension = Integer.parseInt(extensionP);
+		int adm = Integer.parseInt(admP);
 
-		int pesquisa = Integer.parseInt(pesquisaP);
-		int extensao = Integer.parseInt(extensaoP);
-		int administrativa = Integer.parseInt(administrativaP);
-
-		if ((pesquisa + extensao + administrativa) < 33 && (pesquisa + extensao + administrativa) > 7) {
-			salvarCargaHoraria(pesquisa, extensao, administrativa);
+		if ((reseach + extension + adm) < 33 && (reseach + extension + adm) > 7) {
+			save(reseach, extension, adm);
 		} else {
 			JOptionPane.showMessageDialog(null, "Carga horária informada fora do permitido!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -33,15 +29,15 @@ public class WorkLoadController implements IController {
 
 	}
 
-	private void salvarCargaHoraria(int pesquisa, int extensao, int administrativa) {
+	private void save(int reseach, int extension, int adm) {
 		Professor professor = CONTROLLER.getLoggedUser();
-		professor.setAdm(administrativa);
-		professor.setExtension(extensao);
-		professor.setResearch(pesquisa);
+		professor.setAdm(adm);
+		professor.setExtension(extension);
+		professor.setResearch(reseach);
 		boolean save = CONTROLLER.getUserService().save(professor);
 		if (save)
 			CONTROLLER.setLoggedUser(professor);
-		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, JOptionPane.OK_OPTION);
+		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, OK_OPTION);
 	}
 
 }

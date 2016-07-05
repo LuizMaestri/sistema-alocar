@@ -12,6 +12,7 @@ import javax.swing.text.AbstractDocument;
 import utils.NumericAndLengthFilter;
 
 import controller.WorkLoadController;
+import view.manager.UIManager;
 
 public class InformarCargasHoraria extends JPanel {
 
@@ -60,16 +61,12 @@ public class InformarCargasHoraria extends JPanel {
 
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.setBounds(373, 286, 89, 27);
-		btnEnviar.addActionListener(a -> {
-			workLoad.verificarDados(pesquisa.getText(), extensao.getText(), administrativa.getText());
-		});
+		btnEnviar.addActionListener(a -> workLoad.parseData(pesquisa.getText(), extensao.getText(), administrativa.getText()));
 		add(btnEnviar);
 
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("Voltar");
 		btnCancelar.setBounds(510, 286, 89, 27);
-		btnCancelar.addActionListener(a -> {
-
-		});
+		btnCancelar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
 		add(btnCancelar);
 	}
 

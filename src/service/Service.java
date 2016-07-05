@@ -25,7 +25,7 @@ public abstract class Service<T extends Entity<N>, N> {
         return list;
     }
 
-    private void fetch() {
+    public void fetch() {
         list = getDao().listAll();
         createIndexes();
     }

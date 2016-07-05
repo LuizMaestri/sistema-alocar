@@ -109,4 +109,9 @@ public class Classes extends Entity<Long>{
         }
         return choicedRooms;
     }
+
+    @Override
+    public String toString() {
+        return discipline.getId() + classNumber + " - " + course.getName();
+    }
 }

@@ -26,7 +26,7 @@ public class AssociarProfDisc extends JPanel {
 		JScrollPane scroll = new JScrollPane(list);
 		scroll.setBounds(141, 119, 300, 361);
 		list.addListSelectionListener(arg0 -> {
-			
+
 		});
 		add(scroll);
 
@@ -59,15 +59,16 @@ public class AssociarProfDisc extends JPanel {
 			listModel.clear();
 			listModelAdd.clear();
 		});
-
 		add(btnAdd);
+
 		JButton btnRemove = new JButton("<<");
 		btnRemove.setBounds(471, 305, 54, 23);
 		btnRemove.addActionListener(a -> {
-			listAdd.getSelectedValue();
-
+			// associado = new Associado(listAdd.getSelectedValue());
+			// listaAssociados.add(associado);
+			// listaProfessores.remove(id);
 			listModel.clear();
-			listModelAdd.clear();
+			listModelAdd.removeElement(list.getSelectedValue());
 
 		});
 		add(btnRemove);

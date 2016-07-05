@@ -1,32 +1,43 @@
 package controller;
 
 import static utils.Constants.CONTROLLER;
+import static utils.Constants.MAXIMUM_WORKLOAD;
+import static utils.ErrorMessage.HOUR_INSUFFICIENT;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 
+import exception.InvalidParamsException;
 import professor.Professor;
-import professor.ProfessorService;
 import utils.DayOfWeek;
 
 public class HourController implements IController {
-	private ProfessorService professorService;
 
 	public HourController() {
-		loadData();
 	}
 
 	@Override
 	public void loadData() {
-		this.professorService = new ProfessorService();
 	}
 
-	public void updateFreeTime(EnumMap<DayOfWeek, ArrayList<Integer>> freeTime) {
+	public void updateFreeTime(EnumMap<DayOfWeek, ArrayList<Integer>> freeTime) throws InvalidParamsException {
 		Professor professor = CONTROLLER.getLoggedUser();
+		if(!hasMin(freeTime, professor)){
+			int free = MAXIMUM_WORKLOAD - professor.getAdm() - professor.getExtension() - professor.getResearch();
+			throw new InvalidParamsException(String.format(HOUR_INSUFFICIENT, free));
+		}
 		professor.setFreeTime(freeTime);
-		boolean save = professorService.save(professor);
-		if (save)
+		if (CONTROLLER.getUserService().save(professor))
 			CONTROLLER.setLoggedUser(professor);
+	}
+
+	@SuppressWarnings("unused")
+	private boolean hasMin(EnumMap<DayOfWeek, ArrayList<Integer>> freeTime, Professor professor) {
+		int freeCount = 0;
+		for(ArrayList<Integer> hours: freeTime.values())
+			for (Integer integer : hours)
+				freeCount++;
+		return (MAXIMUM_WORKLOAD - professor.getAdm() - professor.getExtension() - professor.getResearch()) == freeCount;
 	}
 
 }
