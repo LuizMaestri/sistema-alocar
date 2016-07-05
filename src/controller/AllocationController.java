@@ -100,10 +100,11 @@ public class AllocationController implements IController {
                 else minIndex = professorList.size();
                 if (choiceProfessor == null) {
                     maxIndex = selectedMaxWorkLoad(maxIndex, professorList);
-                    if (maxIndex != -1)
+                    if (maxIndex != -1) {
                         choiceProfessor = professorList.get(maxIndex);
+                        maxIndex++;
+                    }
                     else throw new AllocationProfessorException(ALLOCATE_PROFESSOR, classes);
-                    maxIndex++;
                 }
                 if (choiceProfessor.checkFreeTime(classes)) {
                     classes.setProfessor(choiceProfessor);
