@@ -1,5 +1,7 @@
 package controller;
 
+import allocate.Allocate;
+import allocate.AllocateService;
 import classes.Classes;
 import classes.ClassesService;
 import discipline.Discipline;
@@ -30,6 +32,7 @@ public class AllocationController implements IController {
     private ClassesService classesService;
     private GPDAService gpdaService;
     private RoomService roomService;
+    private AllocateService allocateService;
     private HashMap<Long, Professor> professors;
     private HashMap<Long, Room> rooms;
     private ArrayList<Classes> classes;
@@ -69,6 +72,7 @@ public class AllocationController implements IController {
         classesService = new ClassesService();
         gpdaService = new GPDAService();
         roomService = new RoomService();
+        allocateService = new AllocateService();
         CONTROLLER.getUserService().fetch();
         professors = new HashMap<>();
         rooms = new HashMap<>();
@@ -77,9 +81,18 @@ public class AllocationController implements IController {
     }
 
     public void allocateClasses() throws AllocationProfessorException, AllocationRoomException {
-        choiceProfessor();
-        choiceRoom();
-        save();
+        Allocate allocate = new Allocate();
+        try {
+            choiceProfessor();
+            choiceRoom();
+            save();
+        } catch (AllocationProfessorException | AllocationRoomException e){
+            allocate.setError(e);
+            allocateService.save(allocate);
+            throw e;
+        }
+        allocate.setRooms(roomService.rooms());
+        allocateService.save(allocate);
     }
 
     private void choiceProfessor() throws AllocationProfessorException {
@@ -205,5 +218,9 @@ public class AllocationController implements IController {
         CONTROLLER.getUserService().saveAll(new ArrayList<>(professors.values()));
         roomService.saveAll(new ArrayList<>(rooms.values()));
         gpdaService.saveAll(new ArrayList<>(gpdas.values()));
+    }
+
+    public Allocate getInfos(){
+        return allocateService.last();
     }
 }
