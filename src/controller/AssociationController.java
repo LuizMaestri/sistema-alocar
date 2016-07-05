@@ -1,5 +1,6 @@
 package controller;
 
+import gpda.GPDA;
 import gpda.GPDAService;
 import professor.Professor;
 
@@ -35,5 +36,9 @@ public class AssociationController implements IController{
         return professors;
     }
 
-
+    public void save(ArrayList<Professor> professors){
+        GPDA gpda = gpdaService.getByCoordinator(CONTROLLER.getLoggedUser());
+        gpda.setProfessors(professors);
+        gpdaService.save(gpda);
+    }
 }
