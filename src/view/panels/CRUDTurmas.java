@@ -42,7 +42,6 @@ public class CRUDTurmas extends JPanel {
         JButton btnCriar = new JButton("Criar");
         JButton btnLimpar = new JButton("Limpar");
 
-
         ArrayList<Course> optionsCourse = classController.listCourses();
         optionsCourse.add(0, null);
         curso = new JComboBox(new DefaultComboBoxModel(optionsCourse.toArray()));
@@ -59,6 +58,27 @@ public class CRUDTurmas extends JPanel {
 		for (String coluna : new String[] { "Disciplina", "Turma", "Créditos" })
 			tableModel.addColumn(coluna);
 		table = new JTable(tableModel);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.getSelectionModel().addListSelectionListener(a -> {
+			criar = false;
+			int index = table.getSelectedRow();
+			if (index != -1) {
+				limparCampo(capacidade);
+				limparCampo(creditos);
+				classes1 = classes.get(index);
+				capacidade.setText(classes1.getCapacity() + "");
+				creditos.setText(classes1.getCredits() + "");
+				disciplina.getModel().setSelectedItem(classes1.getDiscipline());
+				btnCriar.setText("Salvar");
+				btnCriar.repaint();
+				btnLimpar.setText("Cancelar");
+				btnLimpar.repaint();
+				limparCampo(qtdTurmas);
+				qtdTurmas.setEnabled(false);
+				disciplina.setEnabled(false);
+				curso.setEnabled(false);
+			}
+		});
 		setLayout(null);
 
 		preencherTabela();
@@ -101,6 +121,20 @@ public class CRUDTurmas extends JPanel {
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, confirme, confirme[0]);
                 if (confirmar == 0) {
                     classController.delete(selecionado.getId());
+                    classes1 = null;
+                    criar = true;
+                    btnCriar.setText("Criar");
+                    btnCriar.repaint();
+                    btnLimpar.setText("Limpar");
+                    btnLimpar.repaint();
+                    qtdTurmas.setEnabled(true);
+                    disciplina.setEnabled(true);
+                    curso.setEnabled(true);
+                    curso.setSelectedIndex(0);
+                    disciplina.setSelectedIndex(0);
+					limparCampo(capacidade);
+					limparCampo(creditos);
+					limparCampo(qtdTurmas);
                     preencherTabela();
                 }
 			}
@@ -109,9 +143,7 @@ public class CRUDTurmas extends JPanel {
 
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBounds(334, 537, 89, 27);
-		btnSair.addActionListener(a -> {
-            UIManager.setPanel(new MenuTeste());
-		});
+		btnSair.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
 		add(btnSair);
 
 		JSeparator separator = new JSeparator();
