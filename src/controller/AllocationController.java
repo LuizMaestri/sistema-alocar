@@ -13,10 +13,7 @@ import professor.Professor;
 import room.Room;
 import room.RoomService;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
 import static utils.ErrorMessage.ALLOCATE_PROFESSOR;
@@ -78,6 +75,12 @@ public class AllocationController implements IController {
         rooms = new HashMap<>();
         classes = new ArrayList<>();
         gpdas = new HashMap<>();
+    }
+
+    public Set<Classes> getClasses(Long[] ids) {
+        Set<Classes> set = new TreeSet<>();
+        for (Long id: ids) set.add(classesService.get(id));
+        return set;
     }
 
     public void allocateClasses() throws AllocationProfessorException, AllocationRoomException {

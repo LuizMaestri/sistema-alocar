@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import controller.HourController;
 import exception.InvalidParamsException;
 import view.manager.UIManager;
+import static utils.Constants.HOURS;
 
 public class InformarHorariosLivres extends JPanel {
 
@@ -169,13 +170,8 @@ public class InformarHorariosLivres extends JPanel {
     }
     
     private void startComboBox(JCheckBox[] combo, DayOfWeek day, int x){
-        String[] horarios = {
-                "07:30 - 08:20", "08:20 - 09:10", "09:10 - 10:00", "10:10 - 11:00", "11:00 - 11:50",
-                "13:30 - 14:20", "14:20 - 15:10", "15:10 - 16:00", "16:20 - 17:10", "17:10 - 18:00",
-                "18:30 - 19:20", "19:20 - 20:10", "20:20 - 21:10", "21:10 - 22:00"
-        };
         for (int index = 0; index < combo.length; index++){
-            combo[index] = new JCheckBox(horarios[index]);
+            combo[index] = new JCheckBox(HOURS[index]);
             int y = 111 + index * 26;
             if (index > 4) y += 5;
             if (index > 9) y += 8;
