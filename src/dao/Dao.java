@@ -13,7 +13,7 @@ import java.util.List;
  */
 public abstract class Dao<T extends Entity> {
 
-    private Class<T> clazz;
+    protected Class<T> clazz;
 
     protected abstract Class<T> getEntityClass();
 

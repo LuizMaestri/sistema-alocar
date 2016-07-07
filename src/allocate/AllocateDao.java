@@ -1,6 +1,7 @@
 package allocate;
 
 import dao.Dao;
+import dao.MongoUtils;
 
 /**
  * Created by loja on 05/07/2016.
@@ -22,6 +23,6 @@ public class AllocateDao extends Dao<Allocate> {
     }
 
     public Allocate getLast() {
-        return null;
+        return MongoUtils.getCollection(clazz).find().sort("{_id:-1}").limit(1).as(clazz).next();
     }
 }

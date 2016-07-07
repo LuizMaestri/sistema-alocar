@@ -8,10 +8,18 @@ import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
+import allocate.Allocate;
+import classes.Classes;
+import classes.ClassesService;
+import controller.AllocationController;
+import room.Room;
 import view.manager.UIManager;
 
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Map.Entry;
 
 public class ChecarInfAlocacao extends JPanel {
 
@@ -21,9 +29,22 @@ public class ChecarInfAlocacao extends JPanel {
 	public ChecarInfAlocacao() {
 		setLayout(null);
 
-		String[] colunas = { "Turma", "Sala", "Horário", "Créditos" };
-		Object[][] dados = { { "3456", "234", "18:30", "4" } };
-		table = new JTable(dados, colunas);
+		AllocationController controller = new AllocationController();
+		Allocate allocate = controller.getInfos();
+
+		DefaultTableModel tableModel = new DefaultTableModel();
+		for (String coluna : new String[] { "Turma", "Sala", "Horário", "Créditos" })
+			tableModel.addColumn(coluna);
+		ArrayList<Classes> classes = new ArrayList<>();
+		allocate.getRooms().forEach(room -> {
+			room.getOccupation().entrySet().forEach(day ->  {
+				controller.getClasses(day.getValue()).forEach(classes1 -> {
+					boolean contains = classes.contains(classes1);
+
+				});
+			});
+		});
+		table = new JTable(tableModel);
 		table.getTableHeader().setReorderingAllowed(false);
 
 		JScrollPane scroll = new JScrollPane(table);

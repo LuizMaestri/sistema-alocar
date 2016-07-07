@@ -23,7 +23,7 @@ public class MongoUtils {
         client = new MongoClient(MONGO_HOST, MONGO_PORT);
     }
 
-    static MongoCollection getCollection(Class clazz){
+    public static MongoCollection getCollection(Class clazz){
         return getCollection(clazz.getSimpleName());
     }
 
