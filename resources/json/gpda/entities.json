@@ -1,0 +1,49 @@
+[
+  {
+    "_id": 1,
+    "coordinator": {"_id": 123456},
+    "disciplines": [
+      {
+        "_id": "INE5659",
+        "name": "Gestao Estrategica de Tecnologias, Informacao e Comunicacao"
+      },
+      {
+        "_id": "EGC5008",
+        "name": "Qualidade da Informacaso"
+      }
+    ],
+    "professors": [{
+      "_id" : 123456,
+      "adm" : 0,
+      "research" : 0,
+      "extension" : 0,
+      "credits" : 0,
+      "password" : "abcd",
+      "admin" : false,
+      "freeTime" : {
+        "TUESDAY" : [ 5 ],
+        "WEDNESDAY" : [ 7 ],
+        "THURSDAY" : [ 5 ]
+      }
+    },{
+      "_id" : 184298,
+      "adm" : 0,
+      "research" : 0,
+      "extension" : 0,
+      "credits" : 0,
+      "password" : "abcd",
+      "admin" : false,
+      "freeTime" : {
+        "TUESDAY" : [ 5 ],
+        "WEDNESDAY" : [ 7 ],
+        "THURSDAY" : [ 5 ]
+      }
+    }]
+  },
+  {
+    "_id": 2,
+    "coordinator": {},
+    "disciplines": [],
+    "professors": []
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "_id" : 184298,
+    "adm" : 10,
+    "research" : 12,
+    "extension" : 10,
+    "credits" : 0,
+    "password" : "abcd",
+    "admin" : false,
+    "freeTime" : {
+      "TUESDAY" : [ 5, 7 ],
+      "WEDNESDAY" : [ 7, 9, 10 ],
+      "THURSDAY" : [ 5, 6, 7 ]
+    }
+  }
+]
