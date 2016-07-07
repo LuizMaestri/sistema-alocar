@@ -58,6 +58,7 @@ public class CRUDTurmas extends JPanel {
 		for (String coluna : new String[] { "Disciplina", "Turma", "Créditos" })
 			tableModel.addColumn(coluna);
 		table = new JTable(tableModel);
+		table.setCellEditor(null);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getSelectionModel().addListSelectionListener(a -> {
 			criar = false;
@@ -113,11 +114,11 @@ public class CRUDTurmas extends JPanel {
 		btnDeletar.setBounds(204, 537, 89, 27);
 		btnDeletar.addActionListener(a -> {
 			int index = table.getSelectedRow();
-            Classes selecionado = classes.get(index);
 			if (index != -1) {
+                Classes selecionado = classes.get(index);
                 Object[] confirme = { "Confirmar", "Cancelar" };
                 int confirmar = JOptionPane.showOptionDialog(null, "Você irá excluir a turma: " + selecionado.getDiscipline().getName() + ", " +
-                        selecionado.getDiscipline().getId()+selecionado.getClassNumber() + " do curso " + selecionado.getCourse().getName() + ". Tem certeza?", "Confirmação",
+                                selecionado.toString().replace("-", "do curso:") + ". Tem certeza?", "Confirmação",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, confirme, confirme[0]);
                 if (confirmar == 0) {
                     classController.delete(selecionado.getId());
@@ -141,7 +142,7 @@ public class CRUDTurmas extends JPanel {
 		});
 		add(btnDeletar);
 
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("Voltar");
 		btnSair.setBounds(334, 537, 89, 27);
 		btnSair.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
 		add(btnSair);
