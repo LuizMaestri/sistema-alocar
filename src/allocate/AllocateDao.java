@@ -2,6 +2,7 @@ package allocate;
 
 import dao.Dao;
 import dao.MongoUtils;
+import org.jongo.MongoCursor;
 
 /**
  * Created by loja on 05/07/2016.
@@ -23,6 +24,7 @@ public class AllocateDao extends Dao<Allocate> {
     }
 
     public Allocate getLast() {
-        return MongoUtils.getCollection(clazz).find().sort("{_id:-1}").limit(1).as(clazz).next();
+        MongoCursor<Allocate> cursor = MongoUtils.getCollection(clazz).find().sort("{_id:-1}").limit(1).as(clazz);
+        return cursor.hasNext()? cursor.next(): null;
     }
 }
