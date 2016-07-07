@@ -14,6 +14,8 @@ import utils.NumericAndLengthFilter;
 import controller.WorkLoadController;
 import view.manager.UIManager;
 
+import static utils.Constants.CONTROLLER;
+
 public class InformarCargasHoraria extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -42,6 +44,7 @@ public class InformarCargasHoraria extends JPanel {
 		((AbstractDocument) pesquisa.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		pesquisa.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		pesquisa.setBounds(169, 202, 150, 27);
+		pesquisa.setText(CONTROLLER.getLoggedUser().getResearch()+"");
 		add(pesquisa);
 		pesquisa.setColumns(10);
 
@@ -49,6 +52,7 @@ public class InformarCargasHoraria extends JPanel {
 		((AbstractDocument) extensao.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		extensao.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		extensao.setBounds(425, 202, 150, 27);
+		extensao.setText(CONTROLLER.getLoggedUser().getExtension()+"");
 		add(extensao);
 		extensao.setColumns(10);
 
@@ -56,6 +60,7 @@ public class InformarCargasHoraria extends JPanel {
 		((AbstractDocument) administrativa.getDocument()).setDocumentFilter(new NumericAndLengthFilter(2));
 		administrativa.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		administrativa.setBounds(674, 202, 150, 27);
+		administrativa.setText(CONTROLLER.getLoggedUser().getAdm()+"");
 		add(administrativa);
 		administrativa.setColumns(10);
 

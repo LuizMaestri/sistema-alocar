@@ -16,12 +16,12 @@ public class WorkLoadController implements IController {
 
 	public void parseData(String researchP, String extensionP, String admP) {
 
-		int reseach = Integer.parseInt(researchP);
+		int research = Integer.parseInt(researchP);
 		int extension = Integer.parseInt(extensionP);
 		int adm = Integer.parseInt(admP);
 
-		if ((reseach + extension + adm) < 33 && (reseach + extension + adm) > 7) {
-			save(reseach, extension, adm);
+		if ((research + extension + adm) < 33 && (research - extension - adm) > 7) {
+			save(research, extension, adm);
 		} else {
 			JOptionPane.showMessageDialog(null, "Carga horária informada fora do permitido!", "Erro",
 					JOptionPane.ERROR_MESSAGE);
@@ -29,15 +29,14 @@ public class WorkLoadController implements IController {
 
 	}
 
-	private void save(int reseach, int extension, int adm) {
+	private void save(int research, int extension, int adm) {
 		Professor professor = CONTROLLER.getLoggedUser();
 		professor.setAdm(adm);
 		professor.setExtension(extension);
-		professor.setResearch(reseach);
-		boolean save = CONTROLLER.getUserService().save(professor);
-		if (save)
+		professor.setResearch(research);
+		if (CONTROLLER.getUserService().save(professor))
 			CONTROLLER.setLoggedUser(professor);
-		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, OK_OPTION);
+		JOptionPane.showMessageDialog(null, "Cadastrado com sucesso", null, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
