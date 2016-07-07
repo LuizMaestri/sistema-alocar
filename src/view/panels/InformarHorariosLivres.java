@@ -18,16 +18,20 @@ import javax.swing.SwingConstants;
 import controller.HourController;
 import exception.InvalidParamsException;
 import view.manager.UIManager;
+
+import static utils.Constants.CONTROLLER;
 import static utils.Constants.HOURS;
 
 public class InformarHorariosLivres extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime = new EnumMap<>(DayOfWeek.class);
+    private EnumMap<DayOfWeek, ArrayList<Integer>> freeTime;
 
     public InformarHorariosLivres() {
         setLayout(null);
 
+        freeTime = CONTROLLER.getLoggedUser().getFreeTime();
+        if (freeTime == null) freeTime = new EnumMap<>(DayOfWeek.class);
         JLabel lblMsg = new JLabel("Marque seus hor\u00E1rios dispon\u00EDveis nos campos correspondentes");
         lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
         lblMsg.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -102,6 +106,7 @@ public class InformarHorariosLivres extends JPanel {
         btnEnviar.addActionListener(a -> {
         	try {
 				new HourController().updateFreeTime(freeTime);
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 			} catch (InvalidParamsException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), "Por favor, preencha os dados", JOptionPane.ERROR_MESSAGE);
 			}
@@ -169,16 +174,19 @@ public class InformarHorariosLivres extends JPanel {
         add(separator_10);
     }
     
-    private void startComboBox(JCheckBox[] combo, DayOfWeek day, int x){
-        for (int index = 0; index < combo.length; index++){
-            combo[index] = new JCheckBox(HOURS[index]);
+    private void startComboBox(JCheckBox[] checkBoxes, DayOfWeek day, int x){
+        ArrayList<Integer> freeHour = freeTime.get(day);
+        for (int index = 0; index < checkBoxes.length; index++){
+            checkBoxes[index] = new JCheckBox(HOURS[index]);
             int y = 111 + index * 26;
             if (index > 4) y += 5;
             if (index > 9) y += 8;
-            combo[index].setBounds(x, y, 110, 23);
-            add(combo[index]);
+            checkBoxes[index].setBounds(x, y, 110, 23);
+            if (freeHour != null && freeHour.contains(index))
+                checkBoxes[index].setSelected(true);
+            add(checkBoxes[index]);
             int finalIndex = index;
-            combo[index].addItemListener(e -> {
+            checkBoxes[index].addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED){
                     ArrayList<Integer> integers = freeTime.get(day);
                     if (integers == null) integers = new ArrayList<>();
