@@ -49,14 +49,14 @@ public abstract class Dao<T extends Entity> {
     }
 
     public ArrayList<T> listAll(){
-        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find().as(clazz);
+        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find().sort("{_id: 1}").as(clazz);
         ArrayList<T> entities = new ArrayList<>();
         for (T aCursor : cursor) entities.add(aCursor);
         return entities;
     }
 
     public ArrayList<T> list(String propertyName, Object property){
-        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(String.format("{'%s':#}", propertyName), property).as(clazz);
+        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(String.format("{'%s':#}", propertyName), property).sort("{_id: 1}").as(clazz);
         ArrayList<T> entities = new ArrayList<>();
         for (T aCursor : cursor) entities.add(aCursor);
         return entities;
@@ -66,7 +66,7 @@ public abstract class Dao<T extends Entity> {
         String query = "";
         for (String propertyName : propertyNames) query += String.format("'%s':#,", propertyName);
         query = String.format("{%s}", query);
-        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(query, properties).as(clazz);
+        MongoCursor<T> cursor = MongoUtils.getCollection(clazz).find(query, properties).sort("{_id: 1}").as(clazz);
         ArrayList<T> entities = new ArrayList<>();
         cursor.forEach(entities::add);
         return entities;
