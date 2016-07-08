@@ -68,6 +68,7 @@ public class AlocarLaboratorio extends JPanel {
         add(lbPeriodo);
 
 		list = new JList<>(new DefaultListModel<>());
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		preencherLista();
 		
 		JScrollPane scroll = new JScrollPane(list);
