@@ -12,5 +12,19 @@
       "WEDNESDAY" : [ 7, 9, 10 ],
       "THURSDAY" : [ 5, 6, 7 ]
     }
+  }, {
+    "_id" : 123456,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "abcd",
+    "admin" : true,
+    "freeTime" : {
+      "MONDAY" : [1, 2],
+      "TUESDAY" : [5, 1, 2],
+      "WEDNESDAY" : [7, 1, 2],
+      "THURSDAY" : [5, 1, 2]
+    }
   }
 ]
