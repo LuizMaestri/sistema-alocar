@@ -10,8 +10,10 @@ import exception.AllocationRoomException;
 import gpda.GPDA;
 import gpda.GPDAService;
 import professor.Professor;
+import professor.ProfessorService;
 import room.Room;
 import room.RoomService;
+import utils.DayOfWeek;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -34,6 +36,34 @@ public class AllocationController implements IController {
     private HashMap<Long, Room> rooms;
     private ArrayList<Classes> classes;
     private HashMap<Long, GPDA> gpdas;
+
+    public void clean() {
+        ArrayList<Room> cleanRooms = new ArrayList<>();
+        roomService.getList().forEach(room -> {
+            room.setOccupation(new EnumMap<>(DayOfWeek.class));
+            cleanRooms.add(room);
+        });
+        roomService.saveAll(cleanRooms);
+        roomService.fetch();
+        ArrayList<Professor> cleanProfessor = new ArrayList<>();
+        ProfessorService service = CONTROLLER.getUserService();
+        service.getList().forEach(professor -> {
+            professor.setCredits(0);
+            cleanProfessor.add(professor);
+            gpdaService.attProfessor(professor);
+        });
+        service.saveAll(cleanProfessor);
+        service.fetch();
+        gpdaService.saveAll(gpdaService.getList());
+        gpdaService.fetch();
+        ArrayList<Classes> cleanClasses = new ArrayList<>();
+        classesService.getList().forEach(classes1 -> {
+            classes1.setProfessor(null);
+            cleanClasses.add(classes1);
+        });
+        classesService.saveAll(cleanClasses);
+        classesService.fetch();
+    }
 
     private enum Category{
         SMALL(null, 20),
@@ -123,6 +153,7 @@ public class AllocationController implements IController {
                     else throw new AllocationProfessorException(ALLOCATE_PROFESSOR, classes);
                 }
                 if (choiceProfessor.checkFreeTime(classes)) {
+                    choiceProfessor.setCredits(choiceProfessor.getCredits() + classes.getCredits());
                     classes.setProfessor(choiceProfessor);
                     gpdaService.attProfessor(choiceProfessor);
                     addToSaveProfessor(choiceProfessor);

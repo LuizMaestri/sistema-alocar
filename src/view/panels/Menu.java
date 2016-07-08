@@ -1,8 +1,10 @@
 package view.panels;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
+import controller.AllocationController;
+import exception.AllocationProfessorException;
+import exception.AllocationRoomException;
 import gpda.GPDAService;
 import professor.Professor;
 import view.manager.UIManager;
@@ -23,7 +25,21 @@ public class Menu extends JPanel {
 
         JButton btnAlocarTurma = new JButton("Alocar Turma");
         btnAlocarTurma.setBounds(404, 170, 222, 35);
-        btnAlocarTurma.addActionListener(a -> UIManager.setPanel(new AlocarTurma()));
+        btnAlocarTurma.addActionListener(a -> {
+			try {
+				AllocationController controller = new AllocationController();
+				controller.clean();
+				controller.allocateClasses();
+			} catch (AllocationProfessorException | AllocationRoomException e) {
+				JOptionPane.showMessageDialog(
+						null,
+						"Não foi possivel Realizar a alocação",
+						"Erro ao Alocar",
+						JOptionPane.ERROR_MESSAGE
+				);
+			}
+			UIManager.setPanel(new AlocarTurma());
+		});
         add(btnAlocarTurma).setEnabled(professor.isAdmin());
 
         JButton btnCrudTurmas = new JButton("CRUD Turmas");
