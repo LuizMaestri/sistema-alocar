@@ -116,4 +116,9 @@ public class Professor extends Entity<Long> {
         }
         return true;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Professor && this._id.equals(((Professor) obj).getId());
+    }
 }
