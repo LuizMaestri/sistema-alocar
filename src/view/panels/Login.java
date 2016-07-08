@@ -60,7 +60,7 @@ import view.manager.UIManager;
 				String password2 = String.valueOf(chars);
 				Long id = Long.parseLong(textLogin.getText());
 				CONTROLLER.login(id, password2);
-				UIManager.setPanel(new MenuTeste());
+				UIManager.setPanel(new Menu());
 			} catch (NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Usuário Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
 			} catch (InvalidLoginException | InvalidParamsException | NotExistException e) {

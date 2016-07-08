@@ -7,7 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import view.manager.UIManager;
-import view.panels.MenuTeste;
+import view.panels.Menu;
 
 public class Window extends JFrame {
 
@@ -22,7 +22,7 @@ public class Window extends JFrame {
 		menuBar.add(new JMenu("Ajuda"))
                 .add(new JMenuItem("Menu principal"))
                 .addActionListener(a -> {
-        			UIManager.setPanel(new MenuTeste());
+        			UIManager.setPanel(new Menu());
         		});
 		setJMenuBar(menuBar);
 

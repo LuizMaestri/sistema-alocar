@@ -71,7 +71,7 @@ public class InformarCargasHoraria extends JPanel {
 
 		JButton btnCancelar = new JButton("Voltar");
 		btnCancelar.setBounds(510, 286, 89, 27);
-		btnCancelar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
+		btnCancelar.addActionListener(a -> UIManager.setPanel(new Menu()));
 		add(btnCancelar);
 	}
 

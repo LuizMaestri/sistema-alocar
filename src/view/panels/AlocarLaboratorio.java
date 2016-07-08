@@ -105,7 +105,7 @@ public class AlocarLaboratorio extends JPanel {
 
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(760, 452, 89, 27);
-		btnVoltar.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
+		btnVoltar.addActionListener(a -> UIManager.setPanel(new Menu()));
 		add(btnVoltar);
 	}
 

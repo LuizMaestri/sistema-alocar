@@ -52,7 +52,7 @@ public class ChecarInfAlocacao extends JPanel {
 
 		JButton btnSair = new JButton("Voltar");
 		btnSair.setBounds(206, 550, 89, 27);
-		btnSair.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
+		btnSair.addActionListener(a -> UIManager.setPanel(new Menu()));
 		add(btnSair);
 
 		JSeparator separator = new JSeparator();

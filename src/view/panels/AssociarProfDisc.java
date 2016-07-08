@@ -7,8 +7,6 @@ import view.manager.UIManager;
 import javax.swing.*;
 import java.awt.Font;
 import java.util.ArrayList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import static java.awt.Font.*;
 import static javax.swing.SwingConstants.CENTER;
@@ -44,7 +42,7 @@ public class AssociarProfDisc extends JPanel {
 		add(btnSalvar).setBounds(390, 546, 89, 27);
 
 		JButton btnSair = new JButton("Voltar");
-		btnSair.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
+		btnSair.addActionListener(a -> UIManager.setPanel(new Menu()));
 		add(btnSair).setBounds(516, 546, 89, 27);
 
 		JButton btnAdd = new JButton(">>");

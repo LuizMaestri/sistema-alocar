@@ -144,7 +144,7 @@ public class CRUDTurmas extends JPanel {
 
 		JButton btnSair = new JButton("Voltar");
 		btnSair.setBounds(334, 537, 89, 27);
-		btnSair.addActionListener(a -> UIManager.setPanel(new MenuTeste()));
+		btnSair.addActionListener(a -> UIManager.setPanel(new Menu()));
 		add(btnSair);
 
 		JSeparator separator = new JSeparator();
