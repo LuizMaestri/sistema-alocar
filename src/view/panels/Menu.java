@@ -29,8 +29,8 @@ public class Menu extends JPanel {
 			try {
 				AllocationController controller = new AllocationController();
 				controller.clean();
-				controller.allocateClasses();
-			} catch (AllocationProfessorException | AllocationRoomException e) {
+				//controller.allocateClasses();
+			} catch (NullPointerException e){//AllocationProfessorException | AllocationRoomException e) {
 				JOptionPane.showMessageDialog(
 						null,
 						"Não foi possivel Realizar a alocação",

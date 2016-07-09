@@ -34,6 +34,16 @@ public class Classes extends Entity<Long>{
             horary.put(day, new ArrayList<>());
     }
 
+    public Classes(Classes classes) {
+        this.course = classes.course;
+        this.credits = classes.credits;
+        this.discipline = classes.discipline;
+        this.horary = classes.horary;
+        this.professor = classes.professor;
+        this.capacity = classes.capacity;
+        this.classNumber = classes.classNumber;
+    }
+
     public Course getCourse() {
         return course;
     }
