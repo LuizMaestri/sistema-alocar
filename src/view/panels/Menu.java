@@ -6,8 +6,14 @@ import controller.AllocationController;
 import exception.AllocationProfessorException;
 import exception.AllocationRoomException;
 import gpda.GPDAService;
+import labs.LabsRequest;
+import labs.LabsRequestService;
 import professor.Professor;
 import view.manager.UIManager;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import static utils.Constants.CONTROLLER;
 
 public class Menu extends JPanel {
@@ -17,6 +23,20 @@ public class Menu extends JPanel {
 	public Menu() {
 		setLayout(null);
         Professor professor = CONTROLLER.getLoggedUser();
+
+        LabsRequestService requestService = new LabsRequestService();
+        ArrayList<LabsRequest> requests = requestService.getList().stream()
+				.filter(request -> professor.equals(request.getClasses().getProfessor()))
+				.collect(Collectors.toCollection(ArrayList::new));
+
+		requests.forEach(request -> {
+            ArrayList<String> date = request.getDate();
+			String msg = "Sua Solicitação de Laboraório para a turma " +
+					request.getClasses() + "no periodo de" + date.get(0) + " à " +
+                    date.get(1) + (request.isApproved() ? ", " : ", não ") + "Foi Aprovada.";
+			JOptionPane.showMessageDialog(null, msg, "Solicitão de Laboratório", JOptionPane.INFORMATION_MESSAGE);
+            requestService.delete(request.getId());
+		});
 
         JButton btnAlocarLaboratorio = new JButton("Alocar Laboratário");
         btnAlocarLaboratorio.setBounds(404, 124, 222, 35);
