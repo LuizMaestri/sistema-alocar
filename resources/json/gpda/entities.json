@@ -5,8 +5,8 @@
 [
   {
     //usa um numero sequencial pra representar o codigo do gpda,
-    "_id":
-    // aqui tu coleca a mesma estrutura de um professor existente ctrl-c ctrl-v de um professor existente,
+    "_id": 1
+    // aqui tu coloca a mesma estrutura de um professor existente ctrl-c ctrl-v de um professor existente,
     "coordinator": {},
     // escolha umas diciplinas das que tenha no json de disciplinas e cole aqui dentro
     "disciplines": [],

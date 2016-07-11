@@ -1,9 +1,9 @@
 /*
   Esse é um exemplo de professor escolhe cria mais alguns
-  cretids é sempre 0 beleza? os dias da semana no freeTime
+  credits é sempre 0 beleza? os dias da semana no freeTime
   sempre maiusculos e os numeros ali é o indice dos horarios
   dá uma olha na classe Constantes o atributo HOUR tem o array
-  certinho pra tu se guiar, ah... não esquece da recra da carga]
+  certinho pra tu se guiar, ah... não esquece da regra da carga]
   horaria (adm + research +extension) <= 32
 */
 [
@@ -11,15 +11,369 @@
     "_id" : 123456,
     "adm" : 10,
     "research" : 10,
-    "extension" : 9,
+    "extension" : 8,
     "credits" : 0,
     "password" : "abcd",
     "admin" : true,
     "freeTime" : {
-      "MONDAY" : [1, 2],
-      "TUESDAY" : [5, 1, 2],
+      "MONDAY" : [11, 12],
+      "TUESDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 1,
+    "adm" : 5,
+    "research" : 6,
+    "extension" : 7,
+    "credits" : 0,
+    "password" : "a1",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "TUESDAY" : [13, 14],
+      "WEDNESDAY" : [11, 12],
+      "THURSDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 2,
+    "adm" : 6,
+    "research" : 6,
+    "extension" : 10,
+    "credits" : 0,
+    "password" : "a2",
+    "admin" : false,
+    "freeTime" : {
+      "TUESDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [12, 13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 3,
+    "adm" : 12,
+    "research" : 10,
+    "extension" : 4,
+    "credits" : 0,
+    "password" : "a3",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12],
+      "THURSDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 4,
+    "adm" : 4,
+    "research" : 8,
+    "extension" : 4,
+    "credits" : 0,
+    "password" : "a4",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12],
+      "TUESDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [13, 14]
+    }
+  },
+  {
+    "_id" : 5,
+    "adm" : 8,
+    "research" : 8,
+    "extension" : 4,
+    "credits" : 0,
+    "password" : "a5",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13],
+      "TUESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [11, 12]
+    }
+  },
+  {
+    "_id" : 6,
+    "adm" : 4,
+    "research" : 5,
+    "extension" : 7,
+    "credits" : 0,
+    "password" : "a6",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [13, 14],
+      "TUESDAY" : [13, 14],
+      "THURSDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 7,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a7",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "TUESDAY" : [11, 12],
       "WEDNESDAY" : [7, 1, 2],
       "THURSDAY" : [5, 1, 2]
+    }
+  },
+  {
+    "_id" : 8,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a8",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [13, 14],
+      "TUESDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [11, 12],
+      "THURSDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 9,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a9",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 10,
+    "adm" : 10,
+    "research" : 6,
+    "extension" : 6,
+    "credits" : 0,
+    "password" : "a10",
+    "admin" : false,
+    "freeTime" : {
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [13, 14]
+    }
+  },
+  {
+    "_id" : 11,
+    "adm" : 10,
+    "research" : 9,
+    "extension" : 8,
+    "credits" : 0,
+    "password" : "a11",
+    "admin" : false,
+    "freeTime" : {
+      "THURSDAY" : [12, 13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 12,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a12",
+    "admin" : false,
+    "freeTime" : {
+      "WEDNESDAY" : [11, 12],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 13,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a13",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12],
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 14,
+    "adm" : 6,
+    "research" : 6,
+    "extension" : 6,
+    "credits" : 0,
+    "password" : "a14",
+    "admin" : false,
+    "freeTime" : {
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [13, 14]
+    }
+  },
+  {
+    "_id" : 15,
+    "adm" : 7,
+    "research" : 7,
+    "extension" : 7,
+    "credits" : 0,
+    "password" : "a15",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12],
+      "TUESDAY" : [13, 14],
+      "WEDNESDAY" : [11, 12],
+      "THURSDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 16,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a16",
+    "admin" : false,
+    "freeTime" : {
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 17,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a17",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12],
+      "TUESDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 141]
+    }
+  },
+  {
+    "_id" : 18,
+    "adm" : 5,
+    "research" : 7,
+    "extension" : 8,
+    "credits" : 0,
+    "password" : "a18",
+    "admin" : false,
+    "freeTime" : {
+      "TUESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 19,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 4,
+    "credits" : 0,
+    "password" : "a19",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 20,
+    "adm" : 8,
+    "research" : 8,
+    "extension" : 6,
+    "credits" : 0,
+    "password" : "a20",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 21,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a21",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 22,
+    "adm" : 5,
+    "research" : 7,
+    "extension" : 4,
+    "credits" : 0,
+    "password" : "a22",
+    "admin" : false,
+    "freeTime" : {
+      "TUESDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 23,
+    "adm" : 8,
+    "research" : 8,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a23",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [11, 12, 13, 14],
+      "FRIDAY" : [11, 12, 13, 14]
+    }
+  },
+  {
+    "_id" : 24,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a24",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "WEDNESDAY" : [13, 14],
+      "THURSDAY" : [13, 14]
+    }
+  },
+  {
+    "_id" : 25,
+    "adm" : 10,
+    "research" : 10,
+    "extension" : 9,
+    "credits" : 0,
+    "password" : "a25",
+    "admin" : false,
+    "freeTime" : {
+      "MONDAY" : [11, 12, 13, 14],
+      "THURSDAY" : [11, 12],
+      "FRIDAY" : [11, 12]
     }
   }
 ]
