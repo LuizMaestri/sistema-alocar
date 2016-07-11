@@ -109,7 +109,7 @@ public class AllocationController implements IController {
 
     public Set<Classes> getClasses(Long[] ids) {
         Set<Classes> set = new TreeSet<>();
-        if (ids != null) for (Long id: ids) set.add(classesService.get(id));
+        for (Long id: ids) if (id != null) set.add(classesService.get(id));
         return set;
     }
 
