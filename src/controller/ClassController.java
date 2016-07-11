@@ -55,7 +55,7 @@ public class ClassController implements IController {
         int size = 0;
         for (Entry<DayOfWeek, ArrayList<Integer>> day: horary.entrySet())
             for (Integer hour: day.getValue()){
-                if (!Turn.NIGTLY.isHour(hour))
+                if (!course.getTurn().isHour(hour))
                     throw new InvalidParamsException("Verifique os horários selecionados.");
                 size++;
             }
