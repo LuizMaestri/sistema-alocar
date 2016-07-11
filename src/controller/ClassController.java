@@ -4,6 +4,7 @@ import classes.Classes;
 import classes.ClassesService;
 import course.Course;
 import course.CourseService;
+import course.Turn;
 import discipline.Discipline;
 import discipline.DisciplineService;
 import exception.InvalidParamsException;
@@ -50,13 +51,17 @@ public class ClassController implements IController {
         ArrayList<Classes> classes = new ArrayList<>();
         if (capacity == 0 || credits == 0 || numClass == 0 || discipline == null ||
                 course == null || horary == null || horary.isEmpty())
-            throw new InvalidParamsException("Todos os campos são obrigatórios");
+            throw new InvalidParamsException("Todos os campos são obrigatórios.");
         int size = 0;
         for (Entry<DayOfWeek, ArrayList<Integer>> day: horary.entrySet())
-            size += day.getValue().size();
+            for (Integer hour: day.getValue()){
+                if (!Turn.NIGTLY.isHour(hour))
+                    throw new InvalidParamsException("Verifique os horários selecionados.");
+                size++;
+            }
         if (size != 0)
             throw new InvalidParamsException(
-                    "Os horários da aula não combinam com a quantidade de créditos da mesma"
+                    "Os horários da aula não combinam com a quantidade de créditos da mesma."
             );
         for (int i = 0; i < numClass; i++) {
             Classes newClass = new Classes();
@@ -72,7 +77,7 @@ public class ClassController implements IController {
 
     public void update(Classes classes, int capacity, int credits) throws InvalidParamsException {
         if (capacity == 0 || credits == 0)
-            throw new InvalidParamsException("");
+            throw new InvalidParamsException("Todos os campos são obrigatórios.");
         classes.setCredits(credits);
         classes.setCapacity(capacity);
         classService.save(classes);
