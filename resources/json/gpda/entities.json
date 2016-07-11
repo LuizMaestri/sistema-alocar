@@ -1,16 +1,1935 @@
-/*
-  faça algus gpdas, não repita um disciplina em dois gpdas, professores
-  tudo bem estar em mais de um
-*/
 [
   {
-    //usa um numero sequencial pra representar o codigo do gpda,
-    "_id": 1
-    // aqui tu coloca a mesma estrutura de um professor existente ctrl-c ctrl-v de um professor existente,
-    "coordinator": {},
-    // escolha umas diciplinas das que tenha no json de disciplinas e cole aqui dentro
-    "disciplines": [],
-    //mesma história escolhe um dos professores que tiver no json de professores e manda bala
-    "professors": [],
-  }
+    "_id": 1,
+    "coordinator": [
+      {
+        "_id": 123456,
+        "name": "Elder Rizzon Santos",
+        "adm": 10,
+        "research": 10,
+        "extension": 8,
+        "credits": 0,
+        "password": "abcd",
+        "admin": true,
+        "freeTime": {
+          "MONDAY": [
+            11,
+            12
+          ],
+          "TUESDAY": [
+            11,
+            12,
+            13,
+            14
+          ],
+          "WEDNESDAY": [
+            11,
+            12,
+            13,
+            14
+          ]
+        }
+      }],
+    "disciplines": [{
+"_id": "CAD5240",
+"name": "Aspectos Comportamentais do Empreendedor"
+},
+{
+"_id": "EGC5015",
+"name": "Teoria Geral de Sistemas"
+},
+{
+"_id": "INE5601",
+"name": "Fundamentos Matematicos da Informatica"
+},
+{
+"_id": "INE5602",
+"name": "Introducao a Informatica"
+}],
+    "professors": [
+{
+"_id" : 123456,
+"name" : "Elder Rizzon Santos",
+"adm" : 10,
+"research" : 10,
+"extension" : 8,
+"credits" : 0,
+"password" : "abcd",
+"admin" : true,
+"freeTime" : {
+"MONDAY" : [11, 12],
+"TUESDAY" : [11, 12, 13, 14],
+"WEDNESDAY" : [11, 12, 13, 14]
+}
+},
+{
+"_id" : 1,
+"name" : "Fabiane Barreto Vavassori Benitti",
+"adm" : 5,
+"research" : 6,
+"extension" : 7,
+"credits" : 0,
+"password" : "a1",
+"admin" : false,
+"freeTime" : {
+"MONDAY" : [11, 12, 13, 14],
+"TUESDAY" : [13, 14],
+"WEDNESDAY" : [11, 12],
+"THURSDAY" : [11, 12, 13, 14]
+}
+},
+{
+"_id" : 2,
+"name" : "Ricardo Pereira e Silva",
+"adm" : 6,
+"research" : 6,
+"extension" : 10,
+"credits" : 0,
+"password" : "a2",
+"admin" : false,
+"freeTime" : {
+"TUESDAY" : [11, 12, 13, 14],
+"WEDNESDAY" : [12, 13, 14],
+"FRIDAY" : [11, 12, 13, 14]
+}
+},
+{
+"_id" : 3,
+"name" : "Ricardo Felipe Custódio",
+"adm" : 12,
+"research" : 10,
+"extension" : 4,
+"credits" : 0,
+"password" : "a3",
+"admin" : false,
+"freeTime" : {
+"MONDAY" : [11, 12],
+"THURSDAY" : [11, 12, 13, 14]
+}
+},
+{
+"_id" : 4,
+"name" : "Arthur Ronald de Vallauris Buchsbaum",
+"adm" : 4,
+"research" : 8,
+"extension" : 4,
+"credits" : 0,
+"password" : "a4",
+"admin" : false,
+"freeTime" : {
+"MONDAY" : [11, 12],
+"TUESDAY" : [11, 12, 13, 14],
+"WEDNESDAY" : [11, 12, 13, 14],
+"THURSDAY" : [13, 14],
+"FRIDAY" : [13, 14]
+}
+},
+{
+"_id" : 5,
+"name" : "Antonio Carlos Mariani",
+"adm" : 8,
+"research" : 8,
+"extension" : 4,
+"credits" : 0,
+"password" : "a5",
+"admin" : false,
+"freeTime" : {
+"MONDAY" : [11, 12, 13],
+"TUESDAY" : [11, 12, 13, 14],
+"THURSDAY" : [11, 12, 13, 14],
+"FRIDAY" : [11, 12]
+}
+}
+]},
+    {
+      "_id": 2,
+      "coordinator": [{
+        "_id" : 34,
+        "name" : "Renato Fileto",
+        "adm" : 10,
+        "research" : 10,
+        "extension" : 9,
+        "credits" : 0,
+        "password" : "a34",
+        "admin" : false,
+        "freeTime" : {
+          "MONDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [11, 12],
+          "FRIDAY" : [11, 12]
+        }
+      }],
+      "disciplines": [{
+        "_id": "INE5603",
+        "name": "Introducao a Programacao Orientada a Objetos"
+      },
+        {
+          "_id": "CAD5146",
+          "name": "Marketing Pessoal em Informatica"
+        },
+        {
+          "_id": "CAD7001",
+          "name": "Introducao a Administracao"
+        },
+        {
+          "_id": "INE5605",
+          "name": "Desenvolvimento de Sistemas Orientados a Objetos I"
+        },
+        {
+          "_id": "INE5606",
+          "name": "Probabilidade e Estatistica"
+        },
+        {
+          "_id": "INE5607",
+          "name": "Organizacao e Arquitetura de Computadores"
+        }],
+      "professors": [{
+        "_id" : 22,
+        "name" : "Gertrudes Aparecida Dandolini",
+        "adm" : 5,
+        "research" : 7,
+        "extension" : 4,
+        "credits" : 0,
+        "password" : "a22",
+        "admin" : false,
+        "freeTime" : {
+          "TUESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 23,
+          "name" : "Jean Carlo Rossa Hauck",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a23",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 24,
+          "name" : "Cristian Koliver",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a24",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 25,
+          "name" : "Frank Augusto Siqueira",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a25",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 26,
+          "name" : "Marcelo Macedo",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a26",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 27,
+          "name" : "Joao Bosco Mangueira Sobral",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a27",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 28,
+          "name" : "Joao Artur de Souza",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a28",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 29,
+          "name" : "Marcia Barros de Sales",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a29",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 30,
+          "name" : "Mario Antonio Ribeiro Dantas",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a30",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 31,
+          "name" : "Fernando Alvaro Ostuni Gauthier",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a31",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 32,
+          "name" : "Joana Stelzer",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a32",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 33,
+          "name" : "Mauricio Floriano Galimberti",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a33",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 34,
+          "name" : "Renato Fileto",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a34",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 35,
+          "name" : "Renato Cislaghi",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a35",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 36,
+          "name" : "Mauricio Carreira Cosentino",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a36",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 37,
+          "name" : "Martin Augusto Gagliotti Vigil",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a37",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 38,
+          "name" : "Fernando Augusto da Silva Cruz",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a38",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 39,
+          "name" : "Fernanda Matte Cavalcante",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a39",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 40,
+          "name" : "Eduardo Moreira da Costa",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a40",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        }]
+    },
+    {
+      "_id": 3,
+      "coordinator": [{
+        "_id" : 22,
+        "name" : "Gertrudes Aparecida Dandolini",
+        "adm" : 5,
+        "research" : 7,
+        "extension" : 4,
+        "credits" : 0,
+        "password" : "a22",
+        "admin" : false,
+        "freeTime" : {
+          "TUESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      }],
+      "disciplines": [{
+        "_id": "CAD5213",
+        "name": "Organizacao, Sistemas e Metodos"
+      },
+        {
+          "_id": "EGC5009",
+          "name": "Geracao de Ideias e Criatividade em Informatica"
+        },
+        {
+          "_id": "EPS5211",
+          "name": "Programacao Economica e Financeira"
+        },
+        {
+          "_id": "INE5609",
+          "name": "Estrutura de Dados"
+        },
+        {
+          "_id": "INE5649",
+          "name": "Tecnicas Estatisticas de Predicao"
+        },
+        {
+          "_id": "INE5608",
+          "name": "Analise e Projeto de Sistemas"
+        }],
+      "professors": [{
+        "_id" : 18,
+        "name" : "Jose Eduardo de Lucca",
+        "adm" : 5,
+        "research" : 7,
+        "extension" : 8,
+        "credits" : 0,
+        "password" : "a18",
+        "admin" : false,
+        "freeTime" : {
+          "TUESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 19,
+          "name" : "Joao Candido Lima Dovicchi",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a19",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 20,
+          "name" : "Jerusa Marchi",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a20",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 21,
+          "name" : "Jean Everson Martina",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a21",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 22,
+          "name" : "Gertrudes Aparecida Dandolini",
+          "adm" : 5,
+          "research" : 7,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a22",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 23,
+          "name" : "Jean Carlo Rossa Hauck",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a23",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 24,
+          "name" : "Cristian Koliver",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a24",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 25,
+          "name" : "Frank Augusto Siqueira",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a25",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 26,
+          "name" : "Marcelo Macedo",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a26",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 27,
+          "name" : "Joao Bosco Mangueira Sobral",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a27",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 28,
+          "name" : "Joao Artur de Souza",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a28",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 29,
+          "name" : "Marcia Barros de Sales",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a29",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 30,
+          "name" : "Mario Antonio Ribeiro Dantas",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a30",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 31,
+          "name" : "Fernando Alvaro Ostuni Gauthier",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a31",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 32,
+          "name" : "Joana Stelzer",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a32",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 33,
+          "name" : "Mauricio Floriano Galimberti",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a33",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        }]
+    },
+    {
+      "_id": 4,
+      "coordinator": [{
+        "_id" : 1,
+        "name" : "Fabiane Barreto Vavassori Benitti",
+        "adm" : 5,
+        "research" : 6,
+        "extension" : 7,
+        "credits" : 0,
+        "password" : "a1",
+        "admin" : false,
+        "freeTime" : {
+          "MONDAY" : [11, 12, 13, 14],
+          "TUESDAY" : [13, 14],
+          "WEDNESDAY" : [11, 12],
+          "THURSDAY" : [11, 12, 13, 14]
+        }
+      }],
+      "disciplines": [{
+        "_id": "INE5611",
+        "name": "Sistemas Operacionais"
+      },
+        {
+          "_id": "INE5612",
+          "name": "Desenvolvimento de Sistemas Orientados a Objetos II"
+        },
+        {
+          "_id": "INE5613",
+          "name": "Bancos de Dados I"
+        },
+        {
+          "_id": "INE5659",
+          "name": "Gestao Estrategica de Tecnologias, Informacao e Comunicacao"
+        },
+        {
+          "_id": "INE5614",
+          "name": "Engenharia de Software"
+        },
+        {
+          "_id": "INE5615",
+          "name": "Redes de Computadores"
+        },
+        {
+          "_id": "INE5616",
+          "name": "Bancos de Dados II"
+        }],
+      "professors": [{
+        "_id" : 123456,
+        "name" : "Elder Rizzon Santos",
+        "adm" : 10,
+        "research" : 10,
+        "extension" : 8,
+        "credits" : 0,
+        "password" : "abcd",
+        "admin" : true,
+        "freeTime" : {
+          "MONDAY" : [11, 12],
+          "TUESDAY" : [11, 12, 13, 14],
+          "WEDNESDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 1,
+          "name" : "Fabiane Barreto Vavassori Benitti",
+          "adm" : 5,
+          "research" : 6,
+          "extension" : 7,
+          "credits" : 0,
+          "password" : "a1",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "TUESDAY" : [13, 14],
+            "WEDNESDAY" : [11, 12],
+            "THURSDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 2,
+          "name" : "Ricardo Pereira e Silva",
+          "adm" : 6,
+          "research" : 6,
+          "extension" : 10,
+          "credits" : 0,
+          "password" : "a2",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 3,
+          "name" : "Ricardo Felipe Custódio",
+          "adm" : 12,
+          "research" : 10,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a3",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "THURSDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 4,
+          "name" : "Arthur Ronald de Vallauris Buchsbaum",
+          "adm" : 4,
+          "research" : 8,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a4",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 5,
+          "name" : "Antonio Carlos Mariani",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a5",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13],
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 6,
+          "name" : "Rosvelter Joao Coelho da Costa",
+          "adm" : 4,
+          "research" : 5,
+          "extension" : 7,
+          "credits" : 0,
+          "password" : "a6",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [13, 14],
+            "TUESDAY" : [13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 7,
+          "name" : "Vania Bogorny",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a7",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "TUESDAY" : [11, 12],
+            "WEDNESDAY" : [7, 1, 2],
+            "THURSDAY" : [5, 1, 2]
+          }
+        },
+        {
+          "_id" : 8,
+          "name" : "Andreia Cristina Konrath",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a8",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [13, 14],
+            "TUESDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12],
+            "THURSDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 9,
+          "name" : "Pedro Alberto Barbetta",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a9",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 10,
+          "name" : "Roberto Carlos dos Santos Pacheco",
+          "adm" : 10,
+          "research" : 6,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a10",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 11,
+          "name" : "Vitorio Bruno Mazzola",
+          "adm" : 10,
+          "research" : 9,
+          "extension" : 8,
+          "credits" : 0,
+          "password" : "a11",
+          "admin" : false,
+          "freeTime" : {
+            "THURSDAY" : [12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 12,
+          "name" : "Ronaldo dos Santos Mello",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a12",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 13,
+          "name" : "Patricia de Sa Freire",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a13",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 14,
+          "name" : "Olinto Jose Varela Furtado",
+          "adm" : 6,
+          "research" : 6,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a14",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 15,
+          "name" : "Laercio Lima Pilla",
+          "adm" : 7,
+          "research" : 7,
+          "extension" : 7,
+          "credits" : 0,
+          "password" : "a15",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [13, 14],
+            "WEDNESDAY" : [11, 12],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 16,
+          "name" : "Marcio Bastos Castro",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a16",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 17,
+          "name" : "Leandro Jose Komosinsky",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a17",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 141]
+          }
+        },
+        {
+          "_id" : 18,
+          "name" : "Jose Eduardo de Lucca",
+          "adm" : 5,
+          "research" : 7,
+          "extension" : 8,
+          "credits" : 0,
+          "password" : "a18",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 19,
+          "name" : "Joao Candido Lima Dovicchi",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a19",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        }]
+    },
+    {
+      "_id": 5,
+      "coordinator": [{
+        "_id" : 18,
+        "name" : "Jose Eduardo de Lucca",
+        "adm" : 5,
+        "research" : 7,
+        "extension" : 8,
+        "credits" : 0,
+        "password" : "a18",
+        "admin" : false,
+        "freeTime" : {
+          "TUESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      }],
+      "disciplines": [{
+        "_id": "INE5645",
+        "name": "Programacao Paralela e Distribuida"
+      },
+        {
+          "_id": "INE5646",
+          "name": "Programacao para Web"
+        },
+        {
+          "_id": "INE5619",
+          "name": "Administracao e Gerencia de Redes de Computadores"
+        },
+        {
+          "_id": "INE5621",
+          "name": "Informatica e Sociedade"
+        },
+        {
+          "_id": "INE5622",
+          "name": "Introducao a Compiladores"
+        },
+        {
+          "_id": "INE5623",
+          "name": "Projeto de Banco de Dados"
+        },
+        {
+          "_id": "INE5624",
+          "name": "Engenharia de Usabilidade"
+        }],
+      "professors": [{
+        "_id" : 15,
+        "name" : "Laercio Lima Pilla",
+        "adm" : 7,
+        "research" : 7,
+        "extension" : 7,
+        "credits" : 0,
+        "password" : "a15",
+        "admin" : false,
+        "freeTime" : {
+          "MONDAY" : [11, 12],
+          "TUESDAY" : [13, 14],
+          "WEDNESDAY" : [11, 12],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 16,
+          "name" : "Marcio Bastos Castro",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a16",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 17,
+          "name" : "Leandro Jose Komosinsky",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a17",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 141]
+          }
+        },
+        {
+          "_id" : 18,
+          "name" : "Jose Eduardo de Lucca",
+          "adm" : 5,
+          "research" : 7,
+          "extension" : 8,
+          "credits" : 0,
+          "password" : "a18",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 19,
+          "name" : "Joao Candido Lima Dovicchi",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a19",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 20,
+          "name" : "Jerusa Marchi",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a20",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 21,
+          "name" : "Jean Everson Martina",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a21",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 22,
+          "name" : "Gertrudes Aparecida Dandolini",
+          "adm" : 5,
+          "research" : 7,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a22",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 23,
+          "name" : "Jean Carlo Rossa Hauck",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a23",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 24,
+          "name" : "Cristian Koliver",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a24",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 25,
+          "name" : "Frank Augusto Siqueira",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a25",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 26,
+          "name" : "Marcelo Macedo",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a26",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 27,
+          "name" : "Joao Bosco Mangueira Sobral",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a27",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 28,
+          "name" : "Joao Artur de Souza",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a28",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 29,
+          "name" : "Marcia Barros de Sales",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a29",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        }]
+    },
+    {
+      "_id": 6,
+      "coordinator": [{
+        "_id" : 28,
+        "name" : "Joao Artur de Souza",
+        "adm" : 10,
+        "research" : 10,
+        "extension" : 9,
+        "credits" : 0,
+        "password" : "a28",
+        "admin" : false,
+        "freeTime" : {
+          "MONDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [11, 12],
+          "FRIDAY" : [11, 12]
+        }
+      }],
+      "disciplines": [{
+        "_id": "INE5625",
+        "name": "Computacao Distribuida"
+      },
+        {
+          "_id": "INE5617",
+          "name": "Gerencia de Projetos"
+        },
+        {
+          "_id": "INE5633",
+          "name": "Sistemas Inteligentes"
+        },
+        {
+          "_id": "INE5638",
+          "name": "Introducao a Projetos"
+        },
+        {
+          "_id": "INE5643",
+          "name": "Data Warehouse"
+        },
+        {
+          "_id": "INE5680",
+          "name": "Seguranca da Informacao e de Redes"
+        }],
+      "professors": [{
+        "_id" : 22,
+        "name" : "Gertrudes Aparecida Dandolini",
+        "adm" : 5,
+        "research" : 7,
+        "extension" : 4,
+        "credits" : 0,
+        "password" : "a22",
+        "admin" : false,
+        "freeTime" : {
+          "TUESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 23,
+          "name" : "Jean Carlo Rossa Hauck",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a23",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 24,
+          "name" : "Cristian Koliver",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a24",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 25,
+          "name" : "Frank Augusto Siqueira",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a25",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 26,
+          "name" : "Marcelo Macedo",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a26",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 27,
+          "name" : "Joao Bosco Mangueira Sobral",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a27",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 28,
+          "name" : "Joao Artur de Souza",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a28",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 29,
+          "name" : "Marcia Barros de Sales",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a29",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 30,
+          "name" : "Mario Antonio Ribeiro Dantas",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a30",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 31,
+          "name" : "Fernando Alvaro Ostuni Gauthier",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a31",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 32,
+          "name" : "Joana Stelzer",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a32",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 33,
+          "name" : "Mauricio Floriano Galimberti",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a33",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 34,
+          "name" : "Renato Fileto",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a34",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 35,
+          "name" : "Renato Cislaghi",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a35",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 36,
+          "name" : "Mauricio Carreira Cosentino",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a36",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 37,
+          "name" : "Martin Augusto Gagliotti Vigil",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a37",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        },
+        {
+          "_id" : 38,
+          "name" : "Fernando Augusto da Silva Cruz",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a38",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 39,
+          "name" : "Fernanda Matte Cavalcante",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a39",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "THURSDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 40,
+          "name" : "Eduardo Moreira da Costa",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a40",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12],
+            "FRIDAY" : [11, 12]
+          }
+        }]
+    },
+    {
+      "_id": 7,
+      "coordinator": [{
+        "_id" : 10,
+        "name" : "Roberto Carlos dos Santos Pacheco",
+        "adm" : 10,
+        "research" : 6,
+        "extension" : 6,
+        "credits" : 0,
+        "password" : "a10",
+        "admin" : false,
+        "freeTime" : {
+          "WEDNESDAY" : [11, 12, 13, 14],
+          "THURSDAY" : [11, 12, 13, 14],
+          "FRIDAY" : [13, 14]
+        }
+      }],
+      "disciplines": [{
+        "_id": "EGC5010",
+        "name": "Plano de Negocios em Informatica"
+      },
+        {
+          "_id": "INE5631",
+          "name": "Projetos I"
+        },
+        {
+          "_id": "INE5644",
+          "name": "Data Mining"
+        },
+        {
+          "_id": "INE5660",
+          "name": "Projetos II"
+        }],
+      "professors": [{
+        "_id" : 9,
+        "name" : "Pedro Alberto Barbetta",
+        "adm" : 10,
+        "research" : 10,
+        "extension" : 9,
+        "credits" : 0,
+        "password" : "a9",
+        "admin" : false,
+        "freeTime" : {
+          "MONDAY" : [11, 12, 13, 14],
+          "WEDNESDAY" : [13, 14],
+          "FRIDAY" : [11, 12, 13, 14]
+        }
+      },
+        {
+          "_id" : 10,
+          "name" : "Roberto Carlos dos Santos Pacheco",
+          "adm" : 10,
+          "research" : 6,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a10",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 11,
+          "name" : "Vitorio Bruno Mazzola",
+          "adm" : 10,
+          "research" : 9,
+          "extension" : 8,
+          "credits" : 0,
+          "password" : "a11",
+          "admin" : false,
+          "freeTime" : {
+            "THURSDAY" : [12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 12,
+          "name" : "Ronaldo dos Santos Mello",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a12",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 13,
+          "name" : "Patricia de Sa Freire",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a13",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 14,
+          "name" : "Olinto Jose Varela Furtado",
+          "adm" : 6,
+          "research" : 6,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a14",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [13, 14]
+          }
+        },
+        {
+          "_id" : 15,
+          "name" : "Laercio Lima Pilla",
+          "adm" : 7,
+          "research" : 7,
+          "extension" : 7,
+          "credits" : 0,
+          "password" : "a15",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [13, 14],
+            "WEDNESDAY" : [11, 12],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 16,
+          "name" : "Marcio Bastos Castro",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a16",
+          "admin" : false,
+          "freeTime" : {
+            "WEDNESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [11, 12, 13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 17,
+          "name" : "Leandro Jose Komosinsky",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a17",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12],
+            "TUESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 141]
+          }
+        },
+        {
+          "_id" : 18,
+          "name" : "Jose Eduardo de Lucca",
+          "adm" : 5,
+          "research" : 7,
+          "extension" : 8,
+          "credits" : 0,
+          "password" : "a18",
+          "admin" : false,
+          "freeTime" : {
+            "TUESDAY" : [11, 12, 13, 14],
+            "THURSDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 19,
+          "name" : "Joao Candido Lima Dovicchi",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 4,
+          "credits" : 0,
+          "password" : "a19",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 20,
+          "name" : "Jerusa Marchi",
+          "adm" : 8,
+          "research" : 8,
+          "extension" : 6,
+          "credits" : 0,
+          "password" : "a20",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        },
+        {
+          "_id" : 21,
+          "name" : "Jean Everson Martina",
+          "adm" : 10,
+          "research" : 10,
+          "extension" : 9,
+          "credits" : 0,
+          "password" : "a21",
+          "admin" : false,
+          "freeTime" : {
+            "MONDAY" : [11, 12, 13, 14],
+            "WEDNESDAY" : [13, 14],
+            "FRIDAY" : [11, 12, 13, 14]
+          }
+        }]
+    }
 ]
