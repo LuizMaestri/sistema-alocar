@@ -5,18 +5,315 @@
 */
 [
   {
-    // id inteiro sequencial
-    "_id": ,
-    // bota CTC/EEL o nome do prédio como é lá na ufsc
-    "building": "",
-    // andar da sala
-    "floor": ,
-    // numero da sala... sim eu também ia querer me bater seeu visse um comentario obvio desse no teu lugar
-    "number": ,
-    //quantidade de alunos que cabe na sala bota no maximo um 80
-    "capacity": ,
-    // se for sala de aula normal bora false nessa bagaça, mas não esquece de criar uns laboratório
-    // tenta fazer o ctc todo se tu lembrar mais oumenos das salas e a eel 004
-    "lab":
+    "_id": 1,
+    "building": "CTC/EEL",
+    "floor": 1,
+    "number": 4,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 2,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 101,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 3,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 102,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 4,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 103,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 5,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 104,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 6,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 105,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 7,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 106,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 8,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 107,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 9,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 108,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 10,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 109,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 11,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 110,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 12,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 111,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 13,
+    "building": "CTC/Bloco B",
+    "floor": 1,
+    "number": 112,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 14,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 201,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 15,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 202,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 16,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 203,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 17,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 204,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 18,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 205,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 19,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 206,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 20,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 207,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 21,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 208,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 22,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 209,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 23,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 210,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 24,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 211,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 25,
+    "building": "CTC/Bloco B",
+    "floor": 2,
+    "number": 212,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 26,
+    "building": "CTC/Bloco B",
+    "floor": 3,
+    "number": 301,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 27,
+    "building": "CTC/Bloco B",
+    "floor": 3,
+    "number": 302,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 28,
+    "building": "CTC/Bloco B",
+    "floor": 3,
+    "number": 303,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 29,
+    "building": "CTC/Bloco B",
+    "floor": 3,
+    "number": 304,
+    "capacity": 50,
+    "lab": false
+  },
+  {
+    "_id": 30,
+    "building": "CTC/Bloco B",
+    "floor": 3,
+    "number": 305,
+    "capacity": 80,
+    "lab": false
+  },
+  {
+    "_id": 31,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 1,
+    "capacity": 50,
+    "lab": true
+  },
+  {
+    "_id": 32,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 2,
+    "capacity": 40,
+    "lab": true
+  },
+  {
+    "_id": 33,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 3,
+    "capacity": 40,
+    "lab": true
+  },
+  {
+    "_id": 34,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 4,
+    "capacity": 50,
+    "lab": true
+  },
+  {
+    "_id": 35,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 5,
+    "capacity": 30,
+    "lab": true
+  },
+  {
+    "_id": 36,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 6,
+    "capacity": 50,
+    "lab": true
+  },
+  {
+    "_id": 37,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 7,
+    "capacity": 30,
+    "lab": true
+  },
+  {
+    "_id": 38,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 8,
+    "capacity": 30,
+    "lab": true
+  },
+  {
+    "_id": 39,
+    "building": "CTC/Bloco B/LIIT",
+    "floor": 3,
+    "number": 9,
+    "capacity": 40,
+    "lab": true
   }
 ]

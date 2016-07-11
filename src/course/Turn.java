@@ -8,7 +8,7 @@ package course;
 public enum Turn {
     MATUTINAL(1, 6),
     VESPERTINE(7, 11),
-    NIGTLY(12, 16),
+    NIGHTLY(12, 16),
     INTEGRAL(1, 16),
     DAY_LONG(1, 11);
 
