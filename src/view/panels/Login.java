@@ -29,11 +29,11 @@ import view.manager.UIManager;
 		setLayout(null);
 
 		JLabel lblLogin = new JLabel("Login:");
-		lblLogin.setBounds(345, 250, 46, 14);
+		lblLogin.setBounds(345, 244, 46, 27);
 		add(lblLogin);
 
 		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setBounds(345, 281, 46, 14);
+		lblSenha.setBounds(345, 275, 46, 27);
 		add(lblSenha);
 
 		password = new JPasswordField();

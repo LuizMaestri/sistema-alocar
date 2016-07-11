@@ -4,7 +4,7 @@ import classes.Classes;
 import controller.RequestCheckController;
 import exception.InvalidParamsException;
 import room.Room;
-import sun.plugin2.message.ShowStatusMessage;
+//import sun.plugin2.message.ShowStatusMessage;
 import view.manager.UIManager;
 
 import javax.swing.*;

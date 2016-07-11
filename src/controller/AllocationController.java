@@ -177,7 +177,7 @@ public class AllocationController implements IController {
     private int selectedMaxWorkLoad(int maxIndex, ArrayList<Professor> professorList){
         for (int index = maxIndex; index > professorList.size(); index ++) {
             Professor professor = professorList.get(index);
-            if (!professor.hasMin()) {
+            if (!professor.hasMax()) {
                 return maxIndex;
             }
         }
