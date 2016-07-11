@@ -1,17 +1,9 @@
+/*
+  Aqui vai ter de ter os ids de todas as disciplinas
+  que você colocolou no outro json
+*/
 [
   {
-    "_id": "INE5608"
-  },
-  {
-    "_id": "INE5615"
-  },
-  {
-    "_id": "INE5646"
-  },
-  {
-    "_id": "INE5659"
-  },
-  {
-    "_id": "EGC5008"
+    "_id": "" // codigo da disciplina
   }
 ]

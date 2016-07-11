@@ -1,10 +1,22 @@
+/*
+  eu sei que falei muita coisa obvia nesse, não,
+  não estou dúvidando da tua inteligencia mas preferi
+  esclarecer tudo pra não ficar no disse me disse
+*/
 [
   {
-    "_id": 1,
-    "building": "CTC",
-    "floor": 3,
-    "number": 304,
-    "capacity": 20,
-    "lab": true
+    // id inteiro sequencial
+    "_id": ,
+    // bota CTC/EEL o nome do prédio como é lá na ufsc
+    "building": "",
+    // andar da sala
+    "floor": ,
+    // numero da sala... sim eu também ia querer me bater seeu visse um comentario obvio desse no teu lugar
+    "number": ,
+    //quantidade de alunos que cabe na sala bota no maximo um 80
+    "capacity": ,
+    // se for sala de aula normal bora false nessa bagaça, mas não esquece de criar uns laboratório
+    // tenta fazer o ctc todo se tu lembrar mais oumenos das salas e a eel 004
+    "lab":
   }
 ]

@@ -1,22 +1,12 @@
+/*
+  Esse json vai ser para as diciplinas, dá uma olhada no
+  sin.inf.usfc.br e vê algumas diciplinas pra colocar aqui
+  pra adicionar mais é só adicionar uma virgula após o '}'
+  e e copiar a a estrutura entre '{}'
+*/
 [
   {
-    "_id": "INE5608",
-    "name": "Analise e Projeto de Sistemas "
-  },
-  {
-    "_id": "INE5615",
-    "name": "Redes de Computadores"
-  },
-  {
-    "_id": "INE5646",
-    "name": "Programacao para Web"
-  },
-  {
-    "_id": "INE5659",
-    "name": "Gestao Estrategica de Tecnologias, Informacao e Comunicacao"
-  },
-  {
-    "_id": "EGC5008",
-    "name": "Qualidade da Informacaso"
+    "_id": "", //codigo da disciplina
+    "name": "" //nome da disciplina
   }
 ]

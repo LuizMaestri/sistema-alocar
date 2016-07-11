@@ -1,18 +1,13 @@
+/*
+  Esse é um exemplo de professor escolhe cria mais alguns
+  cretids é sempre 0 beleza? os dias da semana no freeTime
+  sempre maiusculos e os numeros ali é o indice dos horarios
+  dá uma olha na classe Constantes o atributo HOUR tem o array
+  certinho pra tu se guiar, ah... não esquece da recra da carga]
+  horaria (adm + research +extension) <= 32
+*/
 [
   {
-    "_id" : 184298,
-    "adm" : 10,
-    "research" : 12,
-    "extension" : 10,
-    "credits" : 0,
-    "password" : "abcd",
-    "admin" : false,
-    "freeTime" : {
-      "TUESDAY" : [ 5, 7 ],
-      "WEDNESDAY" : [ 7, 9, 10 ],
-      "THURSDAY" : [ 5, 6, 7 ]
-    }
-  }, {
     "_id" : 123456,
     "adm" : 10,
     "research" : 10,

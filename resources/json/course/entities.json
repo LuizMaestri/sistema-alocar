@@ -1,7 +1,8 @@
+// não altera ess vamos só pra sistemas
 [
   {
     "_id": "238",
-    "name": "Sistemas de Informação",
+    "name": "Sistemas de Informacao",
     "turn": "NIGTLY"
   }
 ]
