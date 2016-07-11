@@ -12,6 +12,7 @@ import course.Course;
 import discipline.Discipline;
 import exception.InvalidParamsException;
 import utils.NumericAndLengthFilter;
+import view.dialogs.HoraryDialog;
 import view.manager.UIManager;
 
 public class CRUDTurmas extends JPanel {
@@ -210,13 +211,9 @@ public class CRUDTurmas extends JPanel {
 		btnCriar.addActionListener(a -> {
 			if (criar) {
 				try {
-					classController.save((Course) curso.getSelectedItem(), (Discipline) disciplina.getSelectedItem(),
+					new HoraryDialog(new JFrame(),(Course) curso.getSelectedItem(), (Discipline) disciplina.getSelectedItem(),
                             Integer.parseInt(capacidade.getText()), Integer.parseInt(creditos.getText()),
-							Integer.parseInt(qtdTurmas.getText()));
-					JOptionPane.showMessageDialog(null, "Criado com sucesso", "Criação",
-							JOptionPane.INFORMATION_MESSAGE);
-				} catch (InvalidParamsException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "Dados Inválidos", JOptionPane.ERROR_MESSAGE);
+                            Integer.parseInt(qtdTurmas.getText()));
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Por favor, preencha os dados", "Dados Inválidos",
 							JOptionPane.ERROR_MESSAGE);
